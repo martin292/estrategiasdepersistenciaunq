@@ -8,7 +8,7 @@ public class Usuario {
 	protected String apellido;
 	protected String nombreusuario;
 	protected String password;
-	protected String email;
+	protected String email;  
 	protected int codigodevalidacion;
 	protected Date fechanacimiento;
 	
