@@ -16,7 +16,7 @@ public class RepositorioDeUsuarios {
 			usuarios.add(usuario);
 		}
 		else{
-			throw UsuarioYaExisteExeption();
+			throw new UsuarioYaExisteException("Ya existe un usuario con ese nombre");
 		}
 		
 	}
