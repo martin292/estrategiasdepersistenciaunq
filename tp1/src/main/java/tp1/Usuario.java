@@ -37,9 +37,9 @@ public class Usuario implements EnviadorDeMails {
 	}
 	
 	public void enviarMail(Mail mail) {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub		
 	}
+	
 	/**
 	 * CambiarPassword
 	 * @param userName
@@ -48,7 +48,7 @@ public class Usuario implements EnviadorDeMails {
 	 * @throws NuevaPasswordInvalidaException
 	 */
 	public void cambiarPassword(String userName, String password, String nuevaPassword) throws NuevaPasswordInvalidaException {
-		if (this.getNombreusuario() == userName && this.getPassword() == password){
+		if (this.getNombreusuario() == userName && this.getPassword() == password  && this.getPassword() != nuevaPassword){
 			this.setPassword(nuevaPassword);
 		}
 		else{
