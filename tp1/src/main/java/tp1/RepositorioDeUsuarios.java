@@ -29,7 +29,7 @@ public class RepositorioDeUsuarios {
 	public Usuario retornarUsuario(String username, String pass){
 		
 		for(Usuario u: this.usuarios){
-			if(u.nombreusuario == username && u.password == pass){
+			if(u.getNombreusuario() == username && u.getPassword() == pass){
 				return u;
 			}
 		}

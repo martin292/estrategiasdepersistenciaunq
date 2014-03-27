@@ -49,11 +49,11 @@ public class Sistema {
 	}
 	
 	
-	private Usuario retUsuario(String userName, String password) {
+	public Usuario retUsuario(String userName, String password) {
 		return RepositorioDeUsuarios.getInstance().retornarUsuario(userName, password);
 	}
 
-	private boolean elUsuarioExiste(String userName, String password) {
+	public boolean elUsuarioExiste(String userName, String password) {
 		return RepositorioDeUsuarios.getInstance().existe(userName, password);
 	}
 	
