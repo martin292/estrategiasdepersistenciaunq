@@ -9,13 +9,11 @@ public class Usuario implements EnviadorDeMails {
 	protected String nombreusuario;
 	protected String password;
 	protected String email;  
-	protected int codigodevalidacion;
+	protected String codigodevalidacion;
+	protected boolean cuentaValida = false;
 	protected Date fechanacimiento;
 	
-	
-	
-	
-	
+		
 	
 	public Usuario(String nombre, String apellido, String nombreusuario,
 			String password, String email, Date fechanacimiento) {
@@ -27,13 +25,6 @@ public class Usuario implements EnviadorDeMails {
 		this.email = email;
 		this.fechanacimiento = fechanacimiento;
 	}
-
-
-
-
-
-
-
 
 
 
@@ -87,10 +78,10 @@ public class Usuario implements EnviadorDeMails {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public int getCodigodevalidacion() {
+	public String getCodigodevalidacion() {
 		return codigodevalidacion;
 	}
-	public void setCodigodevalidacion(int codigodevalidacion) {
+	public void setCodigodevalidacion(String codigodevalidacion) {
 		this.codigodevalidacion = codigodevalidacion;
 	}
 	public Date getFechanacimiento() {
@@ -100,12 +91,13 @@ public class Usuario implements EnviadorDeMails {
 		this.fechanacimiento = fechanacimiento;
 	}
 
+	public boolean getCuentaValida() {
+		return cuentaValida;
+	}
 
-
-
-
-
-
+	public void setCuentaValida(boolean cuentaValida) {
+		this.cuentaValida = cuentaValida;
+	}
 
 
 
