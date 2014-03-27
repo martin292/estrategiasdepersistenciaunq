@@ -130,5 +130,11 @@ public class Usuario implements EnviadorDeMails {
 		this.cuentaValida = cuentaValida;
 	}
 
+
+
+	public void cambiarPassword(String newPassword) {
+		this.setPassword(newPassword);
+	}
+
 		
 }

@@ -50,7 +50,7 @@ public class RepositorioDeUsuarios {
 		}
 		throw new UsuarioNoExiste();
 	}
-
+	
 	public boolean existe(String userName, String password) {
 
 		for(Usuario u: this.usuarios){
@@ -60,6 +60,5 @@ public class RepositorioDeUsuarios {
 		}
 		return false;
 	}
-
 
 }
