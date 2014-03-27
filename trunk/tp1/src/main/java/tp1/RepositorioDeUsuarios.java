@@ -42,7 +42,13 @@ public class RepositorioDeUsuarios {
 	}
 	
 	public Usuario ingresarUsuario(String username, String pass)throws UsuarioNoExiste{
-		return null;
+		
+		for(Usuario u: this.usuarios){
+			if(u.nombreusuario == username && u.password == pass){
+				return u;
+			}
+		}
+		throw new UsuarioNoExiste();
 	}
 
 
