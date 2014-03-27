@@ -14,6 +14,30 @@ public class Usuario implements EnviadorDeMails {
 	
 	
 	
+	
+	
+	
+	public Usuario(String nombre, String apellido, String nombreusuario,
+			String password, String email, Date fechanacimiento) {
+		super();
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.nombreusuario = nombreusuario;
+		this.password = password;
+		this.email = email;
+		this.fechanacimiento = fechanacimiento;
+	}
+
+
+
+
+
+
+
+
+
+
+
 	public void registrarse() throws UsuarioYaExisteException{
 		RepositorioDeUsuarios.getInstance().registrarUsuario(this);		
 	}
