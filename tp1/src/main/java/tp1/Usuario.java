@@ -2,7 +2,7 @@ package tp1;
 
 import java.util.Date;
 
-public class Usuario implements EnviadorDeMails {
+public class Usuario{
 	
 	protected String nombre;
 	protected String apellido;
@@ -34,10 +34,6 @@ public class Usuario implements EnviadorDeMails {
 		this.fechanacimiento = fechanacimiento;
 	}
 
-
-
-	
-	
 	public Usuario() {
 		super();
 	}
@@ -64,7 +60,9 @@ public class Usuario implements EnviadorDeMails {
 	}
 		
 
-	
+	/**
+	 * Validar cuenta
+	 */
 	public void validarCuenta(){
 		this.setCuentaValida(true);
 	}
@@ -135,16 +133,6 @@ public class Usuario implements EnviadorDeMails {
 
 	public void cambiarPassword(String newPassword) {
 		this.setPassword(newPassword);
-	}
-	
-
-
-
-
-
-	public void enviarMail(Mail mail) {
-		// TODO Auto-generated method stub
-		
 	}
 
 

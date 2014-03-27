@@ -8,15 +8,30 @@ public class Sistema {
 	 * @throws UsuarioYaExisteException
 	 */
 	public void registrarUsuario(Usuario usuario) throws UsuarioYaExisteException {
-		Mail mail = new Mail();
+		String codigo = "codigo";
+		Mail mail = new Mail(codigo,"Codigo de validacion" ,usuario.getEmail(), "mailsistema");
 		if (RepositorioDeUsuarios.getInstance().existe(usuario.getNombreusuario(), usuario.getPassword())){
-			usuario.enviarMail(mail);
+			this.enviarMail(mail);
+			usuario.setCodigodevalidacion(codigo);
 			RepositorioDeUsuarios.getInstance().agregarUsuario(usuario);
 		}
 		else{
 			throw new UsuarioYaExisteException("Ya existe un usuario con ese nombre");
 		}
 		
+	}
+
+	private boolean enviarMail(Mail mail) {
+		if (puedeEnviar(mail)){
+			return true;
+		}
+		
+		throw new EnviarMailException(mail);
+	}
+
+	private boolean puedeEnviar(Mail mail) {
+		
+		return mail.getTo() != null;
 	}
 
 	/**
@@ -42,22 +57,20 @@ public class Sistema {
 	 * @return
 	 */
 	public Usuario ingresarUsuario(String userName, String password){
-		if(this.elUsuarioExiste(userName, password)){
-			return this.retUsuario(userName, password);
+		if(this.elUsuarioExiste1(userName, password)){
+			return this.retUsuario1(userName, password);
 		}
 		throw new UsuarioNoExiste();
 	}
 	
 	
-	public Usuario retUsuario(String userName, String password) {
+	public Usuario retUsuario1(String userName, String password) {
 		return RepositorioDeUsuarios.getInstance().retornarUsuario(userName, password);
 	}
 
-	public boolean elUsuarioExiste(String userName, String password) {
+	public boolean elUsuarioExiste1(String userName, String password) {
 		return RepositorioDeUsuarios.getInstance().existe(userName, password);
 	}
-	
-	
 	
 
 	/**
@@ -69,6 +82,17 @@ public class Sistema {
 	public void cambiarPassword(String userName, String password, String newPassword){
 		RepositorioDeUsuarios.getInstance().retornarUsuario(userName, password).cambiarPassword(newPassword);
 	}
+	
+	
+	
+	public Usuario retUsuario(String userName, String password) {
+		return RepositorioDeUsuarios.getInstance().retornarUsuario(userName, password);
+	}
+
+	public boolean elUsuarioExiste(String userName, String password) {
+		return RepositorioDeUsuarios.getInstance().existe(userName, password);
+	}
+	
 	
 }
 
