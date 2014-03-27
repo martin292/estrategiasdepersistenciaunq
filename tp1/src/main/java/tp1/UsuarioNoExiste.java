@@ -1,5 +1,5 @@
 package tp1;
 
-public class UsuarioNoExiste extends Exception {
+public class UsuarioNoExiste extends RuntimeException {
 
 }

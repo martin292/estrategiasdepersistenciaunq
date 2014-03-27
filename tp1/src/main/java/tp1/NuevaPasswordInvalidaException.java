@@ -1,5 +1,5 @@
 package tp1;
 
-public class NuevaPasswordInvalidaException extends Exception {
+public class NuevaPasswordInvalidaException extends RuntimeException {
 
 }
