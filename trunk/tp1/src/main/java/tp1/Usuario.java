@@ -14,7 +14,15 @@ public class Usuario implements EnviadorDeMails {
 	protected Date fechanacimiento;
 	
 		
-	
+	/**
+	 * Constructor
+	 * @param nombre
+	 * @param apellido
+	 * @param nombreusuario
+	 * @param password
+	 * @param email
+	 * @param fechanacimiento
+	 */
 	public Usuario(String nombre, String apellido, String nombreusuario,
 			String password, String email, Date fechanacimiento) {
 		super();
@@ -49,12 +57,7 @@ public class Usuario implements EnviadorDeMails {
 		
 
 	
-	public void validarCuenta(String codigo){
-		
-		if(this.codigodevalidacion != codigo){
-			throw new ValidacionException();
-		}
-		
+	public void validarCuenta(){
 		this.setCuentaValida(true);
 	}
 	
@@ -125,6 +128,7 @@ public class Usuario implements EnviadorDeMails {
 	public void cambiarPassword(String newPassword) {
 		this.setPassword(newPassword);
 	}
+	
 
 
 
@@ -132,6 +136,15 @@ public class Usuario implements EnviadorDeMails {
 
 	public void enviarMail(Mail mail) {
 		// TODO Auto-generated method stub
+		
+	}
+
+
+
+
+
+	public boolean codigoDeValidacionCorrecto(String codigoValidacion) {
+		return this.getCodigodevalidacion() == codigoValidacion;
 		
 	}
 
