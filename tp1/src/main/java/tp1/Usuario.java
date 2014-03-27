@@ -59,13 +59,13 @@ public class Usuario implements EnviadorDeMails {
 		
 
 	
-	public void validarCuenta(String codigo)throws ValidacionException{
+	public void validarCuenta(String codigo){
 		
-		if(this.codigodevalidacion == codigo){
-			this.setCuentaValida(true);
-		}else{
+		if(this.codigodevalidacion != codigo){
 			throw new ValidacionException();
 		}
+		
+		this.setCuentaValida(true);
 	}
 	
 	

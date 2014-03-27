@@ -1,5 +1,5 @@
 package tp1;
 
-public class ValidacionException extends Exception {
+public class ValidacionException extends RuntimeException{
 
 }
