@@ -2,7 +2,7 @@ package tp1;
 
 import java.util.Date;
 
-public class Usuario {
+public class Usuario implements EnviadorDeMails {
 	
 	protected String nombre;
 	protected String apellido;
@@ -77,7 +77,27 @@ public class Usuario {
 	public void setFechanacimiento(Date fechanacimiento) {
 		this.fechanacimiento = fechanacimiento;
 	}
-	
-	
 
-}
+
+
+
+
+
+
+
+
+
+
+	public void enviarMail(Mail mail) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+
+
+
+
+		
+	}
