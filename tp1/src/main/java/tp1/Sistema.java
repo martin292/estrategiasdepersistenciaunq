@@ -8,6 +8,7 @@ public class Sistema {
 
 	public void validarCuenta(String codigoValidacion){
 		
+		
 	
 	}
 	
@@ -20,6 +21,7 @@ public class Sistema {
 		throw new UsuarioNoExiste();
 	}
 	
+	
 	private Usuario retUsuario(String userName, String password) {
 		return RepositorioDeUsuarios.getInstance().retornarUsuario(userName, password);
 	}
@@ -31,8 +33,14 @@ public class Sistema {
 	
 	
 
+	/**
+	 * Cabiar el password de un usuario
+	 * @param userName
+	 * @param password
+	 * @param newPassword
+	 */
 	public void cambiarPassword(String userName, String password, String newPassword){
-		
+		RepositorioDeUsuarios.getInstance().retornarUsuario(userName, password).cambiarPassword(newPassword);
 	}
 	
 }
