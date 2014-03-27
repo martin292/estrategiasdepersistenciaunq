@@ -60,7 +60,7 @@ public class Sistema {
 		if(this.elUsuarioExiste1(userName, password)){
 			return this.retUsuario1(userName, password);
 		}
-		throw new UsuarioNoExiste();
+		throw new UsuarioNoExisteException();
 	}
 	
 	
