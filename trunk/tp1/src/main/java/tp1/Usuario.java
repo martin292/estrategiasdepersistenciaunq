@@ -28,17 +28,7 @@ public class Usuario implements EnviadorDeMails {
 
 
 
-	/**
-	 * Registrarse
-	 * @throws UsuarioYaExisteException
-	 */
-	public void registrarse() throws UsuarioYaExisteException{
-		RepositorioDeUsuarios.getInstance().registrarUsuario(this);		
-	}
 	
-	public void enviarMail(Mail mail) {
-		// TODO Auto-generated method stub		
-	}
 	
 	/**
 	 * CambiarPassword
@@ -134,6 +124,15 @@ public class Usuario implements EnviadorDeMails {
 
 	public void cambiarPassword(String newPassword) {
 		this.setPassword(newPassword);
+	}
+
+
+
+
+
+	public void enviarMail(Mail mail) {
+		// TODO Auto-generated method stub
+		
 	}
 
 		
