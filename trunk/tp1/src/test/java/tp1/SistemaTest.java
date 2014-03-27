@@ -24,6 +24,14 @@ public class SistemaTest {
 		
 	}
 	
+	@Test(expected = UsuarioNoExisteException.class)
+	public void testExcepcionDeIngresarUsuario(){
+		
+		RepositorioDeUsuarios.getInstance().usuarios.clear();
+		
+		s.ingresarUsuario("a", "b");
+	}
+	
 	@Test
 	public void testRetUsuario(){
 		Usuario user = new Usuario();
@@ -104,6 +112,20 @@ public class SistemaTest {
 		verify(mockUsuario).setCodigodevalidacion("codigo");
 		verify(mockUsuario, times(2)).getNombreusuario();
 		verify(mockUsuario, times(2)).getPassword();
+		
+	}
+	
+	@Test (expected = UsuarioYaExisteException.class)
+	public void testExcepcionDeRegistrarUsuario(){
+		Usuario mockUsuario = mock(Usuario.class);
+		
+		RepositorioDeUsuarios.getInstance().usuarios.clear();
+		
+		when(mockUsuario.getNombreusuario()).thenReturn("a");
+		when(mockUsuario.getPassword()).thenReturn("b");
+		when(mockUsuario.getEmail()).thenReturn("c");
+		
+		
 		
 	}
 }
