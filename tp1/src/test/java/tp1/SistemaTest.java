@@ -80,6 +80,12 @@ public class SistemaTest {
 		verify(mockUsuario).validarCuenta();
 		
 	}
+	@Test(expected = ValidacionException .class)
+	public void testValidarCuentaException(){
+		Usuario mockUsuario = mock(Usuario.class);
+		when(mockUsuario.codigoDeValidacionCorrecto("abc")).thenReturn(false);
+		s.validarCuenta("abc", mockUsuario);
+	}
 	
 	@Test
 	public void testRegistrarUsuario(){
@@ -100,5 +106,4 @@ public class SistemaTest {
 		verify(mockUsuario, times(2)).getPassword();
 		
 	}
-	
 }
