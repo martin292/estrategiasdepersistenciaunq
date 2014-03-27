@@ -36,6 +36,10 @@ public class Usuario implements EnviadorDeMails {
 		RepositorioDeUsuarios.getInstance().registrarUsuario(this);		
 	}
 	
+	public void enviarMail(Mail mail) {
+		// TODO Auto-generated method stub
+		
+	}
 	/**
 	 * CambiarPassword
 	 * @param userName
@@ -52,10 +56,12 @@ public class Usuario implements EnviadorDeMails {
 		}
 		
 	}
+		
+
 	
-	
-	
-	
+	public void validarCuenta(String codigo)throws ValidacionException{
+		//TODO
+	}
 	
 	
 	
@@ -119,19 +125,5 @@ public class Usuario implements EnviadorDeMails {
 		this.cuentaValida = cuentaValida;
 	}
 
-
-
-
-	public void enviarMail(Mail mail) {
-		// TODO Auto-generated method stub
 		
-	}
-
-
-
-
-
-
-
-		
-	}
+}
