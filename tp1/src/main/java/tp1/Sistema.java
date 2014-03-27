@@ -7,7 +7,7 @@ public class Sistema {
 	 * @param usuario
 	 * @throws UsuarioYaExisteException
 	 */
-	public void registrarUsuario(Usuario usuario) throws UsuarioYaExisteException {
+	public void registrarUsuario(Usuario usuario) {
 		String codigo = "codigo";
 		Mail mail = new Mail(codigo,"Codigo de validacion" ,usuario.getEmail(), "Aterrizar.com");
 		if (RepositorioDeUsuarios.getInstance().existe(usuario.getNombreusuario(), usuario.getPassword())){
