@@ -15,22 +15,7 @@ public class RepositorioDeUsuarios {
 		return instance;
 	}
 	
-	/**
-	 * Registrar usuario
-	 * @param usuario
-	 * @throws UsuarioYaExisteException
-	 */
-	public void registrarUsuario(Usuario usuario) throws UsuarioYaExisteException {
-		Mail mail = new Mail();
-		if (noExisteUsuario(usuario)){
-			usuario.enviarMail(mail);
-			usuarios.add(usuario);
-		}
-		else{
-			throw new UsuarioYaExisteException("Ya existe un usuario con ese nombre");
-		}
-		
-	}
+	
 	
 	/**
 	 * Existe usuario
@@ -59,6 +44,24 @@ public class RepositorioDeUsuarios {
 			}
 		}
 		return false;
+	}
+
+
+
+	public void agregarUsuario(Usuario usuario) {
+		this.getUsuarios().add(usuario);
+	}
+
+
+
+	public ArrayList<Usuario> getUsuarios() {
+		return usuarios;
+	}
+
+
+
+	public void setUsuarios(ArrayList<Usuario> usuarios) {
+		this.usuarios = usuarios;
 	}
 
 }

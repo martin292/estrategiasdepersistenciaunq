@@ -2,7 +2,20 @@ package tp1;
 
 public class Sistema {
 	
-	public void registrarUsuario(Usuario usuario){
+	/**
+	 * Registrar usuario
+	 * @param usuario
+	 * @throws UsuarioYaExisteException
+	 */
+	public void registrarUsuario(Usuario usuario) throws UsuarioYaExisteException {
+		Mail mail = new Mail();
+		if (RepositorioDeUsuarios.getInstance().existe(usuario.getNombreusuario(), usuario.getPassword())){
+			usuario.enviarMail(mail);
+			RepositorioDeUsuarios.getInstance().agregarUsuario(usuario);
+		}
+		else{
+			throw new UsuarioYaExisteException("Ya existe un usuario con ese nombre");
+		}
 		
 	}
 
@@ -13,7 +26,12 @@ public class Sistema {
 	}
 	
 	
-	
+	/**
+	 * Ingresar Usuario
+	 * @param userName
+	 * @param password
+	 * @return
+	 */
 	public Usuario ingresarUsuario(String userName, String password){
 		if(this.elUsuarioExiste(userName, password)){
 			return this.retUsuario(userName, password);
