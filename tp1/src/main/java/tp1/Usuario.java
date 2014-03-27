@@ -11,6 +11,14 @@ public class Usuario {
 	protected String email;  
 	protected int codigodevalidacion;
 	protected Date fechanacimiento;
+	protected RepositorioDeUsuarios repositorio;
+	
+	
+	
+	public void registrarse(){
+		repositorio.registrarUsuario(this);
+		
+	}
 	
 	
 	
