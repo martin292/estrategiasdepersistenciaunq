@@ -28,9 +28,29 @@ public class Usuario implements EnviadorDeMails {
 
 
 
-
+	/**
+	 * Registrarse
+	 * @throws UsuarioYaExisteException
+	 */
 	public void registrarse() throws UsuarioYaExisteException{
 		RepositorioDeUsuarios.getInstance().registrarUsuario(this);		
+	}
+	
+	/**
+	 * CambiarPassword
+	 * @param userName
+	 * @param password
+	 * @param nuevaPassword
+	 * @throws NuevaPasswordInvalidaException
+	 */
+	public void cambiarPassword(String userName, String password, String nuevaPassword) throws NuevaPasswordInvalidaException {
+		if (this.getNombreusuario() == userName && this.getPassword() == password){
+			this.setPassword(nuevaPassword);
+		}
+		else{
+			throw new NuevaPasswordInvalidaException();
+		}
+		
 	}
 	
 	

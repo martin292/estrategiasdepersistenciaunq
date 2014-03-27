@@ -15,7 +15,11 @@ public class RepositorioDeUsuarios {
 		return instance;
 	}
 	
-
+	/**
+	 * Registrar usuario
+	 * @param usuario
+	 * @throws UsuarioYaExisteException
+	 */
 	public void registrarUsuario(Usuario usuario) throws UsuarioYaExisteException {
 		Mail mail = new Mail();
 		if (noExisteUsuario(usuario)){
@@ -27,9 +31,15 @@ public class RepositorioDeUsuarios {
 		}
 		
 	}
-
+	
+	/**
+	 * Existe usuario
+	 * @param usuario
+	 * @return
+	 */
 	private boolean noExisteUsuario(Usuario usuario) {
 		return usuarios.contains(usuario);
 	}
+
 
 }
