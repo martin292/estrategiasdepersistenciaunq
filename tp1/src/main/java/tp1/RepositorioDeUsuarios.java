@@ -8,6 +8,13 @@ public class RepositorioDeUsuarios {
 	
 	protected static RepositorioDeUsuarios instance;
 	
+	public static synchronized RepositorioDeUsuarios getInstance() {
+		if (instance == null) {
+			instance = new RepositorioDeUsuarios();
+		}
+		return instance;
+	}
+	
 
 	public void registrarUsuario(Usuario usuario) throws UsuarioYaExisteException {
 		Mail mail = new Mail();
