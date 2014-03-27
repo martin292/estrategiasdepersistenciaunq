@@ -38,6 +38,14 @@ public class Usuario implements EnviadorDeMails {
 
 	
 	
+	public Usuario() {
+		super();
+	}
+
+
+
+
+
 	/**
 	 * CambiarPassword
 	 * @param userName
