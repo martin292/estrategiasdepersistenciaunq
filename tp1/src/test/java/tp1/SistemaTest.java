@@ -1,7 +1,7 @@
 package tp1;
 
 import org.junit.Test;
-
+import java.util.Date;
 import static org.mockito.Mockito.*;
 import static org.junit.Assert.*;
 
@@ -100,7 +100,6 @@ public class SistemaTest {
 		Usuario mockUsuario = mock(Usuario.class);
 		
 		RepositorioDeUsuarios.getInstance().usuarios.clear();
-		RepositorioDeUsuarios.getInstance().usuarios.add(mockUsuario);
 		
 		when(mockUsuario.getNombreusuario()).thenReturn("a");
 		when(mockUsuario.getPassword()).thenReturn("b");
@@ -110,22 +109,20 @@ public class SistemaTest {
 		
 		verify(mockUsuario).getEmail();
 		verify(mockUsuario).setCodigodevalidacion("codigo");
-		verify(mockUsuario, times(2)).getNombreusuario();
-		verify(mockUsuario, times(2)).getPassword();
+		verify(mockUsuario).getNombreusuario();
+		verify(mockUsuario).getPassword();
 		
 	}
 	
 	@Test (expected = UsuarioYaExisteException.class)
 	public void testExcepcionDeRegistrarUsuario(){
-		Usuario mockUsuario = mock(Usuario.class);
+		
+		Date fecha = new Date();		
+		Usuario usuario = new Usuario("nombre", "apellido", "username", "pass", "email", fecha);
 		
 		RepositorioDeUsuarios.getInstance().usuarios.clear();
+		RepositorioDeUsuarios.getInstance().usuarios.add(usuario);
 		
-		when(mockUsuario.getNombreusuario()).thenReturn("a");
-		when(mockUsuario.getPassword()).thenReturn("b");
-		when(mockUsuario.getEmail()).thenReturn("c");
-		
-		
-		
+		s.registrarUsuario(usuario);		
 	}
 }
