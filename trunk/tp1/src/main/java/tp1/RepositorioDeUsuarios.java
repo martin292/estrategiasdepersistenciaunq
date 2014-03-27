@@ -33,7 +33,7 @@ public class RepositorioDeUsuarios {
 				return u;
 			}
 		}
-		throw new UsuarioNoExiste();
+		throw new UsuarioNoExisteException();
 	}
 	
 	public boolean existe(String userName, String password) {
