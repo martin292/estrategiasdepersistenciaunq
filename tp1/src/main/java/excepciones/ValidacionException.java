@@ -1,4 +1,4 @@
-package tp1;
+package excepciones;
 
 public class ValidacionException extends RuntimeException{
 

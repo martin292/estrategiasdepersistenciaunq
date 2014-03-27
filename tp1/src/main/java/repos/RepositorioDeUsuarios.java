@@ -1,6 +1,9 @@
-package tp1;
+package repos;
 
 import java.util.ArrayList;
+
+import excepciones.UsuarioNoExisteException;
+import tp1.Usuario;
 
 public class RepositorioDeUsuarios {
 	
@@ -8,7 +11,7 @@ public class RepositorioDeUsuarios {
 	// * Variables
 	// ******************************************************************
 	
-	protected ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
+	public ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 	
 	protected static RepositorioDeUsuarios instance;
 	
