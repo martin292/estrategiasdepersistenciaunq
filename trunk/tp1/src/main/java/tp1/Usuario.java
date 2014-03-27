@@ -11,13 +11,11 @@ public class Usuario implements EnviadorDeMails {
 	protected String email;  
 	protected int codigodevalidacion;
 	protected Date fechanacimiento;
-	protected RepositorioDeUsuarios repositorio;
 	
 	
 	
-	public void registrarse(){
-		repositorio.registrarUsuario(this);
-		
+	public void registrarse() throws UsuarioYaExisteException{
+		RepositorioDeUsuarios.getInstance().registrarUsuario(this);		
 	}
 	
 	
