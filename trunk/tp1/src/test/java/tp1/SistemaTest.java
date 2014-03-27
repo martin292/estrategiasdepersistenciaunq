@@ -16,8 +16,7 @@ public class SistemaTest {
 		user.setNombreusuario("a");
 		user.setPassword("b");
 		
-		RepositorioDeUsuarios.getInstance().usuarios.add(user);
-		
+		RepositorioDeUsuarios.getInstance().usuarios.add(user);		
 		
 		Usuario u = s.ingresarUsuario("a", "b");
 		
@@ -31,11 +30,12 @@ public class SistemaTest {
 		user.setNombreusuario("a");
 		user.setPassword("b");
 		
+		RepositorioDeUsuarios.getInstance().usuarios.clear();
 		RepositorioDeUsuarios.getInstance().usuarios.add(user);
 		
-		Usuario u = s.retUsuario("a", "b");
+		Usuario u = s.retUsuario("a", "b");		
 		
-		assertTrue(u != user);
+		assertEquals(u, user);
 	}
 	
 	@Test
