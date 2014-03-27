@@ -50,6 +50,8 @@ public class SistemaTest {
 		
 		assertTrue(resultado);
 	}
+	
+	
 
 	@Test
 	public void testCambiarPassword(){
