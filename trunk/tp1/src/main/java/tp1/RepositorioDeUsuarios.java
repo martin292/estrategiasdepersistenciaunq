@@ -4,6 +4,10 @@ import java.util.ArrayList;
 
 public class RepositorioDeUsuarios {
 	
+	// ******************************************************************
+	// * Variables
+	// ******************************************************************
+	
 	protected ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 	
 	protected static RepositorioDeUsuarios instance;
@@ -15,16 +19,9 @@ public class RepositorioDeUsuarios {
 		return instance;
 	}
 	
-	
-	
-	/**
-	 * Existe usuario
-	 * @param usuario
-	 * @return
-	 */
-	private boolean noExisteUsuario(Usuario usuario) {
-		return usuarios.contains(usuario);
-	}
+	// ******************************************************************
+	// * Metodos
+	// ******************************************************************
 	
 	public Usuario retornarUsuario(String username, String pass){
 		
@@ -46,19 +43,13 @@ public class RepositorioDeUsuarios {
 		return false;
 	}
 
-
-
 	public void agregarUsuario(Usuario usuario) {
 		this.getUsuarios().add(usuario);
 	}
 
-
-
 	public ArrayList<Usuario> getUsuarios() {
 		return usuarios;
 	}
-
-
 
 	public void setUsuarios(ArrayList<Usuario> usuarios) {
 		this.usuarios = usuarios;
