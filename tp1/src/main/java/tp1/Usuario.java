@@ -4,6 +4,10 @@ import java.util.Date;
 
 public class Usuario{
 	
+	// ******************************************************************
+	// * Variables
+	// ******************************************************************
+	
 	protected String nombre;
 	protected String apellido;
 	protected String nombreusuario;
@@ -13,7 +17,10 @@ public class Usuario{
 	protected boolean cuentaValida = false;
 	protected Date fechanacimiento;
 	
-		
+	// ******************************************************************
+	// * Constructores
+	// ******************************************************************
+
 	/**
 	 * Constructor
 	 * @param nombre
@@ -38,9 +45,9 @@ public class Usuario{
 		super();
 	}
 
-
-
-
+	// ******************************************************************
+	// * Metodos
+	// ******************************************************************
 
 	/**
 	 * CambiarPassword
@@ -58,8 +65,7 @@ public class Usuario{
 		}
 		
 	}
-		
-
+	
 	/**
 	 * Validar cuenta
 	 */
@@ -67,16 +73,18 @@ public class Usuario{
 		this.setCuentaValida(true);
 	}
 	
+	public void cambiarPassword(String newPassword) {
+		this.setPassword(newPassword);
+	}
+
+	public boolean codigoDeValidacionCorrecto(String codigoValidacion) {
+		return this.getCodigodevalidacion() == codigoValidacion;
+		
+	}
 	
-	
-	
-	
-	
-	
-	/**
-	 * Getters and setters
-	 * @return
-	 */
+	// ******************************************************************
+	// * Getters and setters
+	// ******************************************************************
 	
 	public String getNombre() {
 		return nombre;
@@ -127,21 +135,6 @@ public class Usuario{
 
 	public void setCuentaValida(boolean cuentaValida) {
 		this.cuentaValida = cuentaValida;
-	}
-
-
-
-	public void cambiarPassword(String newPassword) {
-		this.setPassword(newPassword);
-	}
-
-
-
-
-
-	public boolean codigoDeValidacionCorrecto(String codigoValidacion) {
-		return this.getCodigodevalidacion() == codigoValidacion;
-		
 	}
 
 		
