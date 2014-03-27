@@ -22,13 +22,6 @@ public class Usuario {
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
 	/**
 	 * Getters and setters
 	 * @return
