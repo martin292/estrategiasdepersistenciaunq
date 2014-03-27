@@ -2,11 +2,11 @@ package tp1;
 
 public class Mail implements EnviadorDeMails {
 	
-	protected String body;
+	protected String body;//Codigo de validacion
 	protected String subject;
 	protected String to;
 	protected String from;
-	
+
 	
 	
 	/**
