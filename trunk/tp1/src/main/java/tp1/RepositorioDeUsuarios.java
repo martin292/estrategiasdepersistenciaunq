@@ -41,7 +41,7 @@ public class RepositorioDeUsuarios {
 		return usuarios.contains(usuario);
 	}
 	
-	public Usuario ingresarUsuario(String username, String pass)throws UsuarioNoExiste{
+	public Usuario retornarUsuario(String username, String pass){
 		
 		for(Usuario u: this.usuarios){
 			if(u.nombreusuario == username && u.password == pass){
@@ -49,6 +49,13 @@ public class RepositorioDeUsuarios {
 			}
 		}
 		throw new UsuarioNoExiste();
+	}
+
+	public boolean existe(String userName, String password) {
+
+		for(Usuario u: this.usuarios){
+			return (u.nombreusuario == userName && u.password == password);
+		}
 	}
 
 

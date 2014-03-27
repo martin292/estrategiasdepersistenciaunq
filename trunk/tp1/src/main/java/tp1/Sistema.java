@@ -11,10 +11,26 @@ public class Sistema {
 	
 	}
 	
+	
+	
 	public Usuario ingresarUsuario(String userName, String password){
-		return null;
+		if(this.elUsuarioExiste(userName, password)){
+			return this.retUsuario(userName, password);
+		}
+		throw new UsuarioNoExiste();
 	}
 	
+	private Usuario retUsuario(String userName, String password) {
+		return RepositorioDeUsuarios.getInstance().retornarUsuario(userName, password);
+	}
+
+	private boolean elUsuarioExiste(String userName, String password) {
+		return RepositorioDeUsuarios.getInstance().existe(userName, password);
+	}
+	
+	
+	
+
 	public void cambiarPassword(String userName, String password, String newPassword){
 		
 	}
