@@ -40,6 +40,10 @@ public class RepositorioDeUsuarios {
 	private boolean noExisteUsuario(Usuario usuario) {
 		return usuarios.contains(usuario);
 	}
+	
+	public Usuario ingresarUsuario(String username, String pass)throws UsuarioNoExiste{
+		return null;
+	}
 
 
 }
