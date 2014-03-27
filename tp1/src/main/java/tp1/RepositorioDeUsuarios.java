@@ -54,8 +54,11 @@ public class RepositorioDeUsuarios {
 	public boolean existe(String userName, String password) {
 
 		for(Usuario u: this.usuarios){
-			return (u.nombreusuario == userName && u.password == password);
+			if(u.nombreusuario == userName && u.password == password){
+				return true;
+			}
 		}
+		return false;
 	}
 
 
