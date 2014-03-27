@@ -19,9 +19,18 @@ public class Sistema {
 		
 	}
 
-	public void validarCuenta(String codigoValidacion){
+	/**
+	 * Validar cuenta.
+	 * @param codigoValidacion
+	 */
+	public void validarCuenta(String codigoValidacion, Usuario usuario){
 		
-		
+		if(usuario.codigoDeValidacionCorrecto(codigoValidacion)){
+			usuario.validarCuenta();
+		}
+		else{
+			throw new ValidacionException();
+		}
 	
 	}
 	
