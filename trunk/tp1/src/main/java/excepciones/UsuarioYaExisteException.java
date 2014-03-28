@@ -2,8 +2,13 @@ package excepciones;
 
 public class UsuarioYaExisteException extends RuntimeException {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public UsuarioYaExisteException(String string) {
-		// TODO Auto-generated constructor stub
+		super("El usuario ya existe");
 	}
 
 }

@@ -88,8 +88,7 @@ public class Mail implements EnviadorDeMails {
 
 
 	public void enviarMail(Mail mail) {
-		// TODO Auto-generated method stub
-		
+		// TODO		
 	}
 
 }
