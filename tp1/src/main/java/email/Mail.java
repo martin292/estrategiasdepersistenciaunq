@@ -1,4 +1,4 @@
-package tp1;
+package email;
 
 public class Mail implements EnviadorDeMails {
 	
