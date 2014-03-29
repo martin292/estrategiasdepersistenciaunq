@@ -1,6 +1,6 @@
 package excepciones;
 
-import tp1.Mail;
+import email.Mail;
 
 public class EnviarMailException extends RuntimeException {
 

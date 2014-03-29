@@ -1,12 +1,13 @@
 package tp1;
 
+import email.Mail;
 import excepciones.EnviarMailException;
 import excepciones.UsuarioNoExisteException;
 import excepciones.UsuarioYaExisteException;
 import excepciones.ValidacionException;
 import repos.RepositorioDeUsuarios;
 
-public class Sistema {
+public class Sistema implements Servicios{
 	
 	/**
 	 * Registrar usuario
