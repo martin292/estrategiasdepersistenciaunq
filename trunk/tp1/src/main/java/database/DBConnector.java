@@ -14,7 +14,7 @@ public class DBConnector {
 		}
 	}
 	
-	public Connection getConnection() throws SQLException{
+	public Connection getConnection() throws SQLException {
 		//TODO
 		return DriverManager.getConnection("jdbc:mysql://localhost/AterrizarDB","root","root");
 	}

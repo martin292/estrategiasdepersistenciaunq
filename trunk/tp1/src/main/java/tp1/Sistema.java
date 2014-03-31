@@ -9,6 +9,11 @@ import repos.RepositorioDeUsuarios;
 
 public class Sistema implements Servicios{
 	
+	
+	// ******************************************************************
+	// * Metodos
+	// ******************************************************************	
+	
 	/**
 	 * Registrar usuario
 	 * @param usuario
