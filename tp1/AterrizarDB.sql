@@ -7,6 +7,8 @@ CREATE TABLE `usuarios` (
   `apellido` varchar(45) DEFAULT NULL,
   `email` varchar(45) NOT NULL,
   `fecha` date DEFAULT NULL,
+  `codigo` varchar(45) NOT NULL,
+  `cuentaValida` boolean NOT NULL,
 
   PRIMARY KEY (`username`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;

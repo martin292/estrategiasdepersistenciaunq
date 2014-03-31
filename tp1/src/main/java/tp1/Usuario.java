@@ -51,22 +51,6 @@ public class Usuario{
 	// * Metodos
 	// ******************************************************************
 
-	/**
-	 * CambiarPassword
-	 * @param userName
-	 * @param password
-	 * @param nuevaPassword
-	 * @throws NuevaPasswordInvalidaException
-	 */
-	public void cambiarPassword(String userName, String password, String nuevaPassword) throws NuevaPasswordInvalidaException {
-		if (this.getNombreusuario() == userName && this.getPassword() == password  && this.getPassword() != nuevaPassword){
-			this.setPassword(nuevaPassword);
-		}
-		else{
-			throw new NuevaPasswordInvalidaException();
-		}
-		
-	}
 	
 	/**
 	 * Validar cuenta
