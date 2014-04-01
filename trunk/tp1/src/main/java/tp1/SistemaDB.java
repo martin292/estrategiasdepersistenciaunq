@@ -1,6 +1,7 @@
 package tp1;
 
 import database.DBConnector;
+import excepciones.NuevaPasswordInvalidaException;
 import excepciones.UsuarioNoExisteException;
 import excepciones.UsuarioYaExisteException;
 
@@ -107,6 +108,13 @@ public class SistemaDB implements Servicios{
 		throw new UsuarioNoExisteException();
 	}
 
+	/**
+	 * Busca al usuario lo instancia y lo retorna.
+	 * @param user
+	 * @param pass
+	 * @param rs
+	 * @return
+	 */
 	private Usuario retUsuario(String user, String pass, ResultSet rs) {
 		
 		try{
@@ -130,7 +138,36 @@ public class SistemaDB implements Servicios{
 		return null;
 	}
 
+	/**
+	 * Cambia la contraseña de un usuario.
+	 * Se supone que el usuario existe
+	 */
 	public void cambiarPassword(String userName, String password, String newPassword) {
-		//TODO	
+
+		Connection conn = null;
+		PreparedStatement ps = null;
+		
+		try{
+			if(password != newPassword){
+				conn = new DBConnector().getConnection();
+				ps = conn.prepareStatement("UPDATE usuarios SET PASSWORD = ? WHERE USERNAME = ? ");
+			
+				ps.setString(1, newPassword);
+				ps.setString(2, userName);
+			
+				ps.executeQuery();
+			
+				ps.close();
+				conn.close();
+			}else{
+				throw new NuevaPasswordInvalidaException();
+			}
+			
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 	}
+	
+	//
 }
