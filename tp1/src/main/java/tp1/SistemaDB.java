@@ -1,6 +1,8 @@
 package tp1;
 
 import database.DBConnector;
+import excepciones.UsuarioNoExisteException;
+import excepciones.UsuarioYaExisteException;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -26,6 +28,8 @@ public class SistemaDB implements Servicios{
 			
 			if(!this.usuarioExiste(usuario, resultSet)){
 				this.insertUsuario(usuario, ps, conn);
+			}else{
+				throw new UsuarioYaExisteException("Ya existe un usuario con ese nombre");
 			}
 			ps.close();
 			conn.close();
@@ -93,13 +97,14 @@ public class SistemaDB implements Servicios{
 			ps.close();
 			conn.close();
 			
-			return ret;
+			if(ret != null)
+				return ret;
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
-		return null;
+		throw new UsuarioNoExisteException();
 	}
 
 	private Usuario retUsuario(String user, String pass, ResultSet rs) {
