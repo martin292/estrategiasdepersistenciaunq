@@ -6,7 +6,6 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
-import java.text.MessageFormat;
 
 public class SistemaDB implements Servicios{
 	
@@ -82,13 +81,51 @@ public class SistemaDB implements Servicios{
 	}
 
 	public Usuario ingresarUsuario(String userName, String password) {
-		// TODO Auto-generated method stub
+		Connection conn = null;
+		PreparedStatement ps = null;
+		
+		try{
+			conn = new DBConnector().getConnection();
+			ps = conn.prepareStatement("SELECT * FROM usuarios");
+			ResultSet resultSet = ps.executeQuery();
+			Usuario ret = this.retUsuario(userName, password, resultSet);
+			
+			ps.close();
+			conn.close();
+			
+			return ret;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		return null;
 	}
 
-	public void cambiarPassword(String userName, String password,
-			String newPassword) {
-		// TODO Auto-generated method stub
-	
+	private Usuario retUsuario(String user, String pass, ResultSet rs) {
+		
+		try{
+			while(rs.next()){
+				String username = rs.getString("USERNAME");
+				String password = rs.getString("PASSWORD");
+				boolean esCuentaValida = rs.getBoolean("CUENTAVALIDA");
+				
+				if(esCuentaValida && user == username && pass == password){
+					Usuario ret = new Usuario(rs.getString("NOMBRE"), rs.getString("APELLIDO"), 
+												username, password, rs.getString("EMAIL"), 
+												rs.getDate("FECHA"));
+					return ret;
+				}
+			}			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+
+	public void cambiarPassword(String userName, String password, String newPassword) {
+		//TODO	
 	}
 }

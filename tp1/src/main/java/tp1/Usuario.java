@@ -2,7 +2,6 @@ package tp1;
 
 import java.util.Date;
 
-import excepciones.NuevaPasswordInvalidaException;
 
 public class Usuario{
 	
