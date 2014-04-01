@@ -4,6 +4,7 @@ import database.DBConnector;
 import excepciones.NuevaPasswordInvalidaException;
 import excepciones.UsuarioNoExisteException;
 import excepciones.UsuarioYaExisteException;
+import excepciones.ValidacionException;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -81,8 +82,37 @@ public class SistemaDB implements Servicios{
 
 	
 	public void validarCuenta(String codigoValidacion, Usuario usuario) {
-		// TODO Auto-generated method stub
+		if(usuario.getCodigodevalidacion() == codigoValidacion){
+			
+			usuario.setCuentaValida(true);
+			this.validar(usuario);
+			
+		}else{
+			throw new ValidacionException();
+		}
 	
+	}
+
+	private void validar(Usuario usuario) {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		
+		try{
+			conn = new DBConnector().getConnection();
+			ps = conn.prepareStatement("UPDATE usuarios SET CUENTAVALIDA = ? WHERE USERNAME = ? ");
+			
+			ps.setBoolean(1, true);
+			ps.setString(2, usuario.getNombreusuario());
+			
+			ps.executeQuery();
+			
+			ps.close();
+			conn.close();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 	public Usuario ingresarUsuario(String userName, String password) {
