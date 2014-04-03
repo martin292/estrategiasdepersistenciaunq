@@ -1,10 +1,14 @@
 package tp1;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.Date;
 
 import org.junit.After;
 import org.junit.Test;
 
+import database.DBConnector;
 import excepciones.UsuarioNoExisteException;
 import excepciones.UsuarioYaExisteException;
 import excepciones.ValidacionException;
@@ -18,7 +22,19 @@ public class SistemaDBTest {
 	
 	@After
 	public void tearDown(){
-		
+		Connection conn = null;
+		PreparedStatement ps = null;
+		try{
+			conn = new DBConnector().getConnection();
+			ps = conn.prepareStatement("DELETE * FROM Usuario");
+			ps.execute();
+			
+			ps.close();
+			conn.close();
+			
+		}catch(SQLException e) {
+			e.printStackTrace();			
+		}
 	}
 	
 	@Test
