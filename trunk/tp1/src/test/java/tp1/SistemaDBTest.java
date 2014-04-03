@@ -27,9 +27,14 @@ public class SistemaDBTest {
 	public void testRegistrarUsuarioFalla(){
 		Date fecha = new Date();
 		Usuario usuario = new Usuario("jorge", "rodriguez", "jorgito", "myPassword", "email", fecha);
-		
-		sis.registrarUsuario(usuario);
-		sis.registrarUsuario(usuario);		
+		Usuario usuario2 = new Usuario("a", "a", "jorgito", "a", "a", fecha);
+		try{
+			sis.registrarUsuario(usuario);
+			sis.registrarUsuario(usuario2);
+			
+		}catch(Exception e){
+			assertTrue(1==1);
+		}
 	}
 	
 	@Test
