@@ -27,5 +27,20 @@ public class SistemaDBTest {
 		verify(mockUsuario).getApellido();
 		verify(mockUsuario).getEmail();
 	}
+	
+	@Test
+	public void testValidarCuenta(){
+		//TODO
+	}
+	
+	@Test
+	public void testIngresarUsuario(){
+		//TODO
+	}
+	
+	@Test
+	public void testCambiarPassword(){
+		//TODO
+	}
 
 }
