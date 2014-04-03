@@ -20,7 +20,7 @@ public class SistemaDBTest {
 		
 		sis.registrarUsuario(usuario);
 		
-		assertEquals(usuario, sis.ingresarUsuario("jorgito", "myPassword"));	
+		assertEquals(usuario.getNombreusuario(), sis.ingresarUsuario("jorgito", "myPassword").getNombreusuario());	
 	}
 	
 	@Test (expected = UsuarioYaExisteException.class)
@@ -34,7 +34,12 @@ public class SistemaDBTest {
 	
 	@Test
 	public void testValidarCuenta(){
-		//TODO
+		
+		Usuario usuario = new Usuario();
+		
+		
+		
+		assertTrue(usuario.getCuentaValida());
 	}
 	
 	@Test
