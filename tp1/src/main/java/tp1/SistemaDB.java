@@ -11,6 +11,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
+import java.util.Date;
 
 public class SistemaDB implements Servicios{
 	
@@ -50,12 +51,14 @@ public class SistemaDB implements Servicios{
 	 */
 	public void insertUsuario(Usuario usuario, PreparedStatement ps, Connection conn) {
 		try {
-			ps = conn.prepareStatement("INSERT INTO Usuario (nombreusuario, PASSWORD, NOMBRE, APELLIDO, EMAIL) VALUES (?, ?, ?, ?, ?)");
+			ps = conn.prepareStatement("INSERT INTO Usuario (nombreusuario, PASSWORD, NOMBRE, APELLIDO, EMAIL, cuentaValida, codigodevalidacion) VALUES (?, ?, ?, ?, ?, ?, ?)");
 			ps.setString(1, usuario.getNombreusuario());
 			ps.setString(2, usuario.getPassword());
 			ps.setString(3, usuario.getNombre());
 			ps.setString(4, usuario.getApellido());
 			ps.setString(5, usuario.getEmail());
+			ps.setBoolean(6, usuario.getCuentaValida());
+			ps.setString(7, usuario.getCodigodevalidacion());
 			ps.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -122,15 +125,20 @@ public class SistemaDB implements Servicios{
 		
 		try{
 			conn = new DBConnector().getConnection();
-			ps = conn.prepareStatement("SELECT * FROM Usuario");
+			ps = conn.prepareStatement("SELECT * FROM Usuario WHERE nombreusuario = ?");
+			ps.setString(1, userName);
 			ResultSet resultSet = ps.executeQuery();
-			Usuario ret = this.retUsuario(userName, password, resultSet);
+			resultSet.next();
+			
+			Usuario userRet = new Usuario(resultSet.getString("nombre"), resultSet.getString("apellido"),resultSet.getString("nombreusuario") ,resultSet.getString("password"), resultSet.getString("email"), resultSet.getDate("fechanacimiento"));
+				//Usuario ret = this.retUsuario(userName, password, resultSet);
+			
 			
 			ps.close();
 			conn.close();
 			
-			if(ret != null)
-				return ret;
+			if(userRet != null)
+				return userRet;
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -200,12 +208,17 @@ public class SistemaDB implements Servicios{
 		
 	}
 	
-	//-----------------------------------------
-	/*
-	private Connection getConnection() {
-		Class.forName("com.mysql.jdbc.Driver");
-		return DriverManager.getConnection("jdbc:mysql://localhost/Aterrizar?user=root&password=root");
+	public static void main(String[] args) {
+		Date fecha = new Date();
+		Usuario usuario = new Usuario("jorge", "rodriguez", "jorgito", "mypPassword", "email", fecha);
+		usuario.validarCuenta();
+		SistemaDB sistemaDB = new SistemaDB();
+		//sistemaDB.registrarUsuario(usuario);
+		System.out.println(sistemaDB.ingresarUsuario("jorgito", "myPassword").getNombreusuario());
 	}
-	*/
 	
+	/*
+	 * sudo apt-get install mysql-server
+	 * mysql -uroot -proot
+	 */
 }
