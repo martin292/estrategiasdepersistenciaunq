@@ -80,9 +80,18 @@ public class SistemaDBTest {
 	
 	@Test
 	public void testCambiarPassword(){
-		//TODO
+		Date date = new Date();
+		Usuario usuario = new Usuario("jorge", "rodriguez", "jorgito", "myPassword", "email", date);
+		usuario.setCodigodevalidacion("codigo");
+		sis.registrarUsuario(usuario);
+		
+		sis.validarCuenta("codigo", usuario);
+		sis.cambiarPassword("jorgito", "myPassword", "newPassword");
+		
+		assertTrue("newPassword" == usuario.getPassword());
+	
 	}
 
-	//
+	
 	
 }
