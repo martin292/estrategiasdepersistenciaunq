@@ -15,7 +15,7 @@ public class Usuario{
 	protected String password;
 	protected String email;  
 	protected String codigodevalidacion;
-	protected boolean cuentaValida = false;
+	protected boolean cuentaValida;
 	protected Date fechanacimiento;
 	
 	// ******************************************************************
