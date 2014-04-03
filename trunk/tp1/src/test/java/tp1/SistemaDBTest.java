@@ -24,7 +24,7 @@ public class SistemaDBTest {
 		assertEquals(usuario.getNombreusuario(), sis.ingresarUsuario("jorgito4", "myPassword").getNombreusuario());	
 	}
 	
-	@Test //(expected = UsuarioYaExisteException.class)
+	@Test
 	public void testRegistrarUsuarioFalla(){
 		Date fecha = new Date();
 		Usuario usuario = new Usuario("jorge", "rodriguez", "jorgito3", "myPassword", "email", fecha);
