@@ -109,7 +109,7 @@ public class SistemaDB implements Servicios{
 			ps.setBoolean(1, true);
 			ps.setString(2, usuario.getNombreusuario());
 			
-			ps.executeQuery();
+			ps.execute();
 			
 			ps.close();
 			conn.close();
@@ -132,25 +132,28 @@ public class SistemaDB implements Servicios{
 			resultSet.next();
 			
 			String pass = resultSet.getString("PASSWORD");
-			boolean esCuentaValida = resultSet.getBoolean("CUENTAVALIDA");
+			boolean esCuentaValida = resultSet.getBoolean("cuentaValida");
 			
 			Usuario userRet = new Usuario();
 			
-			if(esCuentaValida && password == pass){
+			//if(esCuentaValida && password == pass){
 				userRet.setNombre(resultSet.getString("nombre"));
 				userRet.setApellido(resultSet.getString("apellido"));
 				userRet.setNombreusuario(resultSet.getString("nombreusuario"));
 				userRet.setPassword(resultSet.getString("password"));
 				userRet.setEmail(resultSet.getString("email"));
 				userRet.setFechanacimiento(resultSet.getDate("fechanacimiento"));
-			}						
+				userRet.setCuentaValida(resultSet.getBoolean("cuentaValida"));
+				userRet.setCodigodevalidacion(resultSet.getString("codigodevalidacion"));
+			
+			//}						
 			
 			ps.close();
 			conn.close();
 			
-			if(userRet.getNombreusuario() == userName){
+			//if(userRet.getNombreusuario() == userName){
 				return userRet;
-			}
+			//}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -201,12 +204,12 @@ public class SistemaDB implements Servicios{
 		try{
 			if(password != newPassword){
 				conn = new DBConnector().getConnection();
-				ps = conn.prepareStatement("UPDATE usuarios SET PASSWORD = ? WHERE USERNAME = ? ");
+				ps = conn.prepareStatement("UPDATE Usuario SET PASSWORD = ? WHERE nombreusuario = ? ");
 			
 				ps.setString(1, newPassword);
 				ps.setString(2, userName);
 			
-				ps.executeQuery();
+				ps.execute();
 			
 				ps.close();
 				conn.close();
@@ -223,11 +226,15 @@ public class SistemaDB implements Servicios{
 
 	public static void main(String[] args) {
 		Date fecha = new Date();
-		Usuario usuario = new Usuario("jorge", "rodriguez", "jorgito", "mypPassword", "email", fecha);
-		usuario.validarCuenta();
+		Usuario usuario = new Usuario("jorge", "rodriguez", "jorgito", "myPassword", "email", fecha);
+		usuario.setCodigodevalidacion("codigo");
 		SistemaDB sistemaDB = new SistemaDB();
-		//sistemaDB.registrarUsuario(usuario);
-		System.out.println(sistemaDB.ingresarUsuario("jorgito", "myPassword").getNombreusuario());
+		sistemaDB.registrarUsuario(usuario);
+		
+		sistemaDB.validarCuenta("codigo", usuario);
+		sistemaDB.cambiarPassword("jorgito", "myPassword", "newPassword");
+		
+		System.out.println(sistemaDB.ingresarUsuario("jorgito", "newPassword").getNombreusuario());
 	}
 	
 
