@@ -5,7 +5,7 @@ import org.junit.Test;
 import static org.mockito.Mockito.*;
 import static org.junit.Assert.*;
 
-public class TestSistemaDB {
+public class SistemaDBTest {
 	
 	public SistemaDB sis = new SistemaDB();
 	
