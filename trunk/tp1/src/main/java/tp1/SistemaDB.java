@@ -26,7 +26,7 @@ public class SistemaDB implements Servicios{
 		PreparedStatement ps = null;
 		try {
 			conn = new DBConnector().getConnection();
-			ps = conn.prepareStatement("SELECT USERNAME FROM usuarios");
+			ps = conn.prepareStatement("SELECT nombreusuario FROM Usuario");
 			ResultSet resultSet = ps.executeQuery();
 			
 			if(!this.usuarioExiste(usuario, resultSet)){
@@ -50,7 +50,7 @@ public class SistemaDB implements Servicios{
 	 */
 	public void insertUsuario(Usuario usuario, PreparedStatement ps, Connection conn) {
 		try {
-			ps = conn.prepareStatement("INSERT INTO usuarios (USERNAME, PASSWORD, NOMBRE, APELLIDO, EMAIL) VALUES (?, ?, ?, ?, ?)");
+			ps = conn.prepareStatement("INSERT INTO Usuario (nombreusuario, PASSWORD, NOMBRE, APELLIDO, EMAIL) VALUES (?, ?, ?, ?, ?)");
 			ps.setString(1, usuario.getNombreusuario());
 			ps.setString(2, usuario.getPassword());
 			ps.setString(3, usuario.getNombre());
@@ -71,7 +71,7 @@ public class SistemaDB implements Servicios{
 	public boolean usuarioExiste(Usuario usuario, ResultSet rs) {
 		try {
 			while(rs.next()){
-				String username = rs.getString("USERNAME");
+				String username = rs.getString("nombreusuario");
 				if(usuario.getNombreusuario() == username)
 					return true;
 			}
@@ -100,7 +100,7 @@ public class SistemaDB implements Servicios{
 		
 		try{
 			conn = new DBConnector().getConnection();
-			ps = conn.prepareStatement("UPDATE usuarios SET CUENTAVALIDA = ? WHERE USERNAME = ? ");
+			ps = conn.prepareStatement("UPDATE Usuario SET CUENTAVALIDA = ? WHERE nombreusuario = ? ");
 			
 			ps.setBoolean(1, true);
 			ps.setString(2, usuario.getNombreusuario());
@@ -122,7 +122,7 @@ public class SistemaDB implements Servicios{
 		
 		try{
 			conn = new DBConnector().getConnection();
-			ps = conn.prepareStatement("SELECT * FROM usuarios");
+			ps = conn.prepareStatement("SELECT * FROM Usuario");
 			ResultSet resultSet = ps.executeQuery();
 			Usuario ret = this.retUsuario(userName, password, resultSet);
 			
@@ -150,7 +150,7 @@ public class SistemaDB implements Servicios{
 		
 		try{
 			while(rs.next()){
-				String username = rs.getString("USERNAME");
+				String username = rs.getString("nombreusuario");
 				String password = rs.getString("PASSWORD");
 				boolean esCuentaValida = rs.getBoolean("CUENTAVALIDA");
 				
@@ -204,7 +204,7 @@ public class SistemaDB implements Servicios{
 	/*
 	private Connection getConnection() {
 		Class.forName("com.mysql.jdbc.Driver");
-		return DriverManager.getConnection("jdbc:mysql://localhost/AterrizarDB?user=root&password=root");
+		return DriverManager.getConnection("jdbc:mysql://localhost/Aterrizar?user=root&password=root");
 	}
 	*/
 	
