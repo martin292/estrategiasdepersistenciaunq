@@ -7,6 +7,7 @@ import excepciones.UsuarioYaExisteException;
 import excepciones.ValidacionException;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
@@ -47,7 +48,7 @@ public class SistemaDB implements Servicios{
 	 * @param ps
 	 * @param conn
 	 */
-	private void insertUsuario(Usuario usuario, PreparedStatement ps, Connection conn) {
+	public void insertUsuario(Usuario usuario, PreparedStatement ps, Connection conn) {
 		try {
 			ps = conn.prepareStatement("INSERT INTO usuarios (USERNAME, PASSWORD, NOMBRE, APELLIDO, EMAIL) VALUES (?, ?, ?, ?, ?)");
 			ps.setString(1, usuario.getNombreusuario());
@@ -67,7 +68,7 @@ public class SistemaDB implements Servicios{
 	 * @param rs
 	 * @return
 	 */
-	private boolean usuarioExiste(Usuario usuario, ResultSet rs) {
+	public boolean usuarioExiste(Usuario usuario, ResultSet rs) {
 		try {
 			while(rs.next()){
 				String username = rs.getString("USERNAME");
@@ -93,7 +94,7 @@ public class SistemaDB implements Servicios{
 	
 	}
 
-	private void validar(Usuario usuario) {
+	public void validar(Usuario usuario) {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		
@@ -145,7 +146,7 @@ public class SistemaDB implements Servicios{
 	 * @param rs
 	 * @return
 	 */
-	private Usuario retUsuario(String user, String pass, ResultSet rs) {
+	public Usuario retUsuario(String user, String pass, ResultSet rs) {
 		
 		try{
 			while(rs.next()){
@@ -199,5 +200,12 @@ public class SistemaDB implements Servicios{
 		
 	}
 	
-	//
+	//-----------------------------------------
+	/*
+	private Connection getConnection() {
+		Class.forName("com.mysql.jdbc.Driver");
+		return DriverManager.getConnection("jdbc:mysql://localhost/AterrizarDB?user=root&password=root");
+	}
+	*/
+	
 }
