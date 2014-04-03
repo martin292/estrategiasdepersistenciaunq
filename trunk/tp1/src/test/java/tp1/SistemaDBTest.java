@@ -18,6 +18,10 @@ import static org.junit.Assert.*;
 public class SistemaDBTest {
 	
 	public SistemaDB sis = new SistemaDB();
+	Date date = new Date();
+	Usuario usuario = new Usuario("jorge", "rodriguez", "jorgito", "myPassword", "email", date);
+	
+	
 	
 	
 	@After
@@ -26,7 +30,7 @@ public class SistemaDBTest {
 		PreparedStatement ps = null;
 		try{
 			conn = new DBConnector().getConnection();
-			ps = conn.prepareStatement("DELETE * FROM Usuario");
+			ps = conn.prepareStatement("DELETE FROM Usuario");
 			ps.execute();
 			
 			ps.close();
@@ -39,19 +43,15 @@ public class SistemaDBTest {
 	
 	@Test
 	public void testRegistrarUsuario(){
-		Date fecha = new Date();
-		Usuario usuario = new Usuario("jorge", "rodriguez", "jorgito4", "myPassword", "email", fecha);
 		
 		sis.registrarUsuario(usuario);
 		
-		assertEquals(usuario.getNombreusuario(), sis.ingresarUsuario("jorgito4", "myPassword").getNombreusuario());	
+		assertEquals(usuario.getNombreusuario(), sis.ingresarUsuario("jorgito", "myPassword").getNombreusuario());	
 	}
 	
 	@Test
 	public void testRegistrarUsuarioFalla(){
-		Date fecha = new Date();
-		Usuario usuario = new Usuario("jorge", "rodriguez", "jorgito3", "myPassword", "email", fecha);
-		Usuario usuario2 = new Usuario("a", "a", "jorgito", "a", "a", fecha);
+		Usuario usuario2 = new Usuario("a", "a", "jorgito", "a", "a", date);
 		try{
 			sis.registrarUsuario(usuario);
 			sis.registrarUsuario(usuario2);
@@ -63,23 +63,19 @@ public class SistemaDBTest {
 	
 	@Test
 	public void testValidarCuenta(){
-		Date fecha = new Date();
-		Usuario usuario = new Usuario("jorge", "rodriguez", "jorgito1", "myPassword", "email", fecha);
 		usuario.setCodigodevalidacion("codigo");
 		sis.registrarUsuario(usuario);
 		
-		assertFalse(sis.ingresarUsuario("jorgito1", "myPassword").getCuentaValida());
+		assertFalse(sis.ingresarUsuario("jorgito", "myPassword").getCuentaValida());
 		
 		sis.validarCuenta("codigo", usuario);
 		
-		assertTrue(sis.ingresarUsuario("jorgito1", "myPassword").getCuentaValida());
+		assertTrue(sis.ingresarUsuario("jorgito", "myPassword").getCuentaValida());
 	}
 	
 	@Test (expected = ValidacionException.class)
 	public void testValidarCuentaException(){
 		
-		Date fecha = new Date();
-		Usuario usuario = new Usuario("jorge", "rodriguez", "jorgito2", "myPassword", "email", fecha);
 		usuario.setCodigodevalidacion("codigo");
 		sis.registrarUsuario(usuario);
 		
@@ -90,8 +86,6 @@ public class SistemaDBTest {
 	
 	@Test
 	public void testIngresarUsuario(){
-		Date fecha = new Date();
-		Usuario usuario = new Usuario("jorge", "rodriguez", "jorgito", "myPassword", "email", fecha);
 		
 		sis.registrarUsuario(usuario);
 		
@@ -102,15 +96,13 @@ public class SistemaDBTest {
 	
 	@Test
 	public void testCambiarPassword(){
-		Date date = new Date();
-		Usuario usuario = new Usuario("jorge", "rodriguez", "jorgito", "myPassword", "email", date);
 		usuario.setCodigodevalidacion("codigo");
 		sis.registrarUsuario(usuario);
 		
 		sis.validarCuenta("codigo", usuario);
 		sis.cambiarPassword("jorgito", "myPassword", "newPassword");
 		
-		assertTrue("newPassword" == usuario.getPassword());
+		assertTrue("newPassword" == sis.ingresarUsuario("jorgito", "newPassword").getPassword());
 	
 	}
 
