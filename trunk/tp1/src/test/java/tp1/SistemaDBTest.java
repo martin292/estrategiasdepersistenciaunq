@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import excepciones.UsuarioNoExisteException;
 import excepciones.UsuarioYaExisteException;
+import excepciones.ValidacionException;
 import static org.mockito.Mockito.*;
 import static org.junit.Assert.*;
 
@@ -16,17 +17,17 @@ public class SistemaDBTest {
 	@Test
 	public void testRegistrarUsuario(){
 		Date fecha = new Date();
-		Usuario usuario = new Usuario("jorge", "rodriguez", "jorgito", "myPassword", "email", fecha);
+		Usuario usuario = new Usuario("jorge", "rodriguez", "jorgito4", "myPassword", "email", fecha);
 		
 		sis.registrarUsuario(usuario);
 		
-		assertEquals(usuario.getNombreusuario(), sis.ingresarUsuario("jorgito", "myPassword").getNombreusuario());	
+		assertEquals(usuario.getNombreusuario(), sis.ingresarUsuario("jorgito4", "myPassword").getNombreusuario());	
 	}
 	
-	@Test (expected = UsuarioYaExisteException.class)
+	@Test //(expected = UsuarioYaExisteException.class)
 	public void testRegistrarUsuarioFalla(){
 		Date fecha = new Date();
-		Usuario usuario = new Usuario("jorge", "rodriguez", "jorgito", "myPassword", "email", fecha);
+		Usuario usuario = new Usuario("jorge", "rodriguez", "jorgito3", "myPassword", "email", fecha);
 		Usuario usuario2 = new Usuario("a", "a", "jorgito", "a", "a", fecha);
 		try{
 			sis.registrarUsuario(usuario);
@@ -39,13 +40,31 @@ public class SistemaDBTest {
 	
 	@Test
 	public void testValidarCuenta(){
+		Date fecha = new Date();
+		Usuario usuario = new Usuario("jorge", "rodriguez", "jorgito1", "myPassword", "email", fecha);
+		usuario.setCodigodevalidacion("codigo");
+		sis.registrarUsuario(usuario);
 		
-		Usuario usuario = new Usuario();
+		//System.out
+		assertFalse(sis.ingresarUsuario("jorgito1", "myPassword").getCuentaValida());
 		
+		sis.validarCuenta("codigo", usuario);
 		
-		
-		assertTrue(usuario.getCuentaValida());
+		assertTrue(sis.ingresarUsuario("jorgito1", "myPassword").getCuentaValida());
 	}
+	
+	@Test (expected = ValidacionException.class)
+	public void testValidarCuentaException(){
+		
+		Date fecha = new Date();
+		Usuario usuario = new Usuario("jorge", "rodriguez", "jorgito2", "myPassword", "email", fecha);
+		usuario.setCodigodevalidacion("codigo");
+		sis.registrarUsuario(usuario);
+		
+		sis.validarCuenta("otroCodigo", usuario);
+		
+	}
+	
 	
 	@Test
 	public void testIngresarUsuario(){
