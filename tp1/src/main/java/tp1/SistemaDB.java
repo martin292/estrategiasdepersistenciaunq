@@ -31,6 +31,7 @@ public class SistemaDB implements Servicios{
 			ResultSet resultSet = ps.executeQuery();
 			
 			if(!this.usuarioExiste(usuario, resultSet)){
+				//enviarMail
 				this.insertUsuario(usuario, ps, conn);
 			}else{
 				throw new UsuarioYaExisteException("Ya existe un usuario con ese nombre");
@@ -130,15 +131,26 @@ public class SistemaDB implements Servicios{
 			ResultSet resultSet = ps.executeQuery();
 			resultSet.next();
 			
-			Usuario userRet = new Usuario(resultSet.getString("nombre"), resultSet.getString("apellido"),resultSet.getString("nombreusuario") ,resultSet.getString("password"), resultSet.getString("email"), resultSet.getDate("fechanacimiento"));
-				//Usuario ret = this.retUsuario(userName, password, resultSet);
+			String pass = resultSet.getString("PASSWORD");
+			boolean esCuentaValida = resultSet.getBoolean("CUENTAVALIDA");
 			
+			Usuario userRet = new Usuario();
+			
+			if(esCuentaValida && password == pass){
+				userRet.setNombre(resultSet.getString("nombre"));
+				userRet.setApellido(resultSet.getString("apellido"));
+				userRet.setNombreusuario(resultSet.getString("nombreusuario"));
+				userRet.setPassword(resultSet.getString("password"));
+				userRet.setEmail(resultSet.getString("email"));
+				userRet.setFechanacimiento(resultSet.getDate("fechanacimiento"));
+			}						
 			
 			ps.close();
 			conn.close();
 			
-			if(userRet != null)
+			if(userRet.getNombreusuario() == userName){
 				return userRet;
+			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -208,6 +220,7 @@ public class SistemaDB implements Servicios{
 		
 	}
 	
+
 	public static void main(String[] args) {
 		Date fecha = new Date();
 		Usuario usuario = new Usuario("jorge", "rodriguez", "jorgito", "mypPassword", "email", fecha);
@@ -217,6 +230,7 @@ public class SistemaDB implements Servicios{
 		System.out.println(sistemaDB.ingresarUsuario("jorgito", "myPassword").getNombreusuario());
 	}
 	
+
 	/*
 	 * sudo apt-get install mysql-server
 	 * mysql -uroot -proot
