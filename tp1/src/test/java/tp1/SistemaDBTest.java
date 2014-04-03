@@ -2,6 +2,7 @@ package tp1;
 
 import java.util.Date;
 
+import org.junit.After;
 import org.junit.Test;
 
 import excepciones.UsuarioNoExisteException;
@@ -13,6 +14,12 @@ import static org.junit.Assert.*;
 public class SistemaDBTest {
 	
 	public SistemaDB sis = new SistemaDB();
+	
+	
+	@After
+	public void tearDown(){
+		
+	}
 	
 	@Test
 	public void testRegistrarUsuario(){
@@ -45,7 +52,6 @@ public class SistemaDBTest {
 		usuario.setCodigodevalidacion("codigo");
 		sis.registrarUsuario(usuario);
 		
-		//System.out
 		assertFalse(sis.ingresarUsuario("jorgito1", "myPassword").getCuentaValida());
 		
 		sis.validarCuenta("codigo", usuario);
