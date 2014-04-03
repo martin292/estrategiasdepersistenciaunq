@@ -49,7 +49,14 @@ public class SistemaDBTest {
 	
 	@Test
 	public void testIngresarUsuario(){
-		//TODO
+		Date fecha = new Date();
+		Usuario usuario = new Usuario("jorge", "rodriguez", "jorgito", "myPassword", "email", fecha);
+		
+		sis.registrarUsuario(usuario);
+		
+		Usuario user = sis.ingresarUsuario("jorgito", "myPassword");
+		
+		assertEquals(user.getNombreusuario(), "jorgito");
 	}
 	
 	@Test

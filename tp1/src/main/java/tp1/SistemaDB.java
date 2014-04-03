@@ -58,7 +58,7 @@ public class SistemaDB implements Servicios{
 			ps.setString(3, usuario.getNombre());
 			ps.setString(4, usuario.getApellido());
 			ps.setString(5, usuario.getEmail());
-			ps.setBoolean(6, usuario.getCuentaValida());
+			ps.setBoolean(6, false);
 			ps.setString(7, usuario.getCodigodevalidacion());
 			ps.execute();
 		} catch (SQLException e) {
