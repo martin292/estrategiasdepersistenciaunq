@@ -85,7 +85,9 @@ public class SistemaDB implements Servicios{
 		return false;
 	}
 
-	
+	/**
+	 * Validar una cuenta.
+	 */
 	public void validarCuenta(String codigoValidacion, Usuario usuario) {
 		if(usuario.getCodigodevalidacion() == codigoValidacion){
 			
@@ -97,7 +99,11 @@ public class SistemaDB implements Servicios{
 		}
 	
 	}
-
+	
+	/**
+	 * Validar usuario.
+	 * @param usuario
+	 */
 	public void validar(Usuario usuario) {
 		Connection conn = null;
 		PreparedStatement ps = null;
@@ -120,6 +126,9 @@ public class SistemaDB implements Servicios{
 		
 	}
 
+	/**
+	 * Ingresar usuario a la BD
+	 */
 	public Usuario ingresarUsuario(String userName, String password) {
 		Connection conn = null;
 		PreparedStatement ps = null;
