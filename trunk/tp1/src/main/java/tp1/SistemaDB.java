@@ -1,6 +1,8 @@
 package tp1;
 
 import database.DBConnector;
+import email.Mail;
+import email.Email;
 import excepciones.NuevaPasswordInvalidaException;
 import excepciones.UsuarioNoExisteException;
 import excepciones.UsuarioYaExisteException;
@@ -14,6 +16,8 @@ import java.sql.PreparedStatement;
 import java.util.Date;
 
 public class SistemaDB implements Servicios{
+	
+	public Email email = new Email();
 	
 	/*
 	IMPLEMENTAR ESTOS METODOS CON ACCESO A BASE DE DATOS 
@@ -31,8 +35,13 @@ public class SistemaDB implements Servicios{
 			ResultSet resultSet = ps.executeQuery();
 			
 			if(!this.usuarioExiste(usuario, resultSet)){
-				//enviarMail
+				
+				Mail mail = new Mail("codigo", "Cod de validacion", usuario.getEmail(), "Aterrizar.com");
+				email.enviarMail(mail);
+				usuario.setCodigodevalidacion("codigo");
+				
 				this.insertUsuario(usuario, ps, conn);
+				
 			}else{
 				throw new UsuarioYaExisteException("Ya existe un usuario con ese nombre");
 			}
