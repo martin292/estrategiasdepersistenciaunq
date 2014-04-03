@@ -231,7 +231,7 @@ public class SistemaDB implements Servicios{
 		SistemaDB sistemaDB = new SistemaDB();
 		sistemaDB.registrarUsuario(usuario);
 		
-		sistemaDB.validarCuenta("codigo", usuario);
+		//sistemaDB.validarCuenta("codigo", usuario);
 		sistemaDB.cambiarPassword("jorgito", "myPassword", "newPassword");
 		
 		System.out.println(sistemaDB.ingresarUsuario("jorgito", "newPassword").getNombreusuario());
