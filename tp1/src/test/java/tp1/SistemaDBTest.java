@@ -1,7 +1,11 @@
 package tp1;
 
+import java.util.Date;
+
 import org.junit.Test;
 
+import excepciones.UsuarioNoExisteException;
+import excepciones.UsuarioYaExisteException;
 import static org.mockito.Mockito.*;
 import static org.junit.Assert.*;
 
@@ -11,21 +15,21 @@ public class SistemaDBTest {
 	
 	@Test
 	public void testRegistrarUsuario(){
-		Usuario mockUsuario = mock(Usuario.class);
+		Date fecha = new Date();
+		Usuario usuario = new Usuario("jorge", "rodriguez", "jorgito", "myPassword", "email", fecha);
 		
-		when(mockUsuario.getNombreusuario()).thenReturn("user");
-		when(mockUsuario.getPassword()).thenReturn("pass");
-		when(mockUsuario.getNombre()).thenReturn("nombre");
-		when(mockUsuario.getApellido()).thenReturn("apellido");
-		when(mockUsuario.getEmail()).thenReturn("email");
+		sis.registrarUsuario(usuario);
 		
-		sis.registrarUsuario(mockUsuario);
+		assertEquals(usuario, sis.ingresarUsuario("jorgito", "myPassword"));	
+	}
+	
+	@Test (expected = UsuarioYaExisteException.class)
+	public void testRegistrarUsuarioFalla(){
+		Date fecha = new Date();
+		Usuario usuario = new Usuario("jorge", "rodriguez", "jorgito", "myPassword", "email", fecha);
 		
-		verify(mockUsuario).getNombreusuario();
-		verify(mockUsuario).getPassword();
-		verify(mockUsuario).getNombre();
-		verify(mockUsuario).getApellido();
-		verify(mockUsuario).getEmail();
+		sis.registrarUsuario(usuario);
+		sis.registrarUsuario(usuario);		
 	}
 	
 	@Test
