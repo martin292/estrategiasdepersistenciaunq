@@ -11,5 +11,47 @@ public class Tramo {
 	private Date llegada;
 	private Date salida;
 	private List<Asiento> acientos = new ArrayList<Asiento>();
-
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//////////////////////////////////////////
+	//getters and setters
+	//////////////////////////////////////////
+	public Aerolinea getOrigen() {
+		return origen;
+	}
+	public void setOrigen(Aerolinea origen) {
+		this.origen = origen;
+	}
+	public Aerolinea getDestino() {
+		return destino;
+	}
+	public void setDestino(Aerolinea destino) {
+		this.destino = destino;
+	}
+	public Date getLlegada() {
+		return llegada;
+	}
+	public void setLlegada(Date llegada) {
+		this.llegada = llegada;
+	}
+	public Date getSalida() {
+		return salida;
+	}
+	public void setSalida(Date salida) {
+		this.salida = salida;
+	}
+	public List<Asiento> getAcientos() {
+		return acientos;
+	}
+	public void setAcientos(List<Asiento> acientos) {
+		this.acientos = acientos;
+	}
 }
