@@ -10,6 +10,6 @@ public class Tramo {
 	private Aerolinea destino;
 	private Date llegada;
 	private Date salida;
-	private List<Aciento> acientos = new ArrayList<Aciento>();
+	private List<Asiento> acientos = new ArrayList<Asiento>();
 
 }

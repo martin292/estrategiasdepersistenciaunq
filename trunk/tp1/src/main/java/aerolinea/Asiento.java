@@ -1,6 +1,6 @@
 package aerolinea;
 
-public class Aciento {
+public class Asiento {
 
 	private boolean estado; // reservado o no
 	private Categoria categoria;
