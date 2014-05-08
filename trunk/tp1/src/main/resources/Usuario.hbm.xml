@@ -1,5 +1,5 @@
 <hibernate-mapping>
-	<class name="Usuario" table="usuarios">
+	<class name="Usuario" table="usuario">
 		<id name="id" type="java.lang.Integer">
 			<column name="id"/>
 			<generator class="identity"/>
