@@ -28,4 +28,27 @@ CREATE TABLE `usuarios` (
 | fechaNacimiento    | date             | YES  |     | NULL    |                |
 | cuentaValida       | tinyint(1)       | YES  |     | NULL    |                |
 +--------------------+------------------+------+-----+---------+----------------
++-----------+------------+------+-----+---------+-------+
+| Field     | Type       | Null | Key | Default | Extra |
++-----------+------------+------+-----+---------+-------+
+| id        | int(11)    | NO   | PRI | 0       |       |
+| estado    | tinyint(1) | YES  |     | NULL    |       |
+| idUsuario | int(11)    | YES  |     | NULL    |       |
++-----------+------------+------+-----+---------+-------+
++-----------+------------------+------+-----+---------+----------------+
+| Field     | Type             | Null | Key | Default | Extra          |
++-----------+------------------+------+-----+---------+----------------+
+| id        | int(11) unsigned | NO   | PRI | NULL    | auto_increment |
+| llegada   | date             | YES  |     | NULL    |                |
+| salida    | date             | YES  |     | NULL    |                |
+| idAsiento | int(11)          | YES  |     | NULL    |                |
++-----------+------------------+------+-----+---------+----------------+
   */
+
+
+
+
+
+
+
+
