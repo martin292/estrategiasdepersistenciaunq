@@ -11,10 +11,10 @@ import tp1.Usuario;
 import aerolinea.Asiento;
 import static org.junit.Assert.*;
 
-public class ReservarAsientosTest {
+public class ReservarAsientosTest extends AbstractHibernateTest{
 
 	@Test
-	public void TestReservarAsientos(){
+	public void testApp()throws Exception{
 		Date fecha = new Date();
 		Usuario user = new Usuario("Nombre", "Apellido", "UserName", "pass", "email", fecha);
 		
