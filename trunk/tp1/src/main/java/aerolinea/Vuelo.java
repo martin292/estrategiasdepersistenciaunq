@@ -1,8 +1,11 @@
 package aerolinea;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Vuelo {
 
-	private Tramo tramo;
+	private List<Tramo> tramos = new ArrayList<Tramo>();
 	private Integer id;
 	
 	
@@ -14,17 +17,18 @@ public class Vuelo {
 	////////////////////////////////////////
 	//Getters and setters
 	////////////////////////////////////////
-	public Tramo getTramo() {
-		return tramo;
-	}
-	public void setTramo(Tramo tramo) {
-		this.tramo = tramo;
-	}
+	
 	public Integer getId() {
 		return id;
 	}
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	public List<Tramo> getTramos() {
+		return tramos;
+	}
+	public void setTramos(List<Tramo> tramos) {
+		this.tramos = tramos;
 	}
 	
 	
