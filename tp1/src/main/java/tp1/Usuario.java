@@ -18,10 +18,18 @@ public class Usuario{
 	protected boolean cuentaValida;
 	protected Date fechanacimiento;
 	
+	private Integer id;
+	
 	// ******************************************************************
 	// * Constructores
 	// ******************************************************************
 
+	/**
+	 * Es exclusivo para Hibernate no usar 
+	 **/
+	protected Usuario() {
+	}
+	
 	/**
 	 * Constructor
 	 * @param nombre
@@ -42,9 +50,10 @@ public class Usuario{
 		this.fechanacimiento = fechanacimiento;
 	}
 
+	/*
 	public Usuario() {
 		super();
-	}
+	}*/
 
 	// ******************************************************************
 	// * Metodos
@@ -120,6 +129,12 @@ public class Usuario{
 
 	public void setCuentaValida(boolean cuentaValida) {
 		this.cuentaValida = cuentaValida;
+	}
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 		
