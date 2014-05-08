@@ -4,22 +4,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 import daos.AsientoDAO;
+import daos.TramoDAO;
 import aerolinea.Asiento;
+import aerolinea.Tramo;
 
 public class ConsultarAsientos implements Operation<List<Asiento>> {
 
-	List<Asiento> asientos = new ArrayList<Asiento>();
+	private Integer tramoId;
 	
-	public ConsultarAsientos(List<Asiento> asientos){
+	public ConsultarAsientos(Integer tramoId){
 		super();
-		this.asientos = asientos;
+		this.tramoId = tramoId;
 	}
 	
 	public List<Asiento> execute() {
 		List<Asiento> ret = new ArrayList<Asiento>();
-		for(Asiento a : this.asientos){
+		Tramo t = new TramoDAO().get(tramoId);
+		for(Asiento a : t.getAcientos()){
 			Asiento asiento;
-			if (estaDisponible){
+			if (a.isEstado()){
 				asiento = new AsientoDAO().get(a.getId());
 				ret.add(asiento);
 			}	
