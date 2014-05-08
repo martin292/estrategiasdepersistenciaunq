@@ -11,8 +11,14 @@ public class Tramo {
 	private Date llegada;
 	private Date salida;
 	private List<Asiento> acientos = new ArrayList<Asiento>();
+	private Integer id;
 	
 	
+	/**
+	 * Es exclusivo para Hibernate no usar 
+	 **/
+	protected Tramo() {
+	}
 	
 	
 	
@@ -54,4 +60,12 @@ public class Tramo {
 	public void setAcientos(List<Asiento> acientos) {
 		this.acientos = acientos;
 	}
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	
+	//
 }
