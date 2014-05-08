@@ -9,7 +9,7 @@ import aerolinea.Asiento;
 
 
 
-public class ReservarAsientos implements Operation<List<Integer>> {
+public class ReservarAsientos implements Operation<List<Asiento>> {
 	
 	private List<Integer> asientos = new ArrayList<Integer>();
 	private Usuario user;
@@ -20,13 +20,14 @@ public class ReservarAsientos implements Operation<List<Integer>> {
 		this.asientos = ids;
 	}
 	
-	public List<Integer> execute() {
+	public List<Asiento> execute() {
 		
-		List<Integer> ret = new ArrayList<Integer>();
+		List<Asiento> ret = new ArrayList<Asiento>();
 		
 		for(Integer id: this.asientos){
 			Asiento a = new AsientoDAO().get(id);
 			a.setUsuario(this.user);
+			ret.add(a);
 		}
 		
 		return ret;
