@@ -24,10 +24,24 @@ public class ReservarAsientos implements Operation<List<Asiento>> {
 		
 		List<Asiento> ret = new ArrayList<Asiento>();
 		
+		if(this.asientosLibres()){
+			for(Integer id: this.asientos){
+				Asiento a = new AsientoDAO().get(id);
+				a.setUsuario(this.user);
+				ret.add(a);
+			}
+		}
+		
+		return ret;
+	}
+
+	private boolean asientosLibres() {
+		
+		boolean ret = true;
+		
 		for(Integer id: this.asientos){
 			Asiento a = new AsientoDAO().get(id);
-			a.setUsuario(this.user);
-			ret.add(a);
+			ret = ret && a.isEstado();
 		}
 		
 		return ret;
