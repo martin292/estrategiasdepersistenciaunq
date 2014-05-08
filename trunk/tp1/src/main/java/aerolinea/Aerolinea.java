@@ -3,10 +3,7 @@ package aerolinea;
 public class Aerolinea {
 
 	private Vuelo vuelo;
-
-	
-	
-	
+	private Integer id;
 	
 	
 	
@@ -23,6 +20,12 @@ public class Aerolinea {
 	}
 	public void setVuelo(Vuelo vuelo) {
 		this.vuelo = vuelo;
+	}
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	
 
