@@ -43,6 +43,18 @@ CREATE TABLE `usuarios` (
 | salida    | date             | YES  |     | NULL    |                |
 | idAsiento | int(11)          | YES  |     | NULL    |                |
 +-----------+------------------+------+-----+---------+----------------+
+| Field   | Type    | Null | Key | Default | Extra |
++---------+---------+------+-----+---------+-------+
+| id      | int(11) | NO   | PRI | 0       |       |
+| idVuelo | int(11) | YES  |     | NULL    |      
+
+mysql> describe vuelo;
++---------+---------+------+-----+---------+-------+
+| Field   | Type    | Null | Key | Default | Extra |
++---------+---------+------+-----+---------+-------+
+| id      | int(11) | NO   | PRI | 0       |       |
+| idTramo | int(11) | YES  |     | NULL    |       |
++---------+---------+------+-----+---------+-------+
   */
 
 
