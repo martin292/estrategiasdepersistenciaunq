@@ -1,3 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+ 
 <hibernate-mapping>
+    <class name="unq.tpi.persistencia.Jugador" table="jugadores" >
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
 
+        <property name="llegada" type="java.util.Date">
+            <column name="llegada" length="20" not-null="true" unique="false" />
+        </property>
+                
+        <property name="salida" type="java.util.Date">
+            <column name="salida" length="20" not-null="true" unique="false" />
+        </property>
+        <property name="origen" type="aerolinea.Aerolinea">
+            <column name="idOrigen" length="20" not-null="true" unique="false" />
+        </property>
+        <property name="destino" type="aerolinea.Aerolinea">
+            <column name="idDestino" length="20" not-null="true" unique="false" />
+        </property>
+    </class>
 </hibernate-mapping>
+
