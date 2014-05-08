@@ -10,6 +10,22 @@ CREATE TABLE `usuarios` (
   `codigo` varchar(45) NOT NULL,
   `cuentaValida` boolean NOT NULL,
 
+
   PRIMARY KEY (`username`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
+/*
+
+| Field              | Type             | Null | Key | Default | Extra          |
++--------------------+------------------+------+-----+---------+----------------+
+| id                 | int(11) unsigned | NO   | PRI | NULL    | auto_increment |
+| nombre             | varchar(20)      | YES  |     | NULL    |                |
+| apellido           | varchar(20)      | YES  |     | NULL    |                |
+| nombreUsuario      | varchar(20)      | YES  |     | NULL    |                |
+| password           | varchar(20)      | YES  |     | NULL    |                |
+| email              | varchar(20)      | YES  |     | NULL    |                |
+| codigoDeValidacion | varchar(20)      | YES  |     | NULL    |                |
+| fechaNacimiento    | date             | YES  |     | NULL    |                |
+| cuentaValida       | tinyint(1)       | YES  |     | NULL    |                |
++--------------------+------------------+------+-----+---------+----------------
+  */
