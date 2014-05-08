@@ -55,7 +55,7 @@ mysql> describe vuelo;
 | id      | int(11) | NO   | PRI | 0       |       |
 | idTramo | int(11) | YES  |     | NULL    |       |
 +---------+---------+------+-----+---------+-------+
-  */
+ */
 
 
 
