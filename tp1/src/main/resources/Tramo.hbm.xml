@@ -17,10 +17,10 @@
             <column name="salida" length="20" not-null="true" unique="false" />
         </property>
         <property name="origen" type="aerolinea.Aerolinea">
-            <column name="idOrigen" length="20" not-null="true" unique="false" />
+            <column name="idAerolineaOrigen" length="20" not-null="true" unique="false" />
         </property>
         <property name="destino" type="aerolinea.Aerolinea">
-            <column name="idDestino" length="20" not-null="true" unique="false" />
+            <column name="idAerolineaDestino" length="20" not-null="true" unique="false" />
         </property>
     </class>
 </hibernate-mapping>
