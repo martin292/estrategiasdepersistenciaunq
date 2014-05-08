@@ -19,7 +19,7 @@ public class ReservarAsientoTest {
 		
 		Asiento a = new AsientoManager().reservarAsiento(id, user);
 		
-		//Assert
+		assertTrue(a.getUsuario() == user);
 	}
 	
 }
