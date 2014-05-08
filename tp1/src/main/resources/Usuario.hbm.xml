@@ -1,0 +1,6 @@
+<hibernate-mapping>
+	<class name="Usuario" table="usuarios">
+		<id></id>
+		<property></property>
+	</class>
+</hibernate-mapping>
