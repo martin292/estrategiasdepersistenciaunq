@@ -1,5 +1,11 @@
 package tp1;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Date;
+
 import database.DBConnector;
 import email.Mail;
 import email.Email;
@@ -8,12 +14,6 @@ import excepciones.UsuarioNoExisteException;
 import excepciones.UsuarioYaExisteException;
 import excepciones.ValidacionException;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.ResultSet;
-import java.sql.PreparedStatement;
-import java.util.Date;
 
 public class SistemaDB implements Servicios{
 	
@@ -67,7 +67,7 @@ public class SistemaDB implements Servicios{
 			ps.setString(2, usuario.getPassword());
 			ps.setString(3, usuario.getNombre());
 			ps.setString(4, usuario.getApellido());
-			ps.setString(5, usuario.getEmail());
+			ps.setString(5, usuario.getEmail());			
 			ps.setBoolean(6, false);
 			ps.setString(7, usuario.getCodigodevalidacion());
 			ps.execute();
@@ -150,8 +150,8 @@ public class SistemaDB implements Servicios{
 			ResultSet resultSet = ps.executeQuery();
 			resultSet.next();
 			
-			String pass = resultSet.getString("PASSWORD");
-			boolean esCuentaValida = resultSet.getBoolean("cuentaValida");
+			//String pass = resultSet.getString("PASSWORD");
+			//boolean esCuentaValida = resultSet.getBoolean("cuentaValida");
 			
 			Usuario userRet = new Usuario();
 			
