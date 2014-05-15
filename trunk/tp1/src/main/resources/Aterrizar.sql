@@ -1,4 +1,4 @@
- # CREATE DATABASE Aterrizar;
+CREATE DATABASE Aterrizar;
 
 CREATE TABLE Usuario (
   id int(11) NOT NULL AUTO_INCREMENT,
