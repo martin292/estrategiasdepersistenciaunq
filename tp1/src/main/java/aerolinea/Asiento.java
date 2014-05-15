@@ -9,6 +9,7 @@ public class Asiento {
 	private Usuario usuario;
 	private Integer idUsuario;
 	private Integer id;
+	private Tramo tramo;
 	
 	
 	/**

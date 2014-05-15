@@ -39,6 +39,7 @@ CREATE TABLE asiento(
   estado boolean,
   idUsuario int(11),
   idTramo int(11),
+  idx int(11),
   
   PRIMARY KEY (id),
   FOREIGN KEY (idUsuario)
