@@ -15,13 +15,14 @@ public class ReservarAsientoTest extends AbstractHibernateTest{
 
 	@Test
 	public void testApp()throws Exception{
-		Integer id = 1;
 		Date fecha = new Date();
 		Usuario user = new Usuario("Nombre", "Apellido", "UserName", "pass", "email", fecha);
+		user.setId(1);
 		
-		Asiento a = new AsientoManager().reservarAsiento(id, user);
+		Asiento a = new AsientoManager().reservarAsiento(1, user);
 		
 		assertTrue(a.getUsuario().getNombreusuario() == user.getNombreusuario());
+		assertTrue(a.getIdUsuario() == 1);
 	}
 	
 }

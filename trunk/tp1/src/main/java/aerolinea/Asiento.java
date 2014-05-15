@@ -7,6 +7,7 @@ public class Asiento {
 	private boolean estado; // reservado o no
 	private Categoria categoria;
 	private Usuario usuario;
+	private Integer idUsuario;
 	private Integer id;
 	
 	
@@ -14,10 +15,7 @@ public class Asiento {
 	 * Es exclusivo para Hibernate no usar 
 	 **/
 	protected Asiento() {
-	}
-	
-	
-	
+	}	
 	
 	
 	
@@ -25,6 +23,12 @@ public class Asiento {
 	///////////////////////////////////////
 	//Getters and setters
 	///////////////////////////////////////
+	public Integer getIdUsuario() {
+		return idUsuario;
+	}
+	public void setIdUsuario(Integer idUsuario) {
+		this.idUsuario = idUsuario;
+	}
 	public boolean isEstado() {
 		return estado;
 	}

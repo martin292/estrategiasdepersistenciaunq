@@ -17,6 +17,7 @@ public class ReservarAsientosTest extends AbstractHibernateTest{
 	public void testApp()throws Exception{
 		Date fecha = new Date();
 		Usuario user = new Usuario("Nombre", "Apellido", "UserName", "pass", "email", fecha);
+		user.setId(1);
 		
 		List<Asiento> asientos = new AsientoManager().reservarAsientos(user, this.ids());
 		

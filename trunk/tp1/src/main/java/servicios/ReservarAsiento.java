@@ -19,7 +19,9 @@ public class ReservarAsiento implements Operation<Asiento> {
 	
 	public Asiento execute() {
 		Asiento a = new AsientoDAO().get(id);
-		a.setUsuario(this.user);		
+		a.setIdUsuario(this.user.getId());
+		a.setUsuario(this.user);
+		a.setEstado(true);
 		return a;
 	}
 	
