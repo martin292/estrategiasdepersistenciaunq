@@ -9,7 +9,6 @@ import tp1.Usuario;
 import aerolinea.Asiento;
 import static org.junit.Assert.*;
 
-//<mapping resource="Tramo.hbm.xml"/>
 
 public class ReservarAsientoTest extends AbstractHibernateTest{
 
