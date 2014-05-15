@@ -18,7 +18,7 @@ CREATE TABLE tramo (
   id int(11) NOT NULL AUTO_INCREMENT,
   llegada date,
   salida date,
-  idAsiento int(11),
+  #idAsiento int(11),
 
   PRIMARY KEY (id),
   FOREIGN KEY (idAsiento)
@@ -38,7 +38,8 @@ CREATE TABLE asiento(
   id int(11) NOT NULL AUTO_INCREMENT,
   estado boolean,
   idUsuario int(11),
-
+  idTramo int(11),
+  
   PRIMARY KEY (id),
   FOREIGN KEY (idUsuario)
   REFERENCES Usuario(id)
