@@ -28,6 +28,8 @@ public class ReservarAsientos implements Operation<List<Asiento>> {
 			for(Integer id: this.asientos){
 				Asiento a = new AsientoDAO().get(id);
 				a.setUsuario(this.user);
+				a.setEstado(true);
+				a.setIdUsuario(this.user.getId());
 				ret.add(a);
 			}
 		}
@@ -37,14 +39,14 @@ public class ReservarAsientos implements Operation<List<Asiento>> {
 
 	private boolean asientosLibres() {
 		
-		boolean ret = true;
+		boolean ret = false;
 		
 		for(Integer id: this.asientos){
 			Asiento a = new AsientoDAO().get(id);
 			ret = ret && a.isEstado();
 		}
 		
-		return ret;
+		return !ret;
 	}
 	
 }
