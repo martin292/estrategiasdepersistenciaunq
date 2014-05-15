@@ -1,6 +1,5 @@
 package daos;
 
-import aerolinea.Asiento;
 import aerolinea.Tramo;
 
 public class TramoDAO {
