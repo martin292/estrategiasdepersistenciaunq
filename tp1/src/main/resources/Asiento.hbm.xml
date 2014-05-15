@@ -12,5 +12,9 @@
         <property name="estado" type="boolean">
             <column name="estado" length="20" not-null="true" unique="false" />
         </property>
+        
+        <property name="idUsuario" type="java.lang.Integer">
+            <column name="idUsuario" length="11" not-null="false" />
+        </property>
     </class>
 </hibernate-mapping>
