@@ -13,6 +13,8 @@ import static org.junit.Assert.*;
 
 public class ReservarAsientoTest extends AbstractHibernateTest{
 
+	//Agregar un usuario y un asiento a la bdd
+	
 	@Test
 	public void testApp()throws Exception{
 		Date fecha = new Date();
