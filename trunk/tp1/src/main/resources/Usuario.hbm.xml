@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-	<class name="Usuario" table="Usuario">
+	<class name="tp1.Usuario" table="Usuario">
 		<id name="id" type="java.lang.Integer">
 			<column name="id"/>
 			<generator class="identity"/>
@@ -34,7 +34,7 @@
 		</property>
 		
 		<property name="fechanacimiento" type="date">
-			<column name="fechaNacimiento" not-null="false" />
+			<column name="fecha" not-null="false" />
 		</property>
 		
 		<property name="cuentaValida" type="boolean">
