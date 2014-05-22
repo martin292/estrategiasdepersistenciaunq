@@ -5,9 +5,14 @@
 			<generator class="identity"/>
 		</id>
 		
-		<property name="tramos" type="aerolinea.Tramo">
-			<column name="idTramo" length="20" not-null="false" />
-		</property>
+		<many-to-one name="aerolinea">
+        	<column name="idAerolinea"/>
+     	</many-to-one>
+     	
+     	<bag name="tramos" cascade="all" inverse="false">
+       		<key column="idVuelo" />
+       		<one-to-many class="aerolinea.Tramo" />
+       	</bag>
 		
 	</class>
 </hibernate-mapping>

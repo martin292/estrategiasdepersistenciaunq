@@ -14,6 +14,7 @@ public class Tramo {
 	private Date salida;
 	private List<Asiento> asientos = new ArrayList<Asiento>();
 	private Integer id;
+	private Vuelo vuelo;
 	
 	
 	/**
@@ -67,6 +68,28 @@ public class Tramo {
 	}
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+
+
+
+
+
+
+
+	public Vuelo getVuelo() {
+		return vuelo;
+	}
+
+
+
+
+
+
+
+
+	public void setVuelo(Vuelo vuelo) {
+		this.vuelo = vuelo;
 	}
 	
 	//
