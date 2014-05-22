@@ -7,6 +7,7 @@ public class Vuelo {
 
 	private List<Tramo> tramos = new ArrayList<Tramo>();
 	private Integer id;
+	private Aerolinea aerolinea;
 	
 	
 	
@@ -31,6 +32,12 @@ public class Vuelo {
 	}
 	public void setTramos(List<Tramo> tramos) {
 		this.tramos = tramos;
+	}
+	public Aerolinea getAerolinea() {
+		return aerolinea;
+	}
+	public void setAerolinea(Aerolinea aerolinea) {
+		this.aerolinea = aerolinea;
 	}
 	
 	

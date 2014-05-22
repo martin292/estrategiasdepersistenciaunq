@@ -21,6 +21,10 @@
        		<key column="idTramo" />
        		<one-to-many class="aerolinea.Asiento" />
        	</bag>
+       	
+       	<many-to-one name="Vuelo">
+        	<column name="idVuelo"/>
+     	</many-to-one>
 
     </class>
 </hibernate-mapping>

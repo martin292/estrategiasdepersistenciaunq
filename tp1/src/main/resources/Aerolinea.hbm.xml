@@ -1,0 +1,14 @@
+<hibernate-mapping>
+	<class name="Aerolinea" table="aerolinea">
+		<id name="id" type="java.lang.Integer">
+			<column name="id"/>
+			<generator class="identity"/>
+		</id>
+		
+		<bag name="vuelos" cascade="all" inverse="false">
+       		<key column="idAerolinea" />
+       		<one-to-many class="aerolinea.Vuelo" />
+       	</bag>
+			
+	</class>
+</hibernate-mapping>
