@@ -16,5 +16,6 @@
 		<mapping resource="Usuario.hbm.xml"/>
 		<mapping resource="Vuelo.hbm.xml"/>
 		<mapping resource="Aerolinea.hbm.xml"/>
+<!-- 	<mapping resource="Categoria.hbm.xml"/>  -->
 	</session-factory>
 </hibernate-configuration>
