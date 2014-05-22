@@ -3,5 +3,9 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-
+	
+	<subclass 
+		name="aerolinea.Business" discriminator-value="Business" extends="aerolinea.Categoria">
+    </subclass>
+    
 </hibernate-mapping>
