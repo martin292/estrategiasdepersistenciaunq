@@ -10,7 +10,9 @@ public class Aerolinea {
 	
 	
 	
-	
+	public Aerolinea(){
+		
+	}
 	
 	
 	
