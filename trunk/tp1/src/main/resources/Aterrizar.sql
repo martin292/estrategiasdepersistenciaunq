@@ -18,20 +18,25 @@ CREATE TABLE tramo (
   id int(11) NOT NULL AUTO_INCREMENT,
   llegada date,
   salida date,
-  idVuelo int(11), #Nuevo-----------------------------
+  idVuelo int(11), #Nuevo
 
-  PRIMARY KEY (id),
-  FOREIGN KEY (idAsiento)
-  REFERENCES asiento(id)
+  PRIMARY KEY (id)
+  #FOREIGN KEY (idAsiento)
+  #REFERENCES asiento(id)
+  #FOREIGN KEY (idVuelo)
+  #REFERENCES vuelo(id)
 );
 
 CREATE TABLE vuelo(
   id int(11) NOT NULL AUTO_INCREMENT,
-  idTramo int(11),
+  idAerolinea int(11), #Nuevo
+  
+  #Origen y Destino
+  #Categoria
 
-  PRIMARY KEY (id),
-  FOREIGN KEY (idTramo)
-  REFERENCES tramo(id)
+  PRIMARY KEY (id)
+  #FOREIGN KEY (idAerolinea)
+  #REFERENCES aerolinea(id)
 );
 
 CREATE TABLE asiento(
@@ -39,11 +44,16 @@ CREATE TABLE asiento(
   estado boolean,
   idUsuario int(11),
   idTramo int(11),
-  idx int(11),
   
-  PRIMARY KEY (id),
-  FOREIGN KEY (idUsuario)
-  REFERENCES Usuario(id)
+  PRIMARY KEY (id)
+  #FOREIGN KEY (idUsuario)
+  #REFERENCES Usuario(id)
+);
+
+CREATE TABLE aerolinea( #Nuevo
+  id int(11) NOT NULL AUTO_INCREMENT,
+  
+  PRIMARY KEY (id)
 );
 
 #---------------------------------------------------------
