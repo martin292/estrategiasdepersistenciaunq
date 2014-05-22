@@ -26,11 +26,10 @@ public class AsientoDAO {
 			
 	}
 	
-	public List<Asiento> asientosDisponiles(List<Integer> ids){
+	public List<Asiento> asientosDisponibles(List<Integer> ids){
 		Criteria criteria = SessionManager.getSession().createCriteria(Asiento.class);
 		criteria.add(Restrictions.eq("estado", false));
-		
-		
-		return null;
+		criteria.add(Restrictions.in("id", ids));		
+		return criteria.list();
 	}
 }
