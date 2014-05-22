@@ -54,6 +54,12 @@ public class Asiento {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
+	public Tramo getTramo() {
+		return tramo;
+	}
+	public void setTramo(Tramo tramo) {
+		this.tramo = tramo;
+	}
 	
 	
 }
