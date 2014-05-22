@@ -16,6 +16,7 @@ public class Tramo {
 	private Integer id;
 	private Vuelo vuelo;
 	
+	//private int precio;
 	
 	/**
 	 * Es exclusivo para Hibernate no usar 
