@@ -5,6 +5,11 @@ public abstract class Categoria {
 	protected Integer id;
 	protected int precio;
 	
+	public int calcularPrecio(int precioTramo){
+		return precioTramo + this.getPrecio();
+	}
+	
+	
 	public Integer getId() {
 		return id;
 	}
