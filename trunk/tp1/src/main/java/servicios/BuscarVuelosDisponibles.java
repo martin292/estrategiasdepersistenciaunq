@@ -48,7 +48,7 @@ public class BuscarVuelosDisponibles implements Operation<List<Vuelo>>{
 	private boolean tieneAsientoLibre(Tramo t) {
 		
 		for(Asiento a: t.getAsientos()){
-			if(a.isEstado()){
+			if(!a.isEstado()){
 				return true;
 			}
 		}
