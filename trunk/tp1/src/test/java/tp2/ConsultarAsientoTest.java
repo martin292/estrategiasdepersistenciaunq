@@ -9,6 +9,8 @@ import servicios.AsientoManager;
 
 public class ConsultarAsientoTest extends AbstractHibernateTest{
 
+	//Agregar un tramo y asientos a la bdd
+	
 	@Test
 	public void testApp()throws Exception{
 		Integer idTramo = 1;

@@ -4,6 +4,7 @@ import java.util.List;
 
 import daos.SessionManager;
 import aerolinea.Asiento;
+import aerolinea.Vuelo;
 import tp1.Usuario;
 
 public class AsientoManager {
@@ -18,6 +19,10 @@ public class AsientoManager {
 	
 	public List<Asiento> consultarAsientos(Integer id){
 		return SessionManager.runInSession(new ConsultarAsientos(id));
+	}
+	
+	public List<Vuelo> buscarVuelosDisponibles(Integer id){
+		return SessionManager.runInSession(new BuscarVuelosDisponibles(id));
 	}
 	
 }
