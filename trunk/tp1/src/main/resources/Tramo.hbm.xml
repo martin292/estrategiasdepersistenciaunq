@@ -16,12 +16,16 @@
         <property name="salida" type="java.util.Date">
             <column name="salida" length="20" not-null="true" unique="false" />
         </property>
-        <property name="origen" type="aerolinea.Aerolinea">
-            <column name="idAerolineaOrigen" length="20" not-null="true" unique="false" />
-        </property>
-        <property name="destino" type="aerolinea.Aerolinea">
-            <column name="idAerolineaDestino" length="20" not-null="true" unique="false" />
-        </property>
+        
+        
+        <list name="acientos" cascade="all" inverse="false">
+	        <key>
+    	         <column name="idTramo"/>
+        	</key>
+        	<index column="idx"/>
+        	<one-to-many class="aerolinea.Asiento"/>
+     	</list>
+        
     </class>
 </hibernate-mapping>
 

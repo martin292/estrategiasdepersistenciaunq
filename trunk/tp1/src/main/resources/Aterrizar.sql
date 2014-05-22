@@ -18,7 +18,6 @@ CREATE TABLE tramo (
   id int(11) NOT NULL AUTO_INCREMENT,
   llegada date,
   salida date,
-  #idAsiento int(11),
 
   PRIMARY KEY (id),
   FOREIGN KEY (idAsiento)

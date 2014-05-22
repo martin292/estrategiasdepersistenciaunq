@@ -16,5 +16,10 @@
         <property name="idUsuario" type="java.lang.Integer">
             <column name="idUsuario" length="11" not-null="false" />
         </property>
+        
+        <many-to-one name="tramo">
+        	<column name="idTramo"  />
+     	</many-to-one>
+        
     </class>
 </hibernate-mapping>
