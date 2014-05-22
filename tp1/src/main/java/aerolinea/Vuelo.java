@@ -10,7 +10,9 @@ public class Vuelo {
 	
 	
 	
-	
+	public Vuelo(){
+		
+	}
 	
 	
 	
