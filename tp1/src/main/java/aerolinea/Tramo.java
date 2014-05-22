@@ -1,5 +1,7 @@
 package aerolinea;
 
+
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -10,14 +12,14 @@ public class Tramo {
 	private Aerolinea destino;
 	private Date llegada;
 	private Date salida;
-	private List<Asiento> acientos = new ArrayList<Asiento>();
+	private List<Asiento> asientos = new ArrayList<Asiento>();
 	private Integer id;
 	
 	
 	/**
 	 * Es exclusivo para Hibernate no usar 
 	 **/
-	protected Tramo() {
+	public Tramo() {
 	}
 	
 	
@@ -54,11 +56,11 @@ public class Tramo {
 	public void setSalida(Date salida) {
 		this.salida = salida;
 	}
-	public List<Asiento> getAcientos() {
-		return acientos;
+	public List<Asiento> getAsientos() {
+		return asientos;
 	}
 	public void setAcientos(List<Asiento> acientos) {
-		this.acientos = acientos;
+		this.asientos = acientos;
 	}
 	public Integer getId() {
 		return id;
