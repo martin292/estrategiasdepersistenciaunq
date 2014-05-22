@@ -20,12 +20,12 @@ public class ConsultarAsientos implements Operation<List<Asiento>> {
 	public List<Asiento> execute() {
 		List<Asiento> ret = new ArrayList<Asiento>();
 		Tramo t = new TramoDAO().get(tramoId);
-		for(Asiento a : t.getAcientos()){
+		for(Asiento a : t.getAsientos()){
 			Asiento asiento;
-			if (a.isEstado()){
+//			if (a.isEstado()){
 				asiento = new AsientoDAO().get(a.getId());
 				ret.add(asiento);
-			}	
+//			}	
 		}
 		return ret;
 	}
