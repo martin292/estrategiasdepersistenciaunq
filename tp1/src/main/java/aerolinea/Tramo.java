@@ -69,25 +69,9 @@ public class Tramo {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
-
-
-
-
-
-
-
 	public Vuelo getVuelo() {
 		return vuelo;
 	}
-
-
-
-
-
-
-
-
 	public void setVuelo(Vuelo vuelo) {
 		this.vuelo = vuelo;
 	}
