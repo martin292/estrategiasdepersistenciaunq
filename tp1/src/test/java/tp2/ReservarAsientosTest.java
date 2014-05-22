@@ -1,6 +1,7 @@
 package tp2;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -30,14 +31,7 @@ public class ReservarAsientosTest extends AbstractHibernateTest{
 
 	
 	private List<Integer> ids() {
-		
-		List<Integer> ret = new ArrayList<Integer>();
-		
-		ret.add(1);
-		ret.add(2);
-		ret.add(3);
-		
-		return ret;
+		return Arrays.asList(1,2,3);
 	}
 	
 }

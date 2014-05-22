@@ -1,6 +1,13 @@
 package daos;
 
+import java.util.List;
+
+import org.hibernate.Criteria;
+import org.hibernate.criterion.Restrictions;
+
 import aerolinea.Aerolinea;
+import aerolinea.Asiento;
+import aerolinea.Vuelo;
 
 
 public class AerolineaDAO {
@@ -12,5 +19,7 @@ public class AerolineaDAO {
 	public void save(Aerolinea a) {
 		SessionManager.getSession().saveOrUpdate(a);
 	}
+	
+	
 	
 }

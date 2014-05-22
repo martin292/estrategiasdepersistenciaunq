@@ -39,13 +39,13 @@ public class BuscarVuelosDisponibles implements Operation<List<Vuelo>>{
 		boolean ret = true;
 		
 		for(Tramo t: v.getTramos()){
-			ret = ret && this.tieneAsientoLibre(t);
+			ret = ret && this.tieneUnAsientoLibre(t);
 		}
 		
 		return ret;
 	}
 
-	private boolean tieneAsientoLibre(Tramo t) {
+	private boolean tieneUnAsientoLibre(Tramo t) {
 		
 		for(Asiento a: t.getAsientos()){
 			if(!a.isEstado()){
