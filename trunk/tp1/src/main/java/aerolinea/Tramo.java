@@ -59,7 +59,7 @@ public class Tramo {
 	public List<Asiento> getAsientos() {
 		return asientos;
 	}
-	public void setAcientos(List<Asiento> acientos) {
+	public void setAsientos(List<Asiento> acientos) {
 		this.asientos = acientos;
 	}
 	public Integer getId() {

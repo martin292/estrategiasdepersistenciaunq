@@ -17,14 +17,11 @@
             <column name="salida" length="20" not-null="true" unique="false" />
         </property>
         
-        <list name="asientos" cascade="all" inverse="false">
-	        <key>
-    	         <column name="idTramo"/>
-        	</key>
-        	<index column="idx"/>
-        	<one-to-many class="aerolinea.Asiento"/>
-     	</list>
-     	
+       	<bag name="asientos" cascade="all" inverse="false">
+       		<key column="idTramo" />
+       		<one-to-many class="aerolinea.Asiento" />
+       	</bag>
+
     </class>
 </hibernate-mapping>
 
