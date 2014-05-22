@@ -1,12 +1,19 @@
 package tp2;
 
+import java.util.List;
+
 import org.junit.Test;
+
+import aerolinea.Asiento;
+import servicios.AsientoManager;
 
 public class ConsultarAsientoTest extends AbstractHibernateTest{
 
 	@Test
 	public void testApp()throws Exception{
-		//TODO
+		Integer idTramo = 1;
+		List<Asiento> asientos = new AsientoManager().consultarAsientos(idTramo);
+		assertTrue(!asientos.isEmpty());
 	}
 	
 }
