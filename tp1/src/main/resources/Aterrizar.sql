@@ -56,24 +56,14 @@ CREATE TABLE aerolinea( #Nuevo
   PRIMARY KEY (id)
 );
 
-CREATE TABLE turista(
+CREATE TABLE categoria(
   id int(11) NOT NULL AUTO_INCREMENT,
   precio int(5),
+  cat varchar(8),
   
   PRIMARY KEY (id)
 );
-CREATE TABLE primera(
-  id int(11) NOT NULL AUTO_INCREMENT,
-  precio int(5),
-  
-  PRIMARY KEY (id)
-);
-CREATE TABLE business(
-  id int(11) NOT NULL AUTO_INCREMENT,
-  precio int(5),
-  
-  PRIMARY KEY (id)
-);
+
 
 #---------------------------------------------------------
 
