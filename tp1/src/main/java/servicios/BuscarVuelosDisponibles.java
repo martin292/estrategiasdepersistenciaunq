@@ -19,8 +19,6 @@ public class BuscarVuelosDisponibles implements Operation<List<Vuelo>>{
 	}
 	
 	public List<Vuelo> execute() {
-		// TODO 
-
 		List<Vuelo> ret = new ArrayList<Vuelo>();
 		Aerolinea aero = new AerolineaDAO().get(this.aerolineaId);
 		
