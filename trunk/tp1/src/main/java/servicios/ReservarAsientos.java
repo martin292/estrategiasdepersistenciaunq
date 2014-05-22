@@ -27,9 +27,7 @@ public class ReservarAsientos implements Operation<List<Asiento>> {
 		if(this.asientosLibres()){
 			for(Integer id: this.asientos){
 				Asiento a = new AsientoDAO().get(id);
-				a.setUsuario(this.user);
-				a.setEstado(true);
-				a.setIdUsuario(this.user.getId());
+				a.reservar(this.user);
 				ret.add(a);
 			}
 		}

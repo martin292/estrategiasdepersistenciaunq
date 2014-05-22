@@ -19,15 +19,7 @@ public class ConsultarAsientos implements Operation<List<Asiento>> {
 	
 	public List<Asiento> execute() {
 		List<Asiento> ret = new ArrayList<Asiento>();
-		Tramo t = new TramoDAO().get(tramoId);
-		for(Asiento a : t.getAsientos()){
-			Asiento asiento;
-//			if (a.isEstado()){
-				asiento = new AsientoDAO().get(a.getId());
-				ret.add(asiento);
-//			}	
-		}
-		return ret;
+		return new AsientoDAO().asientosDisponiles(tramoId);
 	}
 
 }

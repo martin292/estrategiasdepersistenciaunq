@@ -64,10 +64,4 @@ CREATE TABLE categoria(
   PRIMARY KEY (id)
 );
 
-
-#---------------------------------------------------------
-
-USE Aterrizar;
-
-
-
+#
