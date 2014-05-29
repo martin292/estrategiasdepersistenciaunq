@@ -29,8 +29,12 @@ CREATE TABLE tramo (
 
 CREATE TABLE vuelo(
   id int(11) NOT NULL AUTO_INCREMENT,
-  idAerolinea int(11), #Nuevo
-  costo int(11),
+  idAerolinea int(11),
+  salida date, #Nuevo
+  llegada date, #Nuevo
+  idOrigen int(11), #Nuevo
+  idDestino int(11), #Nuevo
+  costo int(11), #Nuevo
   
   #Origen y Destino
 
