@@ -20,7 +20,7 @@ public class ReservarAsientoTest extends AbstractHibernateTest{
 		Usuario user = new Usuario("Nombre", "Apellido", "UserName", "pass", "email", fecha);
 		user.setId(1);
 		
-		Asiento a = new AsientoManager().reservarAsiento(1, user);
+		Asiento a = new AsientoManager().reservarAsiento(2, user);
 		
 		assertTrue(a.getUsuario().getNombreusuario() == user.getNombreusuario());
 		assertTrue(a.getUsuario().getId() == 1);

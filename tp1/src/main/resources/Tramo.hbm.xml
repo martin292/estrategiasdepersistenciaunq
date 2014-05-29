@@ -22,10 +22,9 @@
        		<one-to-many class="aerolinea.Asiento" />
        	</bag>
        	
-       	<many-to-one name="Vuelo">
+       	<many-to-one name="vuelo">
         	<column name="idVuelo"/>
      	</many-to-one>
-
     </class>
 </hibernate-mapping>
 
