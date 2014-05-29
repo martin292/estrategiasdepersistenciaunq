@@ -17,7 +17,7 @@ public class BuscadorDeVuelos {
 	
 	private List<Criterio> criterios = new ArrayList<Criterio>();
 	private Criteria vuelos;
-	
+		
 	
 	public List<Vuelo> buscar(){
 		this.setVuelos(SessionManager.getSession().createCriteria(Vuelo.class));
@@ -30,10 +30,12 @@ public class BuscadorDeVuelos {
 		
 		return this.getVuelos().list();
 	}
-	
+		
 	public void agregarCriterio(Criterio c){
 		this.criterios.add(c);
 	}
+	
+	
 	
 	
 	
