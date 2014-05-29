@@ -17,6 +17,8 @@ public class BuscadorDeVuelos {
 	
 	private List<Criterio> criterios = new ArrayList<Criterio>();
 	private Criteria vuelos;
+	
+	private Orden orden;
 		
 	
 	public List<Vuelo> buscar(){
@@ -37,4 +39,12 @@ public class BuscadorDeVuelos {
 				
 	//
 		
+	public List<Vuelo> ordenar(){		
+		return this.orden.ordenar(this.vuelos).list();
+	}
+	
+	public void agregarOrden(Orden o){
+		this.orden = o;
+	}
+	
 }
