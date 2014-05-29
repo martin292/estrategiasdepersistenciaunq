@@ -22,8 +22,10 @@ public class BuscadorDeVuelos {
 	public List<Vuelo> buscar(){
 		this.setVuelos(SessionManager.getSession().createCriteria(Vuelo.class));
 		
-		for(Criterio c: this.getCriterios()){
-			c.filtrar(this.getVuelos());
+		if(!this.criterios.isEmpty()){
+			for(Criterio c: this.getCriterios()){
+				c.filtrar(this.getVuelos());
+			}
 		}
 		
 		return this.getVuelos().list();
