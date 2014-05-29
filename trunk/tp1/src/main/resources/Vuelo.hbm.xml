@@ -13,8 +13,8 @@
         	<column name="idAerolinea"/>
      	</many-to-one>
      	
-     	<bag name="tramos" cascade="all" inverse="false">
-       		<key column="idVuelo" />
+		<bag name="tramos" cascade="all" inverse="false">
+       		<key column="idTramo" />
        		<one-to-many class="aerolinea.Tramo" />
        	</bag>
 		

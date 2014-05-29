@@ -1,6 +1,6 @@
 CREATE DATABASE Aterrizar;
 
-CREATE TABLE Usuario (
+CREATE TABLE usuario (
   id int(11) NOT NULL AUTO_INCREMENT,
   nombreUsuario varchar(20),
   password varchar(20),
@@ -44,7 +44,7 @@ CREATE TABLE asiento(
   estado boolean,
   idUsuario int(11),
   idTramo int(11),
-  
+
   PRIMARY KEY (id)
   #FOREIGN KEY (idUsuario)
   #REFERENCES Usuario(id)
