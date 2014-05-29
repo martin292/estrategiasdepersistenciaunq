@@ -30,9 +30,9 @@ CREATE TABLE tramo (
 CREATE TABLE vuelo(
   id int(11) NOT NULL AUTO_INCREMENT,
   idAerolinea int(11), #Nuevo
+  costo int(11),
   
   #Origen y Destino
-  #Categoria
 
   PRIMARY KEY (id)
   #FOREIGN KEY (idAerolinea)
@@ -44,6 +44,8 @@ CREATE TABLE asiento(
   estado boolean,
   idUsuario int(11),
   idTramo int(11),
+  
+  #Categoria
 
   PRIMARY KEY (id)
   #FOREIGN KEY (idUsuario)

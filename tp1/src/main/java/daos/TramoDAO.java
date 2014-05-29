@@ -1,5 +1,6 @@
 package daos;
 
+
 import aerolinea.Tramo;
 
 public class TramoDAO {
@@ -11,4 +12,5 @@ public class TramoDAO {
 	public void save(Tramo t) {
 		SessionManager.getSession().saveOrUpdate(t);
 	}
+	
 }
