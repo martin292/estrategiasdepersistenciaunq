@@ -20,40 +20,22 @@ public class BuscadorDeVuelos {
 		
 	
 	public List<Vuelo> buscar(){
-		this.setVuelos(SessionManager.getSession().createCriteria(Vuelo.class));
+		this.vuelos = SessionManager.getSession().createCriteria(Vuelo.class);
 		
 		if(!this.criterios.isEmpty()){
-			for(Criterio c: this.getCriterios()){
-				c.filtrar(this.getVuelos());
+			for(Criterio c: this.criterios){
+				this.vuelos = c.filtrar(this.vuelos);
 			}
 		}
 		
-		return this.getVuelos().list();
+		return this.vuelos.list();
 	}
 		
 	public void agregarCriterio(Criterio c){
 		this.criterios.add(c);
 	}
-	
-	
-	
-	
-	
-	//---------------------------------------------------------------
-
-	public List<Criterio> getCriterios() {
-		return criterios;
-	}
-	public void setCriterios(List<Criterio> criterios) {
-		this.criterios = criterios;
-	}
-	public Criteria getVuelos() {
-		return vuelos;
-	}
-	public void setVuelos(Criteria vuelos) {
-		this.vuelos = vuelos;
-	}
-	
+		
+			
 	//
 
 }

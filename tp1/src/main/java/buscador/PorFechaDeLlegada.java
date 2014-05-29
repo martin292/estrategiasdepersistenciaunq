@@ -15,8 +15,8 @@ public class PorFechaDeLlegada extends Criterio{
 	}
 	
 	@Override
-	public void filtrar(Criteria vuelos) {
-		vuelos.add(Restrictions.eq("llegada", this.fecha));		
+	public Criteria filtrar(Criteria vuelos) {
+		return vuelos.add(Restrictions.eq("llegada", this.fecha));		
 	}
 
 }

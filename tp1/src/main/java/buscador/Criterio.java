@@ -3,5 +3,5 @@ package buscador;
 import org.hibernate.Criteria;
 
 public abstract class Criterio {
-	public abstract void filtrar(Criteria vuelos);
+	public abstract Criteria filtrar(Criteria vuelos);
 }

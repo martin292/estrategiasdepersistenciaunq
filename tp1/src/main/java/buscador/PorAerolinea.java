@@ -16,8 +16,8 @@ public class PorAerolinea extends Criterio {
 	}
 	
 	@Override
-	public void filtrar(Criteria vuelos){
-		vuelos.createAlias("aerolinea", "aero").add(Restrictions.eq("aero.id", this.aerolinea.getId()));
+	public Criteria filtrar(Criteria vuelos){
+		return vuelos.createAlias("aerolinea", "aero").add(Restrictions.eq("aero.id", this.aerolinea.getId()));
 	}
 
 }

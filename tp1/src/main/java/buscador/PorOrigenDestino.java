@@ -17,8 +17,8 @@ public class PorOrigenDestino extends Criterio{
 	}
 	
 	@Override
-	public void filtrar(Criteria vuelos) {
-		vuelos.add(Restrictions.eq("origen", origen.getId()))
+	public Criteria filtrar(Criteria vuelos) {
+		return vuelos.add(Restrictions.eq("origen", origen.getId()))
 		.add(Restrictions.eq("destino", destino.getId()));		
 	}
 
