@@ -25,6 +25,14 @@
         <property name="salida" type="java.util.Date">
             <column name="salida" not-null="true" unique="false" />
         </property>
+        
+        <property name="origen" type="string">
+            <column name="origen" not-null="true" unique="false" />
+        </property>
+        
+        <property name="destino" type="string">
+            <column name="destino" not-null="true" unique="false" />
+        </property>
 		
 	</class>
 </hibernate-mapping>

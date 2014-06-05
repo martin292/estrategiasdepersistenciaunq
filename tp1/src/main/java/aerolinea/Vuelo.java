@@ -13,8 +13,8 @@ public class Vuelo {
 	private Date salida;
 	private Date llegada;
 	
-	private Aerolinea origen; //
-	private Aerolinea destino; //
+	private String origen; //
+	private String destino; //
 	
 	private int costoTotal;
 	
@@ -59,16 +59,16 @@ public class Vuelo {
 	public void setLlegada(Date llegada) {
 		this.llegada = llegada;
 	}
-	public Aerolinea getOrigen() {
+	public String getOrigen() {
 		return origen;
 	}
-	public void setOrigen(Aerolinea origen) {
+	public void setOrigen(String origen) {
 		this.origen = origen;
 	}
-	public Aerolinea getDestino() {
+	public String getDestino() {
 		return destino;
 	}
-	public void setDestino(Aerolinea destino) {
+	public void setDestino(String destino) {
 		this.destino = destino;
 	}
 

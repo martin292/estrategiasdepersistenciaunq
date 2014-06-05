@@ -33,8 +33,8 @@ CREATE TABLE vuelo(
   
   salida date, #Nuevo
   llegada date, #Nuevo
-  idOrigen int(11), #Nuevo
-  idDestino int(11), #Nuevo
+  origen varchar(20), #Nuevo
+  destino varchar(20), #Nuevo
   
   costo int(11), #Nuevo
   escalas int(11), #Nuevo  
