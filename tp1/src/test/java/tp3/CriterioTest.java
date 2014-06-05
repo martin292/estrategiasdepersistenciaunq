@@ -62,8 +62,7 @@ public class CriterioTest extends AbstractHibernateTest{
 				return null;
 			}
 			
-		});
-		
+		});		
 		
 	}
 	
