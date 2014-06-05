@@ -8,16 +8,16 @@ import aerolinea.Aerolinea;
 
 public class PorAerolinea extends Criterio {
 	
-	public Aerolinea aerolinea;
+	public String aerolinea;
 	
-	public PorAerolinea(Aerolinea a){
+	public PorAerolinea(String aerolinea){
 		super();
-		this.aerolinea = a;
+		this.aerolinea = aerolinea;
 	}
 	
 	@Override
 	public Criteria filtrar(Criteria vuelos){
-		return vuelos.createAlias("aerolinea", "aero").add(Restrictions.eq("aero.id", this.aerolinea.getId()));
+		return vuelos.createCriteria("aerolinea").add(Restrictions.eq("nombre", this.aerolinea));
 	}
 
 }

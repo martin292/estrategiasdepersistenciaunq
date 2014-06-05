@@ -61,6 +61,8 @@ CREATE TABLE asiento(
 CREATE TABLE aerolinea( #Nuevo
   id int(11) NOT NULL AUTO_INCREMENT,
   
+  nombre varchar(20), #Nuevo
+  
   PRIMARY KEY (id)
 );
 
