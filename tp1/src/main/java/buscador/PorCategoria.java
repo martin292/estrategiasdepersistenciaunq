@@ -7,9 +7,9 @@ import aerolinea.Categoria;
 
 public class PorCategoria extends Criterio{
 
-	private Categoria cat;
+	private String cat;
 	
-	public PorCategoria(Categoria c){
+	public PorCategoria(String c){
 		super();
 		this.cat = c;
 	}
@@ -17,7 +17,7 @@ public class PorCategoria extends Criterio{
 	@Override
 	public Criteria filtrar(Criteria vuelos) {
 		return vuelos.createCriteria("tramos").createCriteria("asientos")
-		.add(Restrictions.eq("categoria", this.cat));		
+		.add(Restrictions.eq("categoria.cat", this.cat));		
 	}
 
 }
