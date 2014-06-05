@@ -4,11 +4,16 @@ import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.junit.Before;
 import org.junit.Test;
 
+import daos.AerolineaDAO;
 import daos.SessionManager;
+import aerolinea.Aerolinea;
+import aerolinea.Turista;
 import aerolinea.Vuelo;
 import buscador.PorAerolinea;
+import buscador.PorCategoria;
 import buscador.PorFechaDeLlegada;
 import buscador.PorFechaDeSalida;
 import buscador.PorOrigenDestino;
@@ -16,6 +21,35 @@ import servicios.Operation;
 import tp2.AbstractHibernateTest;
 
 public class CriterioTest extends AbstractHibernateTest{
+	
+	
+	@Before
+	public void setUp() {
+		
+		SessionManager.runInSession(new Operation<Void>() {
+
+			public Void execute() {	
+				
+				Aerolinea aerolinea = new Aerolinea();
+				aerolinea.setNombre("Lan");
+				Vuelo vuelo = new Vuelo();
+				vuelo.setId(1);
+				vuelo.setAerolinea(aerolinea);
+				vuelo.setCosto(1000);
+				vuelo.setOrigen("Argeentina");
+				vuelo.setDestino("Argentina");
+				vuelo.setSalida(new Date(2014, 6, 9));
+				vuelo.setLlegada(new Date(2014, 6, 10));
+				
+				aerolinea.getVuelos().add(vuelo);
+				
+				new AerolineaDAO().save(aerolinea);
+				return null;
+			}
+		});
+		
+	}
+	
 	
 	@Test
 	public void testFiltrarPorAerolinea()throws Exception{
@@ -41,6 +75,13 @@ public class CriterioTest extends AbstractHibernateTest{
 	
 	@Test
 	public void testFiltrarPorCategoria() throws Exception{
+		PorCategoria filtro = new PorCategoria(new Turista());
+		
+		Criteria vuelos = SessionManager.getSession().createCriteria(Vuelo.class);
+		
+		List<Vuelo> resultado = filtro.filtrar(vuelos).list();
+		
+		assertFalse(resultado.isEmpty());
 		SessionManager.runInSession(new Operation<Void>(){
 
 			public Void execute() {
@@ -71,7 +112,7 @@ public class CriterioTest extends AbstractHibernateTest{
 				return null;
 			}
 			
-		});			
+		});		
 	}
 	
 	@Test
