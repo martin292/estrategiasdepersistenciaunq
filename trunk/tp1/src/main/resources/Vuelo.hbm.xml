@@ -33,6 +33,14 @@
         <property name="destino" type="string">
             <column name="destino" not-null="true" unique="false" />
         </property>
+        
+        <property name="costo" type="java.lang.Integer">
+            <column name="costo" not-null="false" unique="false" />
+        </property>
+        
+        <property name="escalas" type="java.lang.Integer">
+            <column name="escalas" not-null="false" unique="false" />
+        </property>
 		
 	</class>
 </hibernate-mapping>
