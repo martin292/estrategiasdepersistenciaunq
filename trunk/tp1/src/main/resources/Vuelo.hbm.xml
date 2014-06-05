@@ -19,11 +19,11 @@
        	</bag>
        	
        	<property name="llegada" type="java.util.Date">
-            <column name="llegada" length="20" not-null="true" unique="false" />
+            <column name="llegada" not-null="true" unique="false" />
         </property>
                 
         <property name="salida" type="java.util.Date">
-            <column name="salida" length="20" not-null="true" unique="false" />
+            <column name="salida" not-null="true" unique="false" />
         </property>
 		
 	</class>
