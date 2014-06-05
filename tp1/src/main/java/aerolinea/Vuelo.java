@@ -13,8 +13,8 @@ public class Vuelo {
 	private Date salida;
 	private Date llegada;
 	
-	private Aerolinea origen;
-	private Aerolinea destino;
+	private Aerolinea origen; //
+	private Aerolinea destino; //
 	
 	private int costoTotal;
 	
