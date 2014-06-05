@@ -7,10 +7,10 @@ import aerolinea.Aerolinea;
 
 public class PorOrigenDestino extends Criterio{
 
-	private Aerolinea origen;
-	private Aerolinea destino;
+	private String origen;
+	private String destino;
 	
-	public PorOrigenDestino(Aerolinea o, Aerolinea d){
+	public PorOrigenDestino(String o, String d){
 		super();
 		this.destino = d;
 		this.origen = o;
@@ -18,8 +18,8 @@ public class PorOrigenDestino extends Criterio{
 	
 	@Override
 	public Criteria filtrar(Criteria vuelos) {
-		return vuelos.add(Restrictions.eq("origen", origen.getId()))
-		.add(Restrictions.eq("destino", destino.getId()));		
+		return vuelos.add(Restrictions.eq("origen", this.origen))
+		.add(Restrictions.eq("destino", this.destino));		
 	}
 
 }

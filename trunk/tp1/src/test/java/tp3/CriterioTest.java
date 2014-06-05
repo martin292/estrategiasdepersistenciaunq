@@ -10,6 +10,8 @@ import daos.SessionManager;
 import aerolinea.Vuelo;
 import buscador.PorAerolinea;
 import buscador.PorFechaDeLlegada;
+import buscador.PorFechaDeSalida;
+import buscador.PorOrigenDestino;
 import servicios.Operation;
 import tp2.AbstractHibernateTest;
 
@@ -38,7 +40,7 @@ public class CriterioTest extends AbstractHibernateTest{
 	}
 	
 	@Test
-	public void testFiltrarPorCategoria(){
+	public void testFiltrarPorCategoria() throws Exception{
 		SessionManager.runInSession(new Operation<Void>(){
 
 			public Void execute() {
@@ -51,7 +53,7 @@ public class CriterioTest extends AbstractHibernateTest{
 	
 	@Test
 	public void testFiltrarPorFechaDeLlegada()throws Exception{
-		//Agregar al la bdd un vuelo con fecha de llegada == 2014, 6, 6, 00, 00, 00
+		//Agregar al la bdd un vuelo con fecha de llegada == '2014, 6, 6, 00, 00, 00'
 		
 		SessionManager.runInSession(new Operation<Void>(){
 
@@ -74,14 +76,14 @@ public class CriterioTest extends AbstractHibernateTest{
 	
 	@Test
 	public void testFiltrarPorFechaDeSalida()throws Exception{
-		//Agregar al la bdd un vuelo con fecha de salida == 2014, 6, 5, 00, 00, 00
+		//Agregar al la bdd un vuelo con fecha de salida == '2014, 6, 5, 00, 00, 00'
 		
 		SessionManager.runInSession(new Operation<Void>(){
 
 			public Void execute() {
 				Date salida = new Date(2014, 6, 5, 00, 00, 00);
 				
-				PorFechaDeLlegada filtro = new PorFechaDeLlegada(salida);
+				PorFechaDeSalida filtro = new PorFechaDeSalida(salida);
 				
 				Criteria vuelos = SessionManager.getSession().createCriteria(Vuelo.class);
 
@@ -92,17 +94,25 @@ public class CriterioTest extends AbstractHibernateTest{
 				return null;
 			}
 			
-		});
-		
-		
+		});		
 	}
 	
 	@Test
-	public void testFiltrarPorOrigenDestino(){
+	public void testFiltrarPorOrigenDestino()throws Exception{
+		//Agregar a la bdd un vuelo con origen == 'Argentina' y destino == 'Argentina'
+		
 		SessionManager.runInSession(new Operation<Void>(){
 
 			public Void execute() {
-				// TODO 
+				
+				PorOrigenDestino filtro = new PorOrigenDestino("Argentina", "Argentina");
+				
+				Criteria vuelos = SessionManager.getSession().createCriteria(Vuelo.class);
+
+				List<Vuelo> resultado = filtro.filtrar(vuelos).list();
+				
+				assertFalse(resultado.isEmpty());
+				
 				return null;
 			}
 			
