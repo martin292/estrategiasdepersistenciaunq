@@ -16,8 +16,8 @@ public class PorCategoria extends Criterio{
 	
 	@Override
 	public Criteria filtrar(Criteria vuelos) {
-		return vuelos.createAlias("tramos", "ts").createAlias("ts.asientos", "as")
-		.add(Restrictions.eq("as.categoria", this.cat));		
+		return vuelos.createCriteria("tramos").createCriteria("asientos")
+		.add(Restrictions.eq("categoria", this.cat));		
 	}
 
 }
