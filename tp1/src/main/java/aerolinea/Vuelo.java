@@ -16,7 +16,8 @@ public class Vuelo {
 	private String origen; //
 	private String destino; //
 	
-	private int costoTotal;
+	private int costo;
+	private int escalas;
 	
 	//
 	public Vuelo(){
@@ -71,19 +72,18 @@ public class Vuelo {
 	public void setDestino(String destino) {
 		this.destino = destino;
 	}
-
-
-
-	public int getCostoTotal() {
-		return costoTotal;
+	public int getCosto() {
+		return costo;
 	}
-
-
-
-	public void setCostoTotal(int costoTotal) {
-		this.costoTotal = costoTotal;
+	public void setCosto(int costoTotal) {
+		this.costo = costoTotal;
 	}
-	
+	public int getEscalas() {
+		return escalas;
+	}
+	public void setEscalas(int escalas) {
+		this.escalas = escalas;
+	}	
 	
 	
 }
