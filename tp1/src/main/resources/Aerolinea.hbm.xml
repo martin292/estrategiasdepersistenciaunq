@@ -9,6 +9,10 @@
 			<generator class="identity"/>
 		</id>
 		
+		<property name="nombre" type="string">
+			<column name="nombre" length="20" not-null="false" />
+		</property>
+		
 		<bag name="vuelos" cascade="all" inverse="false">
        		<key column="idAerolinea" />
        		<one-to-many class="aerolinea.Vuelo" />

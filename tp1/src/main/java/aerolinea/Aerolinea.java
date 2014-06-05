@@ -7,6 +7,7 @@ public class Aerolinea {
 
 	private List<Vuelo> vuelos = new ArrayList<Vuelo>();
 	private Integer id;
+	private String nombre;
 	
 	
 	
@@ -32,6 +33,20 @@ public class Aerolinea {
 	}
 	public void setVuelos(List<Vuelo> vuelo) {
 		this.vuelos = vuelo;
+	}
+
+
+
+
+	public String getNombre() {
+		return nombre;
+	}
+
+
+
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 	
 
