@@ -16,6 +16,9 @@
         <many-to-one name="tramo">
         	<column name="idTramo"  />
      	</many-to-one>
+     	
+     	<one-to-one name="categoria" class="aerolinea.Categoria"
+			cascade="save-update"></one-to-one>
         
     </class>
 </hibernate-mapping>

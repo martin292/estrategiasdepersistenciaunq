@@ -51,7 +51,7 @@ CREATE TABLE asiento(
   idUsuario int(11),
   idTramo int(11),
   
-  #Categoria
+  idCategoria int(11), #Nuevo
 
   PRIMARY KEY (id)
   #FOREIGN KEY (idUsuario)
