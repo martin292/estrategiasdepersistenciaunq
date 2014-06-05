@@ -7,17 +7,17 @@ import tp2.AbstractHibernateTest;
 public class OrdenTest extends AbstractHibernateTest{
 	
 	@Test
-	public void TestOrdenarPorCosto(){
+	public void testOrdenarPorCosto(){
 		//TODO
 	}
 	
 	@Test
-	public void TestOrdenarPorCantidadDeEscalas(){
+	public void testOrdenarPorCantidadDeEscalas(){
 		//TODO
 	}
 	
 	@Test
-	public void TestOrdenarPorDuracion(){
+	public void testOrdenarPorDuracion(){
 		//TODO
 	}
 
