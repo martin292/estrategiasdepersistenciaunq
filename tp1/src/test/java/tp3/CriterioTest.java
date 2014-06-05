@@ -39,12 +39,19 @@ public class CriterioTest extends AbstractHibernateTest{
 	
 	@Test
 	public void testFiltrarPorCategoria(){
-		//TODO
+		SessionManager.runInSession(new Operation<Void>(){
+
+			public Void execute() {
+				// TODO 
+				return null;
+			}
+			
+		});
 	}
 	
 	@Test
 	public void testFiltrarPorFechaDeLlegada()throws Exception{
-		//Agregar al la bdd un vuelo con fecha de llegada == a llegada
+		//Agregar al la bdd un vuelo con fecha de llegada == 2014, 6, 6, 00, 00, 00
 		
 		SessionManager.runInSession(new Operation<Void>(){
 
@@ -62,13 +69,12 @@ public class CriterioTest extends AbstractHibernateTest{
 				return null;
 			}
 			
-		});		
-		
+		});			
 	}
 	
 	@Test
 	public void testFiltrarPorFechaDeSalida()throws Exception{
-		//Agregar al la bdd un vuelo con fecha de salida == a salida
+		//Agregar al la bdd un vuelo con fecha de salida == 2014, 6, 5, 00, 00, 00
 		
 		SessionManager.runInSession(new Operation<Void>(){
 
@@ -93,7 +99,14 @@ public class CriterioTest extends AbstractHibernateTest{
 	
 	@Test
 	public void testFiltrarPorOrigenDestino(){
-		//TODO
+		SessionManager.runInSession(new Operation<Void>(){
+
+			public Void execute() {
+				// TODO 
+				return null;
+			}
+			
+		});
 	}
 
 }

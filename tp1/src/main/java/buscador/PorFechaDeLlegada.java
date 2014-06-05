@@ -18,5 +18,5 @@ public class PorFechaDeLlegada extends Criterio{
 	public Criteria filtrar(Criteria vuelos) {
 		return vuelos.add(Restrictions.eq("llegada", this.fecha));		
 	}
-
+	
 }
