@@ -13,7 +13,7 @@ import tp2.AbstractHibernateTest;
 public class CriterioTest extends AbstractHibernateTest{
 	
 	@Test
-	public void TestFiltrarPorAerolinea(){
+	public void testFiltrarPorAerolinea()throws Exception{
 		PorAerolinea filtro = new PorAerolinea("Lan");
 		
 		Criteria vuelos = SessionManager.getSession().createCriteria(Vuelo.class);
@@ -24,22 +24,22 @@ public class CriterioTest extends AbstractHibernateTest{
 	}
 	
 	@Test
-	public void TestFiltrarPorCategoria(){
+	public void testFiltrarPorCategoria(){
 		//TODO
 	}
 	
 	@Test
-	public void TestFiltrarPorFechaDeLlegada(){
+	public void testFiltrarPorFechaDeLlegada(){
 		//TODO
 	}
 	
 	@Test
-	public void TestFiltrarPorFechaDeSalida(){
+	public void testFiltrarPorFechaDeSalida(){
 		//TODO
 	}
 	
 	@Test
-	public void TestFiltrarPorOrigenDestino(){
+	public void testFiltrarPorOrigenDestino(){
 		//TODO
 	}
 
