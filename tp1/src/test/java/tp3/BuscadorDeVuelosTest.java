@@ -9,10 +9,7 @@ public class BuscadorDeVuelosTest extends AbstractHibernateTest{
 	
 	@Test
 	public void TestBuscar(){
-		//TODO
-		BuscadorDeVuelos buscador = new BuscadorDeVuelos();
-		
-		
+		//TODO		
 	}
 	
 	@Test
