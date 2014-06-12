@@ -1,30 +1,25 @@
 package aerolinea;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class Categoria {
 
 	private Integer id;
 	private int precio;
-	//private String cat;
-	private Asiento asiento;
+	private List<Asiento> asientos = new ArrayList<Asiento>();
 	
 	
-	public Asiento getAsiento() {
-		return asiento;
+	
+	public List<Asiento> getAsientos() {
+		return asientos;
 	}
-	public void setAsiento(Asiento asiento) {
-		this.asiento = asiento;
+	public void setAsientos(List<Asiento> asientos) {
+		this.asientos = asientos;
 	}
 	public int calcularPrecio(int precioTramo){
 		return precioTramo + this.getPrecio();
 	}	
-	/*
-	public String getCat() {
-		return cat;
-	}
-	public void setCat(String cat) {
-		this.cat = cat;
-	}
-	*/
 	public Integer getId() {
 		return id;
 	}
