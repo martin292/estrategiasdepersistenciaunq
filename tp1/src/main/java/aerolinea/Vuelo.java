@@ -18,6 +18,7 @@ public class Vuelo {
 	
 	private int costo;
 	private int escalas;
+	private Date duracion;
 	
 	//
 	public Vuelo(){
@@ -83,7 +84,13 @@ public class Vuelo {
 	}
 	public void setEscalas(int escalas) {
 		this.escalas = escalas;
-	}	
+	}
+	public Date getDuracion() {
+		return duracion;
+	}
+	public void setDuracion(Date duracion) {
+		this.duracion = duracion;
+	}
 	
 	
 }

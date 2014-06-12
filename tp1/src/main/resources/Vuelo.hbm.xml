@@ -41,6 +41,10 @@
         <property name="escalas" type="java.lang.Integer">
             <column name="escalas" not-null="false" unique="false" />
         </property>
+        
+         <property name="duracion" type="java.util.Date">
+            <column name="duracion" not-null="false" unique="false" />
+        </property>
 		
 	</class>
 </hibernate-mapping>
