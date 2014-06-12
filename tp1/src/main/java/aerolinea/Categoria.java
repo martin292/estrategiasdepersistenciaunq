@@ -8,13 +8,6 @@ public abstract class Categoria {
 	private Asiento asiento;
 	
 	
-	/**
-	 * Es exclusivo para Hibernate no usar 
-	 **/
-	protected Categoria() {
-	}
-	
-	
 	public Asiento getAsiento() {
 		return asiento;
 	}
