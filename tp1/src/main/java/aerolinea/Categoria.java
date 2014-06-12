@@ -4,7 +4,7 @@ public abstract class Categoria {
 
 	private Integer id;
 	private int precio;
-	private String cat;
+	//private String cat;
 	private Asiento asiento;
 	
 	
@@ -24,14 +24,14 @@ public abstract class Categoria {
 	public int calcularPrecio(int precioTramo){
 		return precioTramo + this.getPrecio();
 	}	
-	
+	/*
 	public String getCat() {
 		return cat;
 	}
 	public void setCat(String cat) {
 		this.cat = cat;
 	}
-	
+	*/
 	public Integer getId() {
 		return id;
 	}

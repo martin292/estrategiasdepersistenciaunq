@@ -13,7 +13,7 @@
 		
 		<property name="precio" type="java.lang.Integer">
 			<column name="precio" length="5" not-null="false" />
-		</property>	
+		</property>
 		
 		<one-to-one name="asiento" class="aerolinea.Asiento"
 			constrained="true"></one-to-one>
