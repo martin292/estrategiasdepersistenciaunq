@@ -38,7 +38,7 @@ CREATE TABLE vuelo(
   
   costo int(11), #Nuevo
   escalas int(11), #Nuevo  
-  duracion date, #Nuevo
+  duracion time, #Nuevo
 
   PRIMARY KEY (id)
   #FOREIGN KEY (idAerolinea)

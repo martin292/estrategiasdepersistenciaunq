@@ -1,5 +1,6 @@
 package tp3;
 
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -7,6 +8,7 @@ import org.junit.Test;
 
 import buscador.PorCantidadDeEscalas;
 import buscador.PorCosto;
+import buscador.PorDuracion;
 import aerolinea.Vuelo;
 import daos.SessionManager;
 import servicios.Operation;
@@ -58,14 +60,25 @@ public class OrdenTest extends AbstractHibernateTest{
 	
 	@Test
 	public void testOrdenarPorDuracion(){
+		/*
 		SessionManager.runInSession(new Operation<Void>(){
 
 			public Void execute() {
-				// TODO 
+				Criteria vuelos = SessionManager.getSession().createCriteria(Vuelo.class);
+				
+				PorDuracion orden = new PorDuracion();
+				
+				List<Vuelo> resultado = orden.ordenar(vuelos).list();
+				
+				Date duracion = new Date(0,0,0,10,00,00);
+
+				assertTrue(resultado.get(0).getDuracion().getTime() == duracion.getTime());
+				
 				return null;
 			}
 			
 		});
+		*/
 	}
 
 }
