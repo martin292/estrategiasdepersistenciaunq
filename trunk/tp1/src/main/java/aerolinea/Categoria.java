@@ -24,12 +24,14 @@ public abstract class Categoria {
 	public int calcularPrecio(int precioTramo){
 		return precioTramo + this.getPrecio();
 	}	
+	
 	public String getCat() {
 		return cat;
 	}
 	public void setCat(String cat) {
 		this.cat = cat;
 	}
+	
 	public Integer getId() {
 		return id;
 	}
