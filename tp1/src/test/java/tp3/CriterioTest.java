@@ -42,7 +42,7 @@ public class CriterioTest extends AbstractHibernateTest{
 	
 	@Test
 	public void testFiltrarPorCategoria() throws Exception{
-		/*
+		
 		SessionManager.runInSession(new Operation<Void>(){
 
 			public Void execute() {
@@ -59,7 +59,7 @@ public class CriterioTest extends AbstractHibernateTest{
 			}
 			
 		});
-		*/
+		
 	}
 	
 	@Test

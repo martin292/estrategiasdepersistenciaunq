@@ -2,10 +2,17 @@ package aerolinea;
 
 public abstract class Categoria {
 
-	protected Integer id;
-	protected int precio;
-	protected String cat;
-	protected Asiento asiento;
+	private Integer id;
+	private int precio;
+	private String cat;
+	private Asiento asiento;
+	
+	
+	/**
+	 * Es exclusivo para Hibernate no usar 
+	 **/
+	protected Categoria() {
+	}
 	
 	
 	public Asiento getAsiento() {
