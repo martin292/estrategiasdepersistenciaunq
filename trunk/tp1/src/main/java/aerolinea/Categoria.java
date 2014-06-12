@@ -11,21 +11,12 @@ public abstract class Categoria {
 	public Asiento getAsiento() {
 		return asiento;
 	}
-
-
-
 	public void setAsiento(Asiento asiento) {
 		this.asiento = asiento;
 	}
-
-
-
 	public int calcularPrecio(int precioTramo){
 		return precioTramo + this.getPrecio();
-	}
-	
-	
-	
+	}	
 	public String getCat() {
 		return cat;
 	}
