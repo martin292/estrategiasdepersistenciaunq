@@ -60,7 +60,7 @@ public class OrdenTest extends AbstractHibernateTest{
 	
 	@Test
 	public void testOrdenarPorDuracion(){
-		/*
+		
 		SessionManager.runInSession(new Operation<Void>(){
 
 			public Void execute() {
@@ -70,15 +70,16 @@ public class OrdenTest extends AbstractHibernateTest{
 				
 				List<Vuelo> resultado = orden.ordenar(vuelos).list();
 				
-				Date duracion = new Date(0,0,0,10,00,00);
 
-				assertTrue(resultado.get(0).getDuracion().getTime() == duracion.getTime());
+				assertTrue(resultado.get(0).getId() == 12);
 				
 				return null;
 			}
 			
 		});
-		*/
+		
 	}
+	
+	//
 
 }
