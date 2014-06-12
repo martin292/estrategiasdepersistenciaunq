@@ -15,8 +15,10 @@
 			<column name="precio" length="5" not-null="false" />
 		</property>
 		
-		<one-to-one name="asiento" class="aerolinea.Asiento"
-			constrained="true"></one-to-one>
+		<bag name="asientos" cascade="all" inverse="false">
+       		<key column="idCategoria" />
+       		<one-to-many class="aerolinea.Asiento" />
+       	</bag>
 		
 	</class>	
 

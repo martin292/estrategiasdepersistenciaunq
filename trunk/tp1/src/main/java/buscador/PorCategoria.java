@@ -19,7 +19,7 @@ public class PorCategoria extends Criterio{
 	@Override
 	public Criteria filtrar(Criteria vuelos) {
 		return vuelos.createCriteria("tramos").createCriteria("asientos")
-		.add(Restrictions.eq("estado", false))
+		//.add(Restrictions.eq("estado", false))
 		.createCriteria("categoria").add(Restrictions.sqlRestriction("{alias}.cat = ?", this.cat, StringType.INSTANCE));
 	}
 

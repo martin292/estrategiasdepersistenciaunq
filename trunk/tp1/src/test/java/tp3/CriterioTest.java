@@ -52,7 +52,7 @@ public class CriterioTest extends AbstractHibernateTest{
 				Criteria vuelos = SessionManager.getSession().createCriteria(Vuelo.class);
 				
 				List<Vuelo> resultado = filtro.filtrar(vuelos).list();
-				
+								
 				assertFalse(resultado.isEmpty());
 				
 				return null;
