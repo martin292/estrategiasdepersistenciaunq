@@ -52,7 +52,7 @@ public class Department {
 		this.managers = managers;
 	}
 	
-	
+	//
 	
 	public Double getTotalSalaries() {
 		Double tot = 0D;

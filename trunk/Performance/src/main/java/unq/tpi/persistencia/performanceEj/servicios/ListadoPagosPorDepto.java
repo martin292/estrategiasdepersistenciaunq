@@ -15,7 +15,7 @@ public class ListadoPagosPorDepto extends AbstractListado {
 		this.num = num;
 	}
 
-	/*
+	
 	@Override
 	protected void doListado() throws Exception {
 		depto = new DepartmentDAO().getByCode(num);
@@ -36,8 +36,13 @@ public class ListadoPagosPorDepto extends AbstractListado {
 			this.newLine();
 		}	
 		
-	}*/
+	}
 	
+	
+	
+	
+	
+	/*
 	@Override
 	protected void doListado() throws Exception {
 		List<Employee> empleados = new DepartmentDAO().getEmployeesByDepartmentCode(num);
@@ -60,7 +65,7 @@ public class ListadoPagosPorDepto extends AbstractListado {
 		this.newLine();
 		this.addColumn("Total").addColumn(tot).newLine();
 		this.newLine();		
-	}
+	}*/
 
 	@Override
 	public String getFilename() {
