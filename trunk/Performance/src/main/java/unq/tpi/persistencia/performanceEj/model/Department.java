@@ -44,6 +44,16 @@ public class Department {
 		this.historicEmployees = historicEmployees;
 	}
 
+	public List<Employee> getManagers() {
+		return managers;
+	}
+
+	public void setManagers(List<Employee> managers) {
+		this.managers = managers;
+	}
+	
+	
+	
 	public Double getTotalSalaries() {
 		Double tot = 0D;
 
@@ -56,13 +66,5 @@ public class Department {
 
 	public Employee getManager() {
 		return getManagers().get(getManagers().size() -1);
-	}
-
-	public List<Employee> getManagers() {
-		return managers;
-	}
-
-	public void setManagers(List<Employee> managers) {
-		this.managers = managers;
 	}
 }

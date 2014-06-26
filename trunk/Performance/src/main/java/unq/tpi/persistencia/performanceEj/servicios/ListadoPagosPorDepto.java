@@ -1,5 +1,7 @@
 package unq.tpi.persistencia.performanceEj.servicios;
 
+import java.util.List;
+
 import unq.tpi.persistencia.performanceEj.daos.DepartmentDAO;
 import unq.tpi.persistencia.performanceEj.model.Department;
 import unq.tpi.persistencia.performanceEj.model.Employee;
@@ -13,6 +15,7 @@ public class ListadoPagosPorDepto extends AbstractListado {
 		this.num = num;
 	}
 
+	/*
 	@Override
 	protected void doListado() throws Exception {
 		depto = new DepartmentDAO().getByCode(num);
@@ -33,7 +36,31 @@ public class ListadoPagosPorDepto extends AbstractListado {
 			this.newLine();
 		}	
 		
-	}	
+	}*/
+	
+	@Override
+	protected void doListado() throws Exception {
+		List<Employee> empleados = new DepartmentDAO().getEmployeesByDepartmentCode(num);
+				
+		this.addColumn("Nombre");
+		this.addColumn("Titulo");
+		this.addColumn("Monto");
+		this.newLine();
+
+		Double tot = 0D;
+		
+		for (Employee e : empleados) {
+			tot += e.getSalary();			
+			this.addColumn(e.getFullName());
+			this.addColumn(e.getTitle());
+			this.addColumn(e.getSalary());
+			this.newLine();
+		}
+		
+		this.newLine();
+		this.addColumn("Total").addColumn(tot).newLine();
+		this.newLine();		
+	}
 
 	@Override
 	public String getFilename() {
