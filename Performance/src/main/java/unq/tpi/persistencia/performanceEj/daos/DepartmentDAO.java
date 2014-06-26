@@ -27,11 +27,13 @@ public class DepartmentDAO {
 	
 	
 	public List<Employee> getEmployeesByDepartmentCode(String num){
-		Session session = SessionManager.getSession();
+		Session session = SessionManager.getSession();		
 		
-		Criteria ret = session.createCriteria(Employee.class).createCriteria("departments").add(Restrictions.eq("number", num));
-		
-		return ret.list();
+		return session
+				.createQuery("select employees from Department as dep where dep.number = :num")
+				.setParameter("num", num)
+				.list();
+						
 	}
 
 	@SuppressWarnings("unchecked")
