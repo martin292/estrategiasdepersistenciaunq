@@ -40,36 +40,5 @@ public class ListadoPagosPorDepto extends AbstractListado {
 		return "./target/PagosPorDepto.csv";
 	}
 	
-	
-	
-	
-	
-	
-	/*
-	@Override
-	protected void doListado() throws Exception {
-		depto = new DepartmentDAO().getByCode(num);
 		
-		this.addColumn("Nombre");
-		this.addColumn("Titulo");
-		this.addColumn("Monto");
-		this.newLine();
-
-		Double tot = 0D;
-		
-		for (Employee e : depto.getEmployees()) {
-			
-			tot += e.getSalary();
-			
-			this.addColumn(e.getFullName());
-			this.addColumn(e.getTitle());
-			this.addColumn(e.getSalary());
-			this.newLine();
-		}
-		
-		this.newLine();
-		this.addColumn("Total").addColumn(tot).newLine();
-		this.newLine();
-		
-	}*/
 }
