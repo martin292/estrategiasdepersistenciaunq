@@ -7,6 +7,7 @@ import org.hibernate.classic.Session;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 
+import unq.tpi.persistencia.performanceEj.model.DatosEmpleados;
 import unq.tpi.persistencia.performanceEj.model.Department;
 import unq.tpi.persistencia.performanceEj.model.Employee;
 import unq.tpi.persistencia.util.SessionManager;
@@ -26,13 +27,14 @@ public class DepartmentDAO {
 	}
 	
 	
-	public List<Employee> getEmployeesByDepartmentCode(String num){
+	public List<DatosEmpleados> getEmployeesByDepartmentCode(String num){
 		Session session = SessionManager.getSession();		
 		
-		return session
-				.createQuery("select employees from Department as dep where dep.number = :num")
-				.setParameter("num", num)
-				.list();
+		return (List<DatosEmpleados>)session
+                .createQuery("select  new unq.tpi.persistencia.performanceEj.model.DatosEmpleados(emp.firstName , emp.lastName, tit, sal.amount) "
+                		   + "from Department as dep inner join  dep.employees as emp inner join emp.salaries as sal inner join emp.titles tit "
+                		   + "where dep.number = :num and sal.to = '9999-01-01' ")
+                .setParameter("num", num).list();
 						
 	}
 
