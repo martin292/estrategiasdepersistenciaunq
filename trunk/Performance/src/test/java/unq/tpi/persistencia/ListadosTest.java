@@ -9,20 +9,16 @@ import junit.framework.TestCase;
 public class ListadosTest extends TestCase {
 	
 	
+	//HECHO
 	public void testListadoPagosPorDepto() throws Exception {
-		//TODO
 		new ListadoPagosPorDepto("d007").listado();
 	}
 	
-	
-	/*	
+	//HECHO
 	public void testListadoDeptos() throws Exception {
-		//TODO
 		new ListadoDeptos().listado();
 	}
-	*/
 		
-	/*
 	//HECHO
 	public void testListadoMaximosSalarios() throws Exception{
 		new ListadoMaximosSalarios().listado();
@@ -33,6 +29,6 @@ public class ListadosTest extends TestCase {
 		new ListadoDetalleEmpleado(10010).listado();
 		new ListadoDetalleEmpleado(10019).listado();
 	}
-	*/
+	
 	
 }
