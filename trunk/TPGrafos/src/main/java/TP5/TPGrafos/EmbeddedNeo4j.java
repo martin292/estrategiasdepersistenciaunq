@@ -66,8 +66,8 @@ public class EmbeddedNeo4j
         // END SNIPPET: startDb
 
         // START SNIPPET: transaction
-        try ( Transaction tx = graphDb.beginTx() )
-        {
+        try{
+        	Transaction tx = graphDb.beginTx();
             // Database operations go here
             // END SNIPPET: transaction
             // START SNIPPET: addData
@@ -92,14 +92,16 @@ public class EmbeddedNeo4j
 
             // START SNIPPET: transaction
             tx.success();
+        }catch(Exception e){
+        	
         }
         // END SNIPPET: transaction
     }
 
     void removeData()
     {
-        try ( Transaction tx = graphDb.beginTx() )
-        {
+        try{
+        	Transaction tx = graphDb.beginTx();
             // START SNIPPET: removingData
             // let's remove the data
             firstNode.getSingleRelationship( RelTypes.KNOWS, Direction.OUTGOING ).delete();
@@ -108,6 +110,8 @@ public class EmbeddedNeo4j
             // END SNIPPET: removingData
 
             tx.success();
+        }catch(Exception e){
+        	
         }
     }
 

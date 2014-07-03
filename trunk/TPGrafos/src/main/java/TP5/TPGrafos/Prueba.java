@@ -28,8 +28,9 @@ public class Prueba {
 		graphDb = new GraphDatabaseFactory().newEmbeddedDatabase( DB_PATH );
 		registerShutdownHook( graphDb );
 		
-		try ( Transaction tx = graphDb.beginTx() )
-		{
+		
+		try {
+			Transaction tx = graphDb.beginTx();
 			firstNode = graphDb.createNode();
 			firstNode.setProperty( "message", "Hello, " );
 			secondNode = graphDb.createNode();
@@ -43,6 +44,8 @@ public class Prueba {
 			System.out.print( secondNode.getProperty( "message" ) );
 			
 		    tx.success();
+		}catch(Exception e){
+			
 		}
 		
 	}
@@ -78,13 +81,15 @@ public class Prueba {
     }
 	
 	public void removeData(){
-		try ( Transaction tx = graphDb.beginTx() ){
-			
+		try {
+			Transaction tx = graphDb.beginTx();
 			firstNode.getSingleRelationship( RelTypes.KNOWS, Direction.OUTGOING ).delete();
 			firstNode.delete();
 			secondNode.delete();
 			
 			tx.success();
+		}catch(Exception e){
+			
 		}
 		
 	}
