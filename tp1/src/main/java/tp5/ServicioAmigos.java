@@ -1,5 +1,6 @@
 package tp5;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +17,7 @@ public class ServicioAmigos {
 
 	
 	protected Node usuario;
-	//protected List<Relationship> relaciones;
+	
 	protected GraphDatabaseService graphDb;
 	private static final String DB_PATH = "target/neo4j-hello-db";
 	
@@ -29,8 +30,6 @@ public class ServicioAmigos {
 			
 			Relationship relacion = this.usuario.createRelationshipTo(amigo, TipoRelacion.KNOWS);
 			relacion.setProperty("mensaje", "Conoce");
-			
-			//this.relaciones.add(relacion);
 			
 			tx.success();
 			
@@ -49,7 +48,9 @@ public class ServicioAmigos {
 	
 	private static enum TipoRelacion implements RelationshipType { KNOWS }
 	
-	public void crearDB(){			
+	public void crearDB(){
+		deleteFileOrDirectory( new File( DB_PATH ) );
+		
 		graphDb = new GraphDatabaseFactory().newEmbeddedDatabase( DB_PATH );
 		registerShutdownHook( graphDb );			
 	}
@@ -71,12 +72,58 @@ public class ServicioAmigos {
         } );
     }
 	
+	void removeData()
+    {
+        try{
+        	Transaction tx = graphDb.beginTx();
+            
+        	this.usuario.delete();
+
+            tx.success();
+        }catch(Exception e){
+			
+		}
+    }
+	
+	private static void deleteFileOrDirectory( File file )
+	    {
+	        if ( file.exists() )
+	        {
+	            if ( file.isDirectory() )
+	            {
+	                for ( File child : file.listFiles() )
+	                {
+	                    deleteFileOrDirectory( child );
+	                }
+	            }
+	            file.delete();
+	        }
+	    }
+	
 	
 	//-----------------------------------------------------
 	
 	
 	
 	
-	public static void main(String[] args) {}
+	public static void main(String[] args) {
+		
+		ServicioAmigos sa = new ServicioAmigos();
+		
+		sa.crearDB();
+		
+		Node usr1 = sa.graphDb.createNode();
+		usr1.setProperty("id", 1);
+		
+		Node usr2 = sa.graphDb.createNode();
+		usr2.setProperty("id", 2);
+		
+		sa.usuario = usr1;
+		
+		sa.agregarAmigo(usr2);
+		
+		sa.removeData();
+		sa.shutDown();
+	}
 
 }
