@@ -28,13 +28,7 @@ public class Usuario{
 	
 	private Integer id;
 	
-	//TP 5--------------------------------------
-	protected Node nodoUsuario;
-	protected List<Relationship> relaciones;
-	protected GraphDatabaseService graphDb;
-	private static final String DB_PATH = "target/neo4j-hello-db";
-	//------------------------------------------
-	
+		
 	// ******************************************************************
 	// * Constructores
 	// ******************************************************************
@@ -71,50 +65,6 @@ public class Usuario{
 	// * Metodos
 	// ******************************************************************
 	
-	public void agregarAmigo(Node amigo){
-		try{
-			Transaction tx = graphDb.beginTx();
-			
-			Relationship relacion = this.nodoUsuario.createRelationshipTo(amigo, TipoRelacion.KNOWS);
-			this.relaciones.add(relacion);
-			
-			tx.success();
-			
-		}catch(Exception e){
-			
-		}
-	}
-	
-	private static enum TipoRelacion implements RelationshipType { KNOWS }
-	
-	public void crearDB(){			
-		graphDb = new GraphDatabaseFactory().newEmbeddedDatabase( DB_PATH );
-		registerShutdownHook( graphDb );			
-	}
-	
-	public void shutDown(){
-        System.out.println();
-        System.out.println( "Shutting down database ..." );
-        graphDb.shutdown();
-    }
-	
-	private static void registerShutdownHook( final GraphDatabaseService graphDb ) {
-        Runtime.getRuntime().addShutdownHook( new Thread()
-        {
-            @Override
-            public void run()
-            {
-                graphDb.shutdown();
-            }
-        } );
-    }
-	
-	
-	
-	
-	
-	
-	//----------------------------------------------------------------------------------------
 	
 	
 	
