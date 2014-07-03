@@ -1,5 +1,6 @@
 package tp5;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.neo4j.graphdb.GraphDatabaseService;
@@ -13,18 +14,23 @@ import tp1.Usuario;
 
 public class ServicioAmigos {
 
-	protected Node nodoUsuario;
-	protected List<Relationship> relaciones;
+	
+	protected Node usuario;
+	//protected List<Relationship> relaciones;
 	protected GraphDatabaseService graphDb;
 	private static final String DB_PATH = "target/neo4j-hello-db";
 	
+			
+	//---------------------------------------------------------------
 	
 	public void agregarAmigo(Node amigo){
 		try{
 			Transaction tx = graphDb.beginTx();
 			
-			Relationship relacion = this.nodoUsuario.createRelationshipTo(amigo, TipoRelacion.KNOWS);
-			this.relaciones.add(relacion);
+			Relationship relacion = this.usuario.createRelationshipTo(amigo, TipoRelacion.KNOWS);
+			relacion.setProperty("mensaje", "Conoce");
+			
+			//this.relaciones.add(relacion);
 			
 			tx.success();
 			
@@ -33,23 +39,12 @@ public class ServicioAmigos {
 		}
 	}
 	
-	public List<Usuario> consultarAmigos(){
-		try{
-			Transaction tx = graphDb.beginTx();
-			
-			List<Usuario> amigos;
-			
-			for(Relationship rel: this.relaciones){
-				Node n = rel.getEndNode();
-			}
-			
-		}catch(Exception e){
-			
-		}		
-		
-		return null;
+	public Iterable<Relationship> consultarAmigos(){		
+		return this.usuario.getRelationships();
 	}
 	
+	
+	//------------------------------------------------------------
 	
 	
 	private static enum TipoRelacion implements RelationshipType { KNOWS }
@@ -77,7 +72,7 @@ public class ServicioAmigos {
     }
 	
 	
-	
+	//-----------------------------------------------------
 	
 	
 	
