@@ -77,12 +77,32 @@ public class Prueba {
         }
     }
 	
+	public void removeData(){
+		try ( Transaction tx = graphDb.beginTx() ){
+			
+			firstNode.getSingleRelationship( RelTypes.KNOWS, Direction.OUTGOING ).delete();
+			firstNode.delete();
+			secondNode.delete();
+			
+			tx.success();
+		}
+		
+	}
+	
+	public void shutDown()
+    {
+        graphDb.shutdown();
+    }
+	
 	//-------------------------------------------------------------
 	
 	public static void main( final String[] args )
     {
         Prueba prueba = new Prueba();
         prueba.test();
+        prueba.removeData();
+        prueba.shutDown();
+        
     }
 
 }
