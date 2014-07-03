@@ -63,6 +63,7 @@ public class Usuario{
 		this.password = password;
 		this.email = email;
 		this.fechanacimiento = fechanacimiento;
+		
 	}
 
 	
@@ -87,8 +88,17 @@ public class Usuario{
 	private static enum TipoRelacion implements RelationshipType { KNOWS }
 	
 	public void crearDB(){
-		graphDb = new GraphDatabaseFactory().newEmbeddedDatabase( DB_PATH );
-		registerShutdownHook( graphDb );
+		try{
+			Transaction tx = graphDb.beginTx();
+			
+			graphDb = new GraphDatabaseFactory().newEmbeddedDatabase( DB_PATH );
+			registerShutdownHook( graphDb );
+		
+			tx.success();
+			
+		}catch(Exception e){
+			
+		}
 	}
 	
 	public void shutDown(){
