@@ -141,6 +141,8 @@ public class ServicioAmigos {
 			System.out.println(sa.getUsuario().getProperty("id"));
 			System.out.println(sa.getUsuario().hasRelationship());
 			
+			System.out.println(sa.consultarAmigos().get(0).getProperty("id"));
+			
 			Usuario usr = new UsuarioDAO().get((Integer) sa.consultarAmigos().get(0).getProperty("id"));
 			System.out.println(usr.getNombreusuario());
 			

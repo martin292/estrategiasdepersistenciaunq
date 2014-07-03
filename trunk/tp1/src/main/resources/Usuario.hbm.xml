@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-	<class name="tp1.Usuario" table="Usuario">
+	<class name="tp1.Usuario" table="usuario">
 		<id name="id" type="java.lang.Integer">
 			<column name="id"/>
 			<generator class="identity"/>
