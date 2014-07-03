@@ -88,7 +88,7 @@ public class Usuario{
 	
 	public void crearDB(){
 		graphDb = new GraphDatabaseFactory().newEmbeddedDatabase( DB_PATH );
-		//registerShutdownHook( graphDb );
+		registerShutdownHook( graphDb );
 	}
 	
 	public void shutDown(){
@@ -97,6 +97,16 @@ public class Usuario{
         graphDb.shutdown();
     }
 	
+	private static void registerShutdownHook( final GraphDatabaseService graphDb ) {
+        Runtime.getRuntime().addShutdownHook( new Thread()
+        {
+            @Override
+            public void run()
+            {
+                graphDb.shutdown();
+            }
+        } );
+    }
 	
 	
 	
