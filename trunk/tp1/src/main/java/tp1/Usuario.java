@@ -87,18 +87,9 @@ public class Usuario{
 	
 	private static enum TipoRelacion implements RelationshipType { KNOWS }
 	
-	public void crearDB(){
-		try{
-			Transaction tx = graphDb.beginTx();
-			
-			graphDb = new GraphDatabaseFactory().newEmbeddedDatabase( DB_PATH );
-			registerShutdownHook( graphDb );
-		
-			tx.success();
-			
-		}catch(Exception e){
-			
-		}
+	public void crearDB(){			
+		graphDb = new GraphDatabaseFactory().newEmbeddedDatabase( DB_PATH );
+		registerShutdownHook( graphDb );			
 	}
 	
 	public void shutDown(){
@@ -120,6 +111,10 @@ public class Usuario{
 	
 	
 	
+	
+	
+	
+	//----------------------------------------------------------------------------------------
 	
 	
 	
