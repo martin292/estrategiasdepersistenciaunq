@@ -10,6 +10,7 @@ import org.neo4j.graphdb.Relationship;
 import org.neo4j.graphdb.RelationshipType;
 import org.neo4j.graphdb.Transaction;
 import org.neo4j.graphdb.factory.GraphDatabaseFactory;
+import org.neo4j.graphdb.index.Index;
 
 import daos.UsuarioDAO;
 import tp1.Usuario;
@@ -17,21 +18,21 @@ import tp1.Usuario;
 public class ServicioAmigos {
 
 	//--------------------------------------------------------------
-	
-	protected Node usuario;
-	
+		
 	protected GraphDatabaseService graphDb;
-	private static final String DB_PATH = "target/neo4j-hello-db";
+	private static final String DB_PATH = "target/neo4j-aterrizar-db";
 	
 			
 	//---------------------------------------------------------------
 	
-	public void agregarAmigo(Node amigo){
+	public void agregarAmigo(Integer usrID, Integer idAmigo){
 		try{
 			Transaction tx = graphDb.beginTx();
+	
+			Node nodeUSR = this.buscar(usrID);
+			Node nodeAMIGO = this.buscar(idAmigo);
 			
-			Relationship relacion = this.usuario.createRelationshipTo(amigo, TipoRelacion.KNOWS);
-			relacion.setProperty("relacion", "Conoce");
+			nodeUSR.createRelationshipTo(nodeAMIGO, TipoRelacion.AMIGOS);
 			
 			tx.success();
 			
@@ -40,32 +41,72 @@ public class ServicioAmigos {
 		}
 	}
 	
-	public List<Node> consultarAmigos(){
-		List<Node> amigos = new ArrayList<Node>();
+	public List<Integer> consultarAmigos(Integer usrID){
+		List<Integer> idAmigos = new ArrayList<Integer>();
 		
-		for(Relationship rel: this.usuario.getRelationships()){
-			amigos.add(rel.getEndNode());
+		try{
+			Transaction tx = graphDb.beginTx();
+	
+			Node nodo = this.buscar(usrID);
+			
+			Iterable<Relationship> relaciones = nodo.getRelationships(); //TODO Ver
+			
+			for(Relationship r: relaciones){
+				idAmigos.add((Integer) r.getEndNode().getProperty("id"));
+			}
+			
+			tx.success();
+			
+		}catch(Exception e){
+			
 		}
 		
-		return amigos;
+		return idAmigos;
 	}
 	
-	public void enviarMensaje(String msg){
+	public void enviarMensaje(Integer usrID, String msg, Integer idAmigo){
 		//TODO
+	}
+	
+	public void enviarMensajes(Integer usrID, String msg){
+		//TODO
+	}
+	
+	public List<String> verContactos(Integer usrID){
+		//TODO
+		return null;
 	}
 	
 	//------------------------------------------------------------
 	
-	public Node getUsuario() {
-		return usuario;
+	public void guardar(Integer usrId) {
+
+		try{
+			Transaction tx = graphDb.beginTx();
+			
+			Node nodo = graphDb.createNode();
+			nodo.setProperty("id", usrId);	
+
+			Index<Node> idxNode = graphDb.index().forNodes("id");
+			idxNode.add(nodo, "id", usrId);
+
+			tx.success();	
+		}catch(Exception e){}
+
 	}
-	public void setUsuario(Node usuario) {
-		this.usuario = usuario;
+	
+	public Node buscar(Integer usrID){
+		Node ret;
+		Index<Node> idx = graphDb.index().forNodes("id");
+
+		ret = idx.get("id", usrID).next(); 
+
+		return ret;
 	}
 	
 	//------------------------------------------------------------	
 	
-	private static enum TipoRelacion implements RelationshipType { KNOWS }
+	private static enum TipoRelacion implements RelationshipType { AMIGOS }
 	
 	public void crearDB(){
 		deleteFileOrDirectory( new File( DB_PATH ) );
@@ -91,19 +132,6 @@ public class ServicioAmigos {
         } );
     }
 	
-	void removeData()
-    {
-        try{
-        	Transaction tx = graphDb.beginTx();
-            
-        	this.usuario.delete();
-
-            tx.success();
-        }catch(Exception e){
-			
-		}
-    }
-	
 	private static void deleteFileOrDirectory( File file ){
 		if ( file.exists() ){
 			if ( file.isDirectory() ){
@@ -127,31 +155,25 @@ public class ServicioAmigos {
 		try{
 			Transaction tx = sa.graphDb.beginTx();
 			
-			Node usr1 = sa.graphDb.createNode();
-			usr1.setProperty("id", 1);
-			System.out.println(usr1.getProperty("id"));
+			sa.guardar(1);
+			System.out.println(sa.buscar(1).getProperty("id"));
 			
-			Node usr2 = sa.graphDb.createNode();
-			usr2.setProperty("id", 2);
-			System.out.println(usr2.getProperty("id"));
+			sa.guardar(2);
+			System.out.println(sa.buscar(2).getProperty("id"));
 			
-			sa.setUsuario(usr1);
+			sa.agregarAmigo(1, 2);
+			System.out.println(sa.buscar(1).hasRelationship());
 			
-			sa.agregarAmigo(usr2);
-			System.out.println(sa.getUsuario().getProperty("id"));
-			System.out.println(sa.getUsuario().hasRelationship());
+			System.out.println(sa.consultarAmigos(1).get(0));
 			
-			System.out.println(sa.consultarAmigos().get(0).getProperty("id"));
-			
-			Usuario usr = new UsuarioDAO().get((Integer) sa.consultarAmigos().get(0).getProperty("id"));
-			System.out.println(usr.getId());
-			System.out.println(usr.getNombreusuario());
+			//Usuario usr = new UsuarioDAO().get((Integer) sa.consultarAmigos().get(0).getProperty("id"));
+			//System.out.println(usr.getId());
+			//System.out.println(usr.getNombreusuario());
 			
 			tx.success();
 			
 		}catch(Exception e){}
 		
-		sa.removeData();
 		sa.shutDown();
 		
 	}
