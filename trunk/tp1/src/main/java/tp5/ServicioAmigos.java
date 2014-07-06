@@ -4,6 +4,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.neo4j.cypher.javacompat.ExecutionEngine;
+import org.neo4j.cypher.javacompat.ExecutionResult;
 import org.neo4j.graphdb.GraphDatabaseService;
 import org.neo4j.graphdb.Node;
 import org.neo4j.graphdb.Relationship;
@@ -73,8 +75,22 @@ public class ServicioAmigos {
 	}
 	
 	public List<String> verContactos(Integer usrID){
-		//TODO
-		return null;
+		ExecutionEngine motor = new ExecutionEngine( graphDb );
+		ExecutionResult resultado;
+		List<String> contactos = new ArrayList<String>();
+		
+		try{
+			Transaction tx = graphDb.beginTx();
+	
+			resultado = motor.execute(" QUERY ");
+			
+			contactos = resultado.columns(); //TODO
+			
+			tx.success();
+			
+		}catch(Exception e){}
+		
+		return contactos;
 	}
 	
 	//------------------------------------------------------------
@@ -166,9 +182,7 @@ public class ServicioAmigos {
 			
 			System.out.println(sa.consultarAmigos(1).get(0));
 			
-			//Usuario usr = new UsuarioDAO().get((Integer) sa.consultarAmigos().get(0).getProperty("id"));
-			//System.out.println(usr.getId());
-			//System.out.println(usr.getNombreusuario());
+			System.out.println(sa.verContactos(1).get(0));
 			
 			tx.success();
 			
