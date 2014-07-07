@@ -112,12 +112,7 @@ public class ServicioAmigos {
 	}
 	
 	public Node buscar(Integer usrID){
-		Node ret;
-		Index<Node> idx = graphDb.index().forNodes("id");
-
-		ret = idx.get("id", usrID).next(); 
-
-		return ret;
+		return graphDb.index().forNodes("id").get("id", usrID).getSingle();
 	}
 	
 	//------------------------------------------------------------	
