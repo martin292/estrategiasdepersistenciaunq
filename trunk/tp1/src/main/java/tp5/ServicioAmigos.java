@@ -69,11 +69,7 @@ public class ServicioAmigos {
 	public void enviarMensaje(Integer usrID, String msg, Integer idAmigo){
 		//TODO	
 	}
-	
-	public void enviarMensajes(Integer usrID, String msg){
-		//TODO
-	}
-	
+		
 	public List<String> verContactos(Integer usrID){
 		ExecutionEngine motor = new ExecutionEngine( graphDb );
 		ExecutionResult resultado;
