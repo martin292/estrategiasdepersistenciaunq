@@ -38,9 +38,7 @@ public class ServicioAmigos {
 			
 			tx.success();
 			
-		}catch(Exception e){
-			
-		}
+		}catch(Exception e){}
 	}
 	
 	public List<Integer> consultarAmigos(Integer usrID){
@@ -51,7 +49,7 @@ public class ServicioAmigos {
 	
 			Node nodo = this.buscar(usrID);
 			
-			Iterable<Relationship> relaciones = nodo.getRelationships(); //TODO Ver
+			Iterable<Relationship> relaciones = nodo.getRelationships();
 			
 			for(Relationship r: relaciones){
 				idAmigos.add((Integer) r.getEndNode().getProperty("id"));
@@ -59,15 +57,31 @@ public class ServicioAmigos {
 			
 			tx.success();
 			
-		}catch(Exception e){
-			
-		}
+		}catch(Exception e){}
 		
 		return idAmigos;
 	}
 	
 	public void enviarMensaje(Integer usrID, String msg, Integer idAmigo){
-		//TODO	
+		//TODO
+		try{
+			Transaction tx = graphDb.beginTx();
+	
+			Node nodeUSR = this.buscar(usrID);
+			Node nodeAMIGO = this.buscar(idAmigo);
+			
+			Node nodeMSG = graphDb.createNode();
+			nodeMSG.setProperty("mensaje", msg);
+			
+			nodeMSG.createRelationshipTo(nodeUSR, TipoRelacion.EMISOR);
+			nodeMSG.createRelationshipTo(nodeAMIGO, TipoRelacion.RECEPTOR);
+			
+			Index<Node> idx = graphDb.index().forNodes("mensaje");
+			idx.add(nodeMSG, "mensaje", nodeMSG.getProperty("mensaje"));
+			
+			tx.success();
+			
+		}catch(Exception e){}
 	}
 		
 	public List<String> verContactos(Integer usrID){
@@ -100,7 +114,7 @@ public class ServicioAmigos {
 			nodo.setProperty("id", usrId);	
 
 			Index<Node> idxNode = graphDb.index().forNodes("id");
-			idxNode.add(nodo, "id", usrId);
+			idxNode.add(nodo, "id", nodo.getProperty("id"));
 
 			tx.success();	
 		}catch(Exception e){}
@@ -113,13 +127,13 @@ public class ServicioAmigos {
 	
 	//------------------------------------------------------------	
 	
-	private static enum TipoRelacion implements RelationshipType { AMIGOS }
+	private static enum TipoRelacion implements RelationshipType { AMIGOS, EMISOR, RECEPTOR }
 	
 	public void crearDB(){
 		deleteFileOrDirectory( new File( DB_PATH ) );
 		
 		graphDb = new GraphDatabaseFactory().newEmbeddedDatabase( DB_PATH );
-		registerShutdownHook( graphDb );			
+		registerShutdownHook( graphDb );
 	}
 	
 	public void shutDown(){
@@ -175,10 +189,12 @@ public class ServicioAmigos {
 			sa.agregarAmigo(1, 3);
 			System.out.println(sa.buscar(1).hasRelationship());
 			
+			sa.enviarMensaje(1, "Hola", 2);
+			
 			System.out.println(sa.consultarAmigos(1).get(0));
 			System.out.println(sa.consultarAmigos(1).get(1));
 			
-			System.out.println(sa.verContactos(1).get(0));
+			//System.out.println(sa.verContactos(1).get(0));
 			
 			tx.success();
 			
