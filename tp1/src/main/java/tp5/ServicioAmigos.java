@@ -67,7 +67,7 @@ public class ServicioAmigos {
 	}
 	
 	public void enviarMensaje(Integer usrID, String msg, Integer idAmigo){
-		//TODO
+		//TODO	
 	}
 	
 	public void enviarMensajes(Integer usrID, String msg){
@@ -82,7 +82,7 @@ public class ServicioAmigos {
 		try{
 			Transaction tx = graphDb.beginTx();
 	
-			resultado = motor.execute(" QUERY ");
+			resultado = motor.execute(" QUERY "); //TODO query
 			
 			contactos = resultado.columns(); //TODO
 			
@@ -177,10 +177,15 @@ public class ServicioAmigos {
 			sa.guardar(2);
 			System.out.println(sa.buscar(2).getProperty("id"));
 			
+			sa.guardar(3);
+			System.out.println(sa.buscar(3).getProperty("id"));
+			
 			sa.agregarAmigo(1, 2);
+			sa.agregarAmigo(1, 3);
 			System.out.println(sa.buscar(1).hasRelationship());
 			
 			System.out.println(sa.consultarAmigos(1).get(0));
+			System.out.println(sa.consultarAmigos(1).get(1));
 			
 			System.out.println(sa.verContactos(1).get(0));
 			
