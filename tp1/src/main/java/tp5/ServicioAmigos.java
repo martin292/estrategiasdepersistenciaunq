@@ -83,7 +83,8 @@ public class ServicioAmigos {
 			
 		}catch(Exception e){}
 	}
-		
+	
+	/*
 	public List<String> verContactos(Integer usrID){
 		ExecutionEngine motor = new ExecutionEngine( graphDb );
 		ExecutionResult resultado;
@@ -102,7 +103,18 @@ public class ServicioAmigos {
 		
 		return contactos;
 	}
+	*/
 	
+	public List<Integer> verContactos(Integer usrID){
+		List<Integer> idAmigos = new ArrayList<Integer>();
+				
+		for(Integer amigo: this.consultarAmigos(usrID)){
+			idAmigos.add(amigo);
+			idAmigos.addAll(this.verContactos(amigo));
+		}
+		
+		return idAmigos;
+	}
 	//------------------------------------------------------------
 	
 	public void guardar(Integer usrId) {
