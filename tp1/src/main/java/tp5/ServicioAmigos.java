@@ -109,8 +109,10 @@ public class ServicioAmigos {
 		List<Integer> idAmigos = new ArrayList<Integer>();
 				
 		for(Integer amigo: this.consultarAmigos(usrID)){
-			idAmigos.add(amigo);
-			idAmigos.addAll(this.verContactos(amigo));
+			if(!idAmigos.contains(amigo)){
+				idAmigos.add(amigo);
+			}
+				idAmigos.addAll(this.verContactos(amigo));			
 		}
 		
 		return idAmigos;
@@ -201,12 +203,19 @@ public class ServicioAmigos {
 			sa.agregarAmigo(1, 3);
 			System.out.println(sa.buscar(1).hasRelationship());
 			
-			sa.enviarMensaje(1, "Hola", 2);
+			//sa.enviarMensaje(1, "Hola", 2);
+			
+			sa.guardar(4);
+			sa.guardar(5);
+			sa.agregarAmigo(2, 3);
+			sa.agregarAmigo(3, 4);
+			sa.agregarAmigo(3, 5);
+			sa.agregarAmigo(5, 2);
 			
 			System.out.println(sa.consultarAmigos(1).get(0));
 			System.out.println(sa.consultarAmigos(1).get(1));
 			
-			//System.out.println(sa.verContactos(1).get(0));
+			System.out.println(sa.verContactos(1));
 			
 			tx.success();
 			
