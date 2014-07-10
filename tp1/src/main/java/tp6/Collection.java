@@ -8,10 +8,10 @@ import net.vz.mongodb.jackson.MapReduce.MapReduceCommand;
 import net.vz.mongodb.jackson.MapReduceOutput;
 import net.vz.mongodb.jackson.WriteResult;
 
-public class Collection<T> {
-	
+public class Collection<T> {	
 	
 	private JacksonDBCollection<T, String> mongoCollection;
+	
 	
 	
 	public WriteResult<T, String> insert(T object){
@@ -23,6 +23,14 @@ public class Collection<T> {
     }
 	
 	public void setMongoCollection(JacksonDBCollection<T, String> mongoCollection) {
+		this.mongoCollection = mongoCollection;
+	}
+	
+	public JacksonDBCollection<T, String> getMongoCollection() {
+		return mongoCollection;
+	}
+	
+	public Collection(JacksonDBCollection<T, String> mongoCollection) {
 		this.mongoCollection = mongoCollection;
 	}
 	
@@ -45,14 +53,6 @@ public class Collection<T> {
 		return command;
 	}
 	*/
-	
-	public Collection(JacksonDBCollection<T, String> mongoCollection) {
-		this.mongoCollection = mongoCollection;
-	}
-	
-	public JacksonDBCollection<T, String> getMongoCollection() {
-		return mongoCollection;
-	}
-	
+		
 	//
 }
