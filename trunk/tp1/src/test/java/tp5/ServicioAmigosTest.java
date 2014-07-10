@@ -1,6 +1,7 @@
 package tp5;
 
 import org.junit.Test;
+import org.neo4j.graphdb.Transaction;
 
 public class ServicioAmigosTest {
 	
@@ -21,7 +22,14 @@ public class ServicioAmigosTest {
 	
 	@Test
 	public void testVerContactos(){
-		//TODO
+		ServicioAmigos sa = new ServicioAmigos();
+		
+		sa.crearDB();
+		try{
+			Transaction tx = sa.graphDb.beginTx();
+			
+			tx.success();			
+		}catch(Exception e){}
 	}
 
 }
