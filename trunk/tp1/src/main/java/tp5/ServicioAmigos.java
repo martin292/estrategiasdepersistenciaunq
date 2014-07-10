@@ -14,8 +14,6 @@ import org.neo4j.graphdb.Transaction;
 import org.neo4j.graphdb.factory.GraphDatabaseFactory;
 import org.neo4j.graphdb.index.Index;
 
-import daos.UsuarioDAO;
-import tp1.Usuario;
 
 public class ServicioAmigos {
 
@@ -63,7 +61,6 @@ public class ServicioAmigos {
 	}
 	
 	public void enviarMensaje(Integer usrID, String msg, Integer idAmigo){
-		//TODO
 		try{
 			Transaction tx = graphDb.beginTx();
 	
@@ -73,11 +70,8 @@ public class ServicioAmigos {
 			Node nodeMSG = graphDb.createNode();
 			nodeMSG.setProperty("mensaje", msg);
 			
-			nodeMSG.createRelationshipTo(nodeUSR, TipoRelacion.EMISOR);
-			nodeMSG.createRelationshipTo(nodeAMIGO, TipoRelacion.RECEPTOR);
-			
-			Index<Node> idx = graphDb.index().forNodes("mensaje");
-			idx.add(nodeMSG, "mensaje", nodeMSG.getProperty("mensaje"));
+			nodeUSR.createRelationshipTo(nodeMSG, TipoRelacion.EMISOR);
+			nodeAMIGO.createRelationshipTo(nodeMSG, TipoRelacion.RECEPTOR);
 			
 			tx.success();
 			
@@ -93,9 +87,9 @@ public class ServicioAmigos {
 		try{
 			Transaction tx = graphDb.beginTx();
 	
-			resultado = motor.execute(" QUERY "); //TODO query
+			resultado = motor.execute(" QUERY "); //
 			
-			contactos = resultado.columns(); //TODO
+			contactos = resultado.columns(); //
 			
 			tx.success();
 			
@@ -105,6 +99,7 @@ public class ServicioAmigos {
 	}
 	*/
 	
+	//TODO
 	public List<Integer> verContactos(Integer usrID){
 		List<Integer> idAmigos = new ArrayList<Integer>();
 				
@@ -112,11 +107,13 @@ public class ServicioAmigos {
 			if(!idAmigos.contains(amigo)){
 				idAmigos.add(amigo);
 			}
-				idAmigos.addAll(this.verContactos(amigo));			
+			idAmigos.addAll(this.verContactos(amigo));			
 		}
 		
 		return idAmigos;
 	}
+	
+	
 	//------------------------------------------------------------
 	
 	public void guardar(Integer usrId) {
@@ -203,7 +200,11 @@ public class ServicioAmigos {
 			sa.agregarAmigo(1, 3);
 			System.out.println(sa.buscar(1).hasRelationship());
 			
-			//sa.enviarMensaje(1, "Hola", 2);
+			sa.enviarMensaje(1, "Hola", 2);
+
+			for(Relationship r: sa.buscar(1).getRelationships()){
+				System.out.println(r.getEndNode().hasRelationship(TipoRelacion.EMISOR));
+			}
 			
 			sa.guardar(4);
 			sa.guardar(5);
@@ -215,7 +216,7 @@ public class ServicioAmigos {
 			System.out.println(sa.consultarAmigos(1).get(0));
 			System.out.println(sa.consultarAmigos(1).get(1));
 			
-			System.out.println(sa.verContactos(1));
+			//System.out.println(sa.verContactos(1));
 			
 			tx.success();
 			
