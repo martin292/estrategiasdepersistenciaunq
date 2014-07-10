@@ -99,7 +99,7 @@ public class ServicioAmigos {
 	}
 	*/
 	
-	//TODO
+	
 	public List<Integer> verContactos(Integer usrID){
 		List<Integer> idAmigos = new ArrayList<Integer>();
 				
@@ -107,7 +107,7 @@ public class ServicioAmigos {
 			if(!idAmigos.contains(amigo)){
 				idAmigos.add(amigo);
 			}
-			idAmigos.addAll(this.verContactos(amigo));			
+			idAmigos.addAll(this.consultarAmigos(amigo));			
 		}
 		
 		return idAmigos;
@@ -216,7 +216,7 @@ public class ServicioAmigos {
 			System.out.println(sa.consultarAmigos(1).get(0));
 			System.out.println(sa.consultarAmigos(1).get(1));
 			
-			//System.out.println(sa.verContactos(1));
+			System.out.println(sa.verContactos(1));
 			
 			tx.success();
 			
