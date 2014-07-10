@@ -23,47 +23,51 @@ public class ServicioComentarios {
 
 	//-----------------------------------------
 	
-	public void agregarDestino(Destino destino, Usuario usr){
-		Collection<Usuario> home = this.collection(Usuario.class);
-		usr.agregarDestino(destino);
-		home.insert(usr);		
+	public void agregarDestino(Destino destino, Perfil p){
+		Collection<Perfil> home = this.collection(Perfil.class);
+		p.agregarDestino(destino);
+		home.insert(p);		
 	}
 	
 	public void agregarUsuario(Usuario usr){
-		Collection<Usuario> home = this.collection(Usuario.class);
-		home.insert(usr);
+		Collection<Perfil> home = this.collection(Perfil.class);
+		
+		Perfil p = new Perfil();
+		//aaaa
+		
+		home.insert(p);
 	}
 	
-	public void agregarComentario(String comentario, Usuario usr, Integer destinoID){
-		Collection<Usuario> home = this.collection(Usuario.class);
+	public void agregarComentario(String comentario, Perfil p, Integer destinoID){
+		Collection<Perfil> home = this.collection(Perfil.class);
 		
-		usr.retDestino(destinoID).setComentario(comentario);
+		p.retDestino(destinoID).setComentario(comentario);
 		
-		home.insert(usr);		
+		home.insert(p);		
 	}
 	
-	public void meGusta(Usuario usr, Integer destinoID){
-		Collection<Usuario> home = this.collection(Usuario.class);
+	public void meGusta(Perfil p, Integer destinoID){
+		Collection<Perfil> home = this.collection(Perfil.class);
 		
-		usr.retDestino(destinoID).setLike(true);
+		p.retDestino(destinoID).setLike(true);
 		
-		home.insert(usr);
+		home.insert(p);
 	}
 	
-	public void noMeGusta(Usuario usr, Integer destinoID){
-		Collection<Usuario> home = this.collection(Usuario.class);
+	public void noMeGusta(Perfil p, Integer destinoID){
+		Collection<Perfil> home = this.collection(Perfil.class);
 		
-		usr.retDestino(destinoID).setLike(false);
+		p.retDestino(destinoID).setLike(false);
 		
-		home.insert(usr);
+		home.insert(p);
 	}	
 
-	public void establecerVisibilidad(Usuario usr, Destino destino, Visibilidad nivel){
-		Collection<Usuario> home = this.collection(Usuario.class);
+	public void establecerVisibilidad(Perfil p, Destino destino, Visibilidad nivel){
+		Collection<Perfil> home = this.collection(Perfil.class);
 		destino.setVisibilidad(nivel);
-		usr.agregarDestino(destino);
+		p.agregarDestino(destino);
 		
-		home.insert(usr);
+		home.insert(p);
 	}	
 	
 	public Perfil verPerfil(Usuario yo, Usuario el){
