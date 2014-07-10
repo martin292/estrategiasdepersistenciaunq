@@ -51,6 +51,12 @@ public class Usuario{
 		this.fechanacimiento = fechanacimiento;
 		
 	}
+	
+	public Usuario(Integer id, String usrname) {
+		super();
+		this.setId(id);
+		this.setNombreusuario(usrname);
+	}
 
 	
 	// ******************************************************************
