@@ -2,6 +2,7 @@ package tp6;
 
 import java.net.UnknownHostException;
 
+import net.vz.mongodb.jackson.JacksonDBCollection;
 import tp1.Usuario;
 
 import com.mongodb.BasicDBObject;
@@ -23,44 +24,29 @@ public class ServicioComentarios {
 	//-----------------------------------------
 	
 	public void agregarDestino(Destino destino, Usuario usr){
-		DBCollection coll = db.getCollection("coleccionUsuarios");
-		
-		BasicDBObject query = new BasicDBObject("UserName", usr.getNombreusuario());
-		
-		Cursor cursor = coll.find(query);
-		
+		Collection<Usuario> home = this.collection(Usuario.class);
+		usr.agregarDestino(destino);
+		home.insert(usr);		
 	}
 	
 	public void agregarUsuario(Usuario usr){
-		DBCollection coll = db.getCollection("coleccionUsuarios");
-		BasicDBObject doc = new BasicDBObject("Nombre", usr.getNombre());
-        doc.append("Apellido", usr.getApellido());
-        doc.append("UserName", usr.getNombreusuario());
-        doc.append("Password", usr.getPassword());
-        doc.append("Email", usr.getEmail());
-        doc.append("Fecha", usr.getFechanacimiento());
-        //
-        
-        coll.insert(doc);        
-        
-        DBObject myDoc = coll.findOne();
-		System.out.println(myDoc);
+		Collection<Usuario> home = this.collection(Usuario.class);
+		home.insert(usr);
 	}
 	
+	//-----------------------------------------
 	
+	
+	public <T> Collection<T> collection(Class<T> entityType){
+		DBCollection dbCollection = db.getCollection(entityType.getSimpleName());
+		return new Collection<T>(JacksonDBCollection.wrap(dbCollection, entityType, String.class));
+	}
 	
 	
 	public static void main(String[] args) throws UnknownHostException{
 		ServicioComentarios sc = new ServicioComentarios();
-		sc.mongoClient.dropDatabase("aterrizar");
 		
-		Usuario usr = new Usuario(1, "hola");
-		usr.setNombre("aaaaaa");
-		usr.setApellido("aaaa");
-		usr.setEmail("unEmail");
-		usr.setPassword("aaaaaaaaa");
-		
-		sc.agregarUsuario(usr);
+		//
 		
 		sc.mongoClient.close();
 	}
