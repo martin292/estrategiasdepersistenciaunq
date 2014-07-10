@@ -1,6 +1,10 @@
 package tp1;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
+import tp6.Destino;
 
 
 public class Usuario{
@@ -18,6 +22,8 @@ public class Usuario{
 	protected boolean cuentaValida;
 	protected Date fechanacimiento;
 	
+	protected List<Destino> destinos = new ArrayList<Destino>();
+
 	private Integer id;
 	
 		
@@ -139,6 +145,16 @@ public class Usuario{
 	}
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	public List<Destino> getDestinos() {
+		return destinos;
+	}
+	public void setDestinos(List<Destino> destinos) {
+		this.destinos = destinos;
+	}
+	
+	public void agregarDestino(Destino des){
+		this.destinos.add(des);
 	}
 
 		
