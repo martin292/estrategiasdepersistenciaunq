@@ -46,11 +46,15 @@ public class ServicioComentarios {
 		
 	}
 	
-	/*
+	
 	public void establecerVisibilidad(Usuario usr, Destino destino, Visibilidad nivel){
-		//TODO
+		Collection<Usuario> home = this.collection(Usuario.class);
+		destino.setVisibilidad(nivel);
+		usr.agregarDestino(destino);
+		
+		home.insert(usr);
 	}
-	*/
+	
 	
 	public void verPerfil(Usuario yo, Usuario el){
 		//TODO
