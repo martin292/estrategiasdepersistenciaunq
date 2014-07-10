@@ -43,21 +43,32 @@ public class ServicioComentarios {
 	}
 	
 	public void meGusta(Usuario usr, Integer destinoID){
+		Collection<Usuario> home = this.collection(Usuario.class);
 		
+		usr.retDestino(destinoID).setLike(true);
+		
+		home.insert(usr);
 	}
 	
-	
+	public void noMeGusta(Usuario usr, Integer destinoID){
+		Collection<Usuario> home = this.collection(Usuario.class);
+		
+		usr.retDestino(destinoID).setLike(false);
+		
+		home.insert(usr);
+	}	
+
 	public void establecerVisibilidad(Usuario usr, Destino destino, Visibilidad nivel){
 		Collection<Usuario> home = this.collection(Usuario.class);
 		destino.setVisibilidad(nivel);
 		usr.agregarDestino(destino);
 		
 		home.insert(usr);
-	}
+	}	
 	
-	
-	public void verPerfil(Usuario yo, Usuario el){
+	public Perfil verPerfil(Usuario yo, Usuario el){
 		//TODO
+		return null;
 	}
 	
 	//-----------------------------------------
@@ -68,7 +79,7 @@ public class ServicioComentarios {
 		return new Collection<T>(JacksonDBCollection.wrap(dbCollection, entityType, String.class));
 	}
 	
-	
+	//-----------------------------------------
 	
 	public static void main(String[] args) throws UnknownHostException{
 		ServicioComentarios sc = new ServicioComentarios();
