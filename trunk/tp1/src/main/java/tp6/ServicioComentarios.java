@@ -34,6 +34,20 @@ public class ServicioComentarios {
 		home.insert(usr);
 	}
 	
+	public void agregarComentario(String comentario, Usuario usr, Destino destino){
+		//TODO
+	}
+	
+	/*
+	public void establecerVisibilidad(Usuario usr, Destino destino, Visibilidad nivel){
+		//TODO
+	}
+	*/
+	
+	public void verPerfil(Usuario yo, Usuario el){
+		//TODO
+	}
+	
 	//-----------------------------------------
 	
 	
