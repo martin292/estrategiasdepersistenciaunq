@@ -29,11 +29,12 @@ public class ServicioComentarios {
 		home.insert(p);		
 	}
 	
-	public void agregarUsuario(Usuario usr){
+	public void agregarNuevoPerfil(Usuario usr){
 		Collection<Perfil> home = this.collection(Perfil.class);
 		
 		Perfil p = new Perfil();
-		//aaaa
+		
+		p.setIdUsuario(usr.getId());
 		
 		home.insert(p);
 	}
@@ -41,7 +42,7 @@ public class ServicioComentarios {
 	public void agregarComentario(String comentario, Perfil p, Integer destinoID){
 		Collection<Perfil> home = this.collection(Perfil.class);
 		
-		p.retDestino(destinoID).setComentario(comentario);
+		p.retDestino(destinoID).agregarComentario(comentario);
 		
 		home.insert(p);		
 	}
