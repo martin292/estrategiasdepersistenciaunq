@@ -7,10 +7,10 @@ public class Destino {
 	private String pais;
 	private String ciudad;
 	private Visibilidad visibilidad;
-	
-	
 	private String comentario;
-	
+	private boolean like;
+
+
 	public Destino(String pais, String ciudad) {
 		super();
 		this.pais = pais;
@@ -48,6 +48,12 @@ public class Destino {
 	}
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	public boolean isLike() {
+		return like;
+	}
+	public void setLike(boolean like) {
+		this.like = like;
 	}
 	
 	

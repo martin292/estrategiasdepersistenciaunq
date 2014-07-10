@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import tp6.Destino;
+import tp6.Perfil;
 
 
 public class Usuario{
@@ -23,6 +24,8 @@ public class Usuario{
 	protected Date fechanacimiento;
 	
 	protected List<Destino> destinos = new ArrayList<Destino>();
+	protected List<Usuario> amigos = new ArrayList<Usuario>();
+
 
 	private Integer id;
 	
@@ -92,6 +95,10 @@ public class Usuario{
 		return null;
 	}
 	
+	public Perfil retPerfil(Usuario yo) {		
+		return null;
+	}
+	
 	// ******************************************************************
 	// * Getters and setters
 	// ******************************************************************
@@ -155,10 +162,15 @@ public class Usuario{
 	}
 	public void setDestinos(List<Destino> destinos) {
 		this.destinos = destinos;
-	}
-	
+	}	
 	public void agregarDestino(Destino des){
 		this.destinos.add(des);
+	}
+	public List<Usuario> getAmigos() {
+		return amigos;
+	}
+	public void setAmigos(List<Usuario> amigos) {
+		this.amigos = amigos;
 	}
 
 		
