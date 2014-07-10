@@ -1,5 +1,8 @@
 package tp6;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Destino {
 	
 	private Integer id;
@@ -7,7 +10,8 @@ public class Destino {
 	private String pais;
 	private String ciudad;
 	private Visibilidad visibilidad;
-	private String comentario;
+	private List<String> comentarios = new ArrayList<String>();
+	
 	private boolean like;
 
 
@@ -15,6 +19,10 @@ public class Destino {
 		super();
 		this.pais = pais;
 		this.ciudad = ciudad;
+	}
+	
+	public void agregarComentario(String comentario) {
+		this.comentarios.add(comentario);		
 	}
 	
 	
@@ -37,12 +45,12 @@ public class Destino {
 	public void setVisibilidad(Visibilidad visibilidad) {
 		this.visibilidad = visibilidad;
 	}
-	public String getComentario() {
-		return comentario;
+	public List<String> getComentarios() {
+		return comentarios;
 	}
-	public void setComentario(String comentario) {
-		this.comentario = comentario;
-	}
+	public void setComentarios(List<String> comentarios) {
+		this.comentarios = comentarios;
+	}	
 	public Integer getId() {
 		return id;
 	}
