@@ -110,7 +110,7 @@ public class ServicioAmigos {
 			idAmigos.addAll(this.consultarAmigos(amigo));			
 		}
 		
-		return idAmigos;
+		return this.eliminarRepetidos(idAmigos);
 	}
 	
 	
@@ -134,6 +134,18 @@ public class ServicioAmigos {
 	
 	public Node buscar(Integer usrID){
 		return graphDb.index().forNodes("id").get("id", usrID).getSingle();
+	}
+	
+	private List<Integer> eliminarRepetidos(List<Integer> ids){
+		List<Integer> ret = new ArrayList<Integer>();
+		
+		for(Integer i: ids){
+			if(!ret.contains(i)){
+				ret.add(i);
+			}
+		}
+		
+		return ret;
 	}
 	
 	//------------------------------------------------------------	
