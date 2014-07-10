@@ -48,13 +48,9 @@ public class ServicioAmigosTest extends TestCase{
 			sa.guardar(1);
 			sa.guardar(2);
 			sa.guardar(3);
-			sa.guardar(4);
 			
 			sa.agregarAmigo(1, 2);
-			sa.agregarAmigo(1, 4);
 			sa.agregarAmigo(2, 3);
-			
-			System.out.println(sa.verContactos(1));
 			
 			assertTrue(sa.verContactos(1).contains(2));
 			assertTrue(sa.verContactos(1).contains(3));
