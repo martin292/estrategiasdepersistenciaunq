@@ -6,8 +6,10 @@ public class Destino {
 		
 	private String pais;
 	private String ciudad;
+	private Visibilidad visibilidad;
+	
+	
 	private String comentario;
-
 	
 	public Destino(String pais, String ciudad) {
 		super();
@@ -28,6 +30,12 @@ public class Destino {
 	}
 	public void setCiudad(String ciudad) {
 		this.ciudad = ciudad;
+	}
+	public Visibilidad getVisibilidad() {
+		return visibilidad;
+	}
+	public void setVisibilidad(Visibilidad visibilidad) {
+		this.visibilidad = visibilidad;
 	}
 	public String getComentario() {
 		return comentario;
