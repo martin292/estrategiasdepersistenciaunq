@@ -1,11 +1,11 @@
 package tp5;
 
-import static org.junit.Assert.assertTrue;
+import junit.framework.TestCase;
 
 import org.junit.Test;
 import org.neo4j.graphdb.Transaction;
 
-public class ServicioAmigosTest {
+public class ServicioAmigosTest extends TestCase{
 	
 	@Test
 	public void testAgregarAmigo(){
