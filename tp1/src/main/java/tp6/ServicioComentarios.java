@@ -18,7 +18,7 @@ public class ServicioComentarios {
 
 	//-----------------------------------------
 	
-	public void agregarDestino(String destino){
+	public void agregarDestino(String destino, Usuario usr){
 		
 	}
 	
