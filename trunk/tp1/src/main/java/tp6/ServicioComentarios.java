@@ -34,8 +34,16 @@ public class ServicioComentarios {
 		home.insert(usr);
 	}
 	
-	public void agregarComentario(String comentario, Usuario usr, Destino destino){
-		//TODO
+	public void agregarComentario(String comentario, Usuario usr, Integer destinoID){
+		Collection<Usuario> home = this.collection(Usuario.class);
+		
+		usr.retDestino(destinoID).setComentario(comentario);
+		
+		home.insert(usr);		
+	}
+	
+	public void meGusta(Usuario usr, Integer destinoID){
+		
 	}
 	
 	/*
@@ -55,6 +63,7 @@ public class ServicioComentarios {
 		DBCollection dbCollection = db.getCollection(entityType.getSimpleName());
 		return new Collection<T>(JacksonDBCollection.wrap(dbCollection, entityType, String.class));
 	}
+	
 	
 	
 	public static void main(String[] args) throws UnknownHostException{

@@ -2,10 +2,12 @@ package tp6;
 
 public class Destino {
 	
+	private Integer id;
+		
 	private String pais;
 	private String ciudad;
-	
-	
+	private String comentario;
+
 	
 	public Destino(String pais, String ciudad) {
 		super();
@@ -26,6 +28,18 @@ public class Destino {
 	}
 	public void setCiudad(String ciudad) {
 		this.ciudad = ciudad;
+	}
+	public String getComentario() {
+		return comentario;
+	}
+	public void setComentario(String comentario) {
+		this.comentario = comentario;
+	}
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	
 	

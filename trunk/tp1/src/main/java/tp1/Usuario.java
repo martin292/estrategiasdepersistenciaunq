@@ -88,6 +88,10 @@ public class Usuario{
 		
 	}
 	
+	public Destino retDestino(Integer id){
+		return null;
+	}
+	
 	// ******************************************************************
 	// * Getters and setters
 	// ******************************************************************
