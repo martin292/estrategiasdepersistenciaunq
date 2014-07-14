@@ -17,7 +17,7 @@ public class UsuarioDAO {
 		return session.createCriteria(Usuario.class).list();
 	}
 
-	public void save(Usuario usr) {
+	public void save(Usuario usr) {		
 		SessionManager.getSession().saveOrUpdate(usr);
 	}
 	

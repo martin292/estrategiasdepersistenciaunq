@@ -2,6 +2,9 @@ package tp6;
 
 import java.util.List;
 
+import com.mongodb.BasicDBObject;
+import com.mongodb.DBObject;
+
 import net.vz.mongodb.jackson.JacksonDBCollection;
 import net.vz.mongodb.jackson.MapReduce;
 import net.vz.mongodb.jackson.MapReduce.MapReduceCommand;
@@ -16,6 +19,10 @@ public class Collection<T> {
 	
 	public WriteResult<T, String> insert(T object){
 		return mongoCollection.insert(object);
+    }
+	
+	public WriteResult<T, String> update(T object){		
+		return mongoCollection.update(new BasicDBObject("idUsuario", ((Perfil) object).getIdUsuario()), (DBObject) object);
     }
 	
 	public WriteResult<T, String> insert(List<T> object){

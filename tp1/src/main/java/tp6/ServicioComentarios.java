@@ -23,12 +23,6 @@ public class ServicioComentarios {
 
 	//-----------------------------------------
 	
-	public void agregarDestino(Destino destino, Perfil p){
-		Collection<Perfil> home = this.collection(Perfil.class);
-		p.agregarDestino(destino);
-		home.insert(p);		
-	}
-	
 	public void agregarNuevoPerfil(Usuario usr){
 		Collection<Perfil> home = this.collection(Perfil.class);
 		
@@ -39,41 +33,52 @@ public class ServicioComentarios {
 		home.insert(p);
 	}
 	
-	public void agregarComentario(String comentario, Perfil p, Integer destinoID){
+	public void agregarDestino(Destino destino, Perfil p){
+		Collection<Perfil> home = this.collection(Perfil.class);
+		p.agregarDestino(destino);
+		home.update(p);		
+	}
+		
+	public void agregarComentario(Comentario comentario, Perfil p, Integer destinoID){
 		Collection<Perfil> home = this.collection(Perfil.class);
 		
 		p.retDestino(destinoID).agregarComentario(comentario);
 		
-		home.insert(p);		
+		home.update(p);
 	}
 	
 	public void meGusta(Perfil p, Integer destinoID){
 		Collection<Perfil> home = this.collection(Perfil.class);
 		
-		p.retDestino(destinoID).setLike(true);
+		p.retDestino(destinoID).meGusta();
 		
-		home.insert(p);
+		home.update(p);
 	}
 	
 	public void noMeGusta(Perfil p, Integer destinoID){
 		Collection<Perfil> home = this.collection(Perfil.class);
 		
-		p.retDestino(destinoID).setLike(false);
+		p.retDestino(destinoID).noMeGusta();
 		
-		home.insert(p);
+		home.update(p);
 	}	
 
-	public void establecerVisibilidad(Perfil p, Destino destino, Visibilidad nivel){
+	public void establecerVisibilidadAlDestino(Perfil p, Integer destinoID, Visibilidad nivel){
 		Collection<Perfil> home = this.collection(Perfil.class);
-		destino.setVisibilidad(nivel);
-		p.agregarDestino(destino);
 		
-		home.insert(p);
-	}	
+		p.retDestino(destinoID).setVisibilidad(nivel);
+		
+		home.update(p);
+	}
 	
-	public Perfil verPerfil(Usuario yo, Usuario el){
-		//TODO
-		return null;
+	public void establecerVisibilidadAlComentario(Perfil p, Comentario c, Visibilidad nivel){
+		Collection<Perfil> home = this.collection(Perfil.class);
+		c.setVisibilidad(nivel);
+		home.update(p);
+	}
+	
+	public Perfil verPerfil(Perfil yo, Perfil el){
+		return el.mostrarPerfil(yo);
 	}
 	
 	//-----------------------------------------

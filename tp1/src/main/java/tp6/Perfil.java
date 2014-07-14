@@ -10,9 +10,22 @@ public class Perfil {
 	protected Integer idUsuario;
 	//
 	protected List<Destino> destinos = new ArrayList<Destino>();
-	protected List<Integer> amigos = new ArrayList<Integer>();
+		
+
+	public Perfil mostrarPerfil(Perfil yo) {	
+		return new Perfil().agregarDestinos(yo);
+	}
 	
-	
+	private Perfil agregarDestinos(Perfil yo) {
+		for(Destino d: yo.getDestinos()){
+			if(d.sePuedeAgregar(this, yo)){
+				this.agregarDestino(d);
+			}
+		}
+		
+		return this;
+	}
+
 	public void agregarDestino(Destino destino) {
 		this.destinos.add(destino);		
 	}
@@ -26,7 +39,6 @@ public class Perfil {
 		
 		return null;
 	}
-	
 	
 	
 	//-------------------------------------------
@@ -43,12 +55,6 @@ public class Perfil {
 	}
 	public void setDestinos(List<Destino> destinos) {
 		this.destinos = destinos;
-	}
-	public List<Integer> getAmigos() {
-		return amigos;
-	}
-	public void setAmigos(List<Integer> amigos) {
-		this.amigos = amigos;
 	}
 	
 	//

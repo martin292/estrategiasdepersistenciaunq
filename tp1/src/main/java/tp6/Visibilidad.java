@@ -1,5 +1,7 @@
 package tp6;
 
-public class Visibilidad {
+public abstract class Visibilidad {
+
+	public abstract boolean ejecutar(Integer idUsuario, Integer idUsuario2);
 
 }
