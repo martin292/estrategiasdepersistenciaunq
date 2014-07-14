@@ -6,13 +6,15 @@ import java.util.List;
 public class Destino {
 	
 	private Integer id;
-		
+	
 	private String pais;
 	private String ciudad;
 	private Visibilidad visibilidad;
-	private List<String> comentarios = new ArrayList<String>();
+	private List<Comentario> comentarios = new ArrayList<Comentario>();
 	
-	private boolean like;
+	private Integer megusta;
+	private Integer nomegusta;
+	
 
 
 	public Destino(String pais, String ciudad) {
@@ -21,8 +23,19 @@ public class Destino {
 		this.ciudad = ciudad;
 	}
 	
-	public void agregarComentario(String comentario) {
+	public void agregarComentario(Comentario comentario) {
 		this.comentarios.add(comentario);		
+	}
+	
+	public void meGusta(){
+		this.megusta += 1;
+	}
+	public void noMeGusta(){
+		this.nomegusta += 1;
+	}
+	
+	public boolean sePuedeAgregar(Perfil perfil, Perfil yo) {
+		return this.visibilidad.ejecutar(perfil.getIdUsuario(), yo.getIdUsuario());
 	}
 	
 	
@@ -45,10 +58,10 @@ public class Destino {
 	public void setVisibilidad(Visibilidad visibilidad) {
 		this.visibilidad = visibilidad;
 	}
-	public List<String> getComentarios() {
+	public List<Comentario> getComentarios() {
 		return comentarios;
 	}
-	public void setComentarios(List<String> comentarios) {
+	public void setComentarios(List<Comentario> comentarios) {
 		this.comentarios = comentarios;
 	}	
 	public Integer getId() {
@@ -57,13 +70,13 @@ public class Destino {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public boolean isLike() {
-		return like;
+	public Integer getMegusta() {
+		return megusta;
 	}
-	public void setLike(boolean like) {
-		this.like = like;
+	public void setMegusta(Integer like) {
+		this.megusta = like;
 	}
-	
-	
+
+	//
 	
 }
