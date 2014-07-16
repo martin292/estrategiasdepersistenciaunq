@@ -17,64 +17,56 @@ public class ServicioComentarios {
 	private MongoClient mongoClient = new MongoClient();
 	private DB db = mongoClient.getDB("aterrizar");
 	
-	public ServicioComentarios()throws UnknownHostException{
-		super();
-	}
+	public ServicioComentarios()throws UnknownHostException{}
+	
+	private Collection<Perfil> home = this.collection(Perfil.class);
+
+	
 
 	//-----------------------------------------
 	
 	public void agregarNuevoPerfil(Usuario usr){
-		Collection<Perfil> home = this.collection(Perfil.class);
 		
 		Perfil p = new Perfil();
 		
 		p.setIdUsuario(usr.getId());
 		
-		home.insert(p);
+		this.home.insert(p);
 	}
 	
 	public void agregarDestino(Destino destino, Perfil p){
-		Collection<Perfil> home = this.collection(Perfil.class);
 		p.agregarDestino(destino);
-		home.update(p);		
+		this.home.update(p);		
 	}
 		
 	public void agregarComentario(Comentario comentario, Perfil p, Integer destinoID){
-		Collection<Perfil> home = this.collection(Perfil.class);
 		
 		p.retDestino(destinoID).agregarComentario(comentario);
 		
-		home.update(p);
+		this.home.update(p);
 	}
 	
 	public void meGusta(Perfil p, Integer destinoID){
-		Collection<Perfil> home = this.collection(Perfil.class);
 		
 		p.retDestino(destinoID).meGusta();
 		
-		home.update(p);
+		this.home.update(p);
 	}
 	
-	public void noMeGusta(Perfil p, Integer destinoID){
-		Collection<Perfil> home = this.collection(Perfil.class);
-		
+	public void noMeGusta(Perfil p, Integer destinoID){		
 		p.retDestino(destinoID).noMeGusta();
 		
-		home.update(p);
+		this.home.update(p);
 	}	
 
-	public void establecerVisibilidadAlDestino(Perfil p, Integer destinoID, Visibilidad nivel){
-		Collection<Perfil> home = this.collection(Perfil.class);
-		
-		p.retDestino(destinoID).setVisibilidad(nivel);
-		
-		home.update(p);
+	public void establecerVisibilidadAlDestino(Perfil p, Integer destinoID, Visibilidad nivel){		
+		p.retDestino(destinoID).setVisibilidad(nivel);		
+		this.home.update(p);
 	}
 	
 	public void establecerVisibilidadAlComentario(Perfil p, Comentario c, Visibilidad nivel){
-		Collection<Perfil> home = this.collection(Perfil.class);
 		c.setVisibilidad(nivel);
-		home.update(p);
+		this.home.update(p);
 	}
 	
 	public Perfil verPerfil(Perfil yo, Perfil el){
