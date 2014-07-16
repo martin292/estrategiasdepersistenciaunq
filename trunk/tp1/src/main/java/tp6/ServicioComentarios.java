@@ -25,12 +25,9 @@ public class ServicioComentarios {
 
 	//-----------------------------------------
 	
-	public void agregarNuevoPerfil(Usuario usr){
-		
-		Perfil p = new Perfil();
-		
-		p.setIdUsuario(usr.getId());
-		
+	public void agregarNuevoPerfil(Usuario usr){		
+		Perfil p = new Perfil();		
+		p.setIdUsuario(usr.getId());		
 		this.home.insert(p);
 	}
 	
@@ -39,23 +36,18 @@ public class ServicioComentarios {
 		this.home.update(p);		
 	}
 		
-	public void agregarComentario(Comentario comentario, Perfil p, Integer destinoID){
-		
-		p.retDestino(destinoID).agregarComentario(comentario);
-		
+	public void agregarComentario(Comentario comentario, Perfil p, Integer destinoID){		
+		p.retDestino(destinoID).agregarComentario(comentario);		
 		this.home.update(p);
 	}
 	
-	public void meGusta(Perfil p, Integer destinoID){
-		
-		p.retDestino(destinoID).meGusta();
-		
+	public void meGusta(Perfil p, Integer destinoID){		
+		p.retDestino(destinoID).meGusta();		
 		this.home.update(p);
 	}
 	
 	public void noMeGusta(Perfil p, Integer destinoID){		
-		p.retDestino(destinoID).noMeGusta();
-		
+		p.retDestino(destinoID).noMeGusta();		
 		this.home.update(p);
 	}	
 
