@@ -20,9 +20,13 @@ public class Collection<T> {
 	public WriteResult<T, String> insert(T object){
 		return mongoCollection.insert(object);
     }
-	
+	/*
 	public WriteResult<T, String> update(T object){		
 		return mongoCollection.update(new BasicDBObject("idUsuario", ((Perfil) object).getIdUsuario()), (DBObject) object);
+    }*/
+	
+	public WriteResult<T, String> update(Perfil object){		
+		return mongoCollection.update(new BasicDBObject("idUsuario", object.getIdUsuario()), (DBObject) object);
     }
 	
 	public WriteResult<T, String> insert(List<T> object){
