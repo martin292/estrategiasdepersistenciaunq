@@ -81,7 +81,7 @@ public class ServicioComentariosTest {
 		Publico nivel = new Publico();
 		sc.establecerVisibilidadAlDestino(sc.retPerfil(2), 1, nivel);
 		
-		Perfil p = sc.verPerfil(1, 2);
+		Perfil p = sc.verPerfil(2, 1);
 		
 		assertEquals(p.getDestinos().get(0).getPais(), "a");
 	}

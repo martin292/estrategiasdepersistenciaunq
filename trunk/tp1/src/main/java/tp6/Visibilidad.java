@@ -1,9 +1,12 @@
 package tp6;
 
-public abstract class Visibilidad {
+public class Visibilidad {
 	
 	private Integer id;
-
+		
+	public Visibilidad(){}
+	
+		
 	public Integer getId() {
 		return id;
 	}
@@ -11,8 +14,9 @@ public abstract class Visibilidad {
 		this.id = id;
 	}
 
-	public Visibilidad(){}
-	
-	public abstract boolean ejecutar(Integer idUsuario, Integer idUsuario2);
 
+	public boolean ejecutar(Integer idUsuario, Integer idUsuario2) {
+		return true;
+	}
+	
 }
