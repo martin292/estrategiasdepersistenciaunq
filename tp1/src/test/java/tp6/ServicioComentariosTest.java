@@ -17,7 +17,11 @@ public class ServicioComentariosTest {
 	@Before
 	public void fillDB(){
 		Usuario usr = new Usuario(1, "x");		
-		sc.agregarNuevoPerfil(usr);	
+		sc.agregarNuevoPerfil(usr);
+		
+		Destino d = new Destino("a", "b");
+		d.setId(1);
+		sc.agregarDestino(d, sc.retPerfil(1));
 	}
 	
 	@After
@@ -44,10 +48,6 @@ public class ServicioComentariosTest {
 		c.setIdUsuario(1);
 		c.setTxt("Hola");
 		
-		Destino d = new Destino("a", "b");
-		d.setId(1);
-		sc.agregarDestino(d, sc.retPerfil(1));
-		
 		sc.agregarComentario(c, sc.retPerfil(1), 1);
 		
 		//assertTrue(sc.retPerfil(1).retDestino(1).getComentarios().get(0).getTxt() == "Hola");
@@ -55,7 +55,8 @@ public class ServicioComentariosTest {
 	
 	@Test
 	public void testMeGusta(){
-		//TODO
+		sc.meGusta(sc.retPerfil(1), 1);
+		//assertTrue(sc.retPerfil(1).retDestino(1).getMegusta() == 1);
 	}
 	
 	@Test
@@ -65,7 +66,9 @@ public class ServicioComentariosTest {
 	
 	@Test
 	public void testEstablecerVisibilidadAlDestino(){
-		//TODO
+		Publico nivel = new Publico();
+		sc.establecerVisibilidadAlDestino(sc.retPerfil(1), 1, nivel);
+		//assertTrue(sc.retPerfil(1).retDestino(1).getVisibilidad().toString() == "Publico");
 	}
 	
 	@Test

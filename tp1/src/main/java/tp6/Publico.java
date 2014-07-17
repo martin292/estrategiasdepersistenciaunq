@@ -6,5 +6,9 @@ public class Publico extends Visibilidad {
 	public boolean ejecutar(Integer idUsuario, Integer idUsuario2) {
 		return true;
 	}
+	
+	public String toString(){
+		return "Publico";
+	}
 
 }
