@@ -3,6 +3,7 @@ package tp6;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.vz.mongodb.jackson.Id;
 import net.vz.mongodb.jackson.ObjectId;
 
 import org.codehaus.jackson.annotate.JsonProperty;
@@ -11,9 +12,10 @@ import tp1.Usuario;
 
 public class Perfil {
 	
-	@ObjectId
-	@JsonProperty("_id")
-	protected Integer idUsuario;
+	//@ObjectId
+	//@JsonProperty("_id")
+	@Id
+	private Integer idUsuario;
 	
 	protected String usrName;
 	
@@ -50,7 +52,7 @@ public class Perfil {
 	}
 	
 	
-	//-------------------------------------------
+	//-------------------------------------------String
 
 
 	public Integer getIdUsuario() {

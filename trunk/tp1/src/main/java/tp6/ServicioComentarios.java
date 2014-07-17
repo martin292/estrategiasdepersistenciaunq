@@ -17,6 +17,7 @@ public class ServicioComentarios {
 	public ServicioComentarios()throws UnknownHostException{}
 	
 	private Collection<Perfil> home = this.collection(Perfil.class);
+
 	
 
 	//-----------------------------------------
@@ -25,6 +26,10 @@ public class ServicioComentarios {
 		Perfil p = new Perfil();		
 		p.setIdUsuario(usr.getId());		
 		this.home.insert(p);
+	}
+	
+	public Perfil retPerfil(Integer id){
+		return this.home.ret(id);
 	}
 	
 	public void agregarDestino(Destino destino, Perfil p){
@@ -61,13 +66,17 @@ public class ServicioComentarios {
 		return null;
 	}
 	
+	public Perfil retPerfil(Perfil yo, Perfil el){
+		return el.mostrarPerfil(yo);
+	}
+	
 		
 	//-----------------------------------------
 	
 	
 	public <T> Collection<T> collection(Class<T> entityType){
 		DBCollection dbCollection = db.getCollection(entityType.getSimpleName());
-		return new Collection<T>(JacksonDBCollection.wrap(dbCollection, entityType, String.class));
+		return new Collection<T>(JacksonDBCollection.wrap(dbCollection, entityType, Integer.class));
 	}
 	
 	//
