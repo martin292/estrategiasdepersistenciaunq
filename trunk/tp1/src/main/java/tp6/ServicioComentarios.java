@@ -57,7 +57,7 @@ public class ServicioComentarios {
 		this.home.update(p);
 	}
 	
-	public void meGusta(Perfil p, Integer destinoID){		
+	public void meGusta(Perfil p, Integer destinoID){	
 		p.retDestino(destinoID).meGusta();		
 		this.home.update(p);
 	}
@@ -68,7 +68,7 @@ public class ServicioComentarios {
 	}	
 
 	public void establecerVisibilidadAlDestino(Perfil p, Integer destinoID, Visibilidad nivel){		
-		p.retDestino(destinoID).setVisibilidad(nivel);		
+		p.retDestino(destinoID).setVisibilidad(nivel);
 		this.home.update(p);
 	}
 	
