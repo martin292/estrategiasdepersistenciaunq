@@ -16,14 +16,15 @@ public class ServicioComentariosTest extends TestCase{
 		try{			
 			ServicioComentarios sc = new ServicioComentarios();
 			
-			Usuario usr = new Usuario(1, "hola");
+			//Usuario usr = new Usuario(1, "hola");
 			
-			sc.agregarNuevoPerfil(usr);
+			//sc.agregarNuevoPerfil(usr);
 			
-			//Destino d = new Destino("a", "b");
+			Perfil p = new Perfil(1);
 			
-			//sc.agregarDestino(d, sc.retPerfil(1));
-						
+			Destino d = new Destino("a", "b");
+			
+			sc.agregarDestino(d, p);						
 			
 		}catch (UnknownHostException e) {e.printStackTrace();}
 	}
