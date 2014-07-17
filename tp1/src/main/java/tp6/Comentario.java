@@ -8,8 +8,9 @@ public class Comentario {
 	private Integer idUsuario;
 	private String txt;	
 	private Visibilidad visibilidad;
-	private List<Integer> likes = new ArrayList<Integer>();
-	
+	//private List<Integer> likes = new ArrayList<Integer>();
+	private int megusta;
+	private int nomegusta;
 	
 	public Comentario(){}
 	
@@ -32,13 +33,7 @@ public class Comentario {
 	public void setVisibilidad(Visibilidad visibilidad) {
 		this.visibilidad = visibilidad;
 	}
-	public List<Integer> getLikes() {
-		return likes;
-	}
-	public void setLikes(List<Integer> likes) {
-		this.likes = likes;
-	}
-	
+		
 	//
 
 }
