@@ -10,10 +10,10 @@ import org.codehaus.jackson.annotate.JsonProperty;
 
 import tp1.Usuario;
 
-public class Perfil {
+public class Perfil implements MongoEntity{
 	
-	//@ObjectId
-	//@JsonProperty("_id")
+//	@ObjectId
+//	@JsonProperty("_id")
 	@Id
 	private Integer idUsuario;
 	
@@ -80,7 +80,10 @@ public class Perfil {
 	public void setUsrName(String usrName) {
 		this.usrName = usrName;
 	}
+
+	public Integer dameId() {
+		return idUsuario;
+	}
 	
-	//
 
 }

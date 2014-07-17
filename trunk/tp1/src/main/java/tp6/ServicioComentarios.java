@@ -2,6 +2,7 @@ package tp6;
 
 import java.net.UnknownHostException;
 
+
 import net.vz.mongodb.jackson.JacksonDBCollection;
 import tp1.Usuario;
 
@@ -11,6 +12,8 @@ import com.mongodb.MongoClient;
 
 public class ServicioComentarios {
 	
+	private static ServicioComentarios INSTANCE;
+
 	private MongoClient mongoClient = new MongoClient();
 	private DB db = mongoClient.getDB("aterrizar");
 	
@@ -19,12 +22,24 @@ public class ServicioComentarios {
 	private Collection<Perfil> home = this.collection(Perfil.class);
 
 	
+	synchronized public static ServicioComentarios instance() throws UnknownHostException {
+		if (INSTANCE == null) {
+			INSTANCE = new ServicioComentarios();
+		}
+		return INSTANCE;
+	}
+	
 
 	//-----------------------------------------
 	
+	public Collection<Perfil> getHome() {
+		return home;
+	}
+
 	public void agregarNuevoPerfil(Usuario usr){		
 		Perfil p = new Perfil();		
-		p.setIdUsuario(usr.getId());		
+		p.setIdUsuario(usr.getId());
+		p.setUsrName(usr.getNombreusuario());
 		this.home.insert(p);
 	}
 	
@@ -74,7 +89,7 @@ public class ServicioComentarios {
 	//-----------------------------------------
 	
 	
-	public <T> Collection<T> collection(Class<T> entityType){
+	public <T extends MongoEntity> Collection<T > collection(Class<T> entityType){
 		DBCollection dbCollection = db.getCollection(entityType.getSimpleName());
 		return new Collection<T>(JacksonDBCollection.wrap(dbCollection, entityType, Integer.class));
 	}
