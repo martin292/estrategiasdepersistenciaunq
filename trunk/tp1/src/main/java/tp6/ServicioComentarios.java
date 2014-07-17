@@ -5,11 +5,8 @@ import java.net.UnknownHostException;
 import net.vz.mongodb.jackson.JacksonDBCollection;
 import tp1.Usuario;
 
-import com.mongodb.BasicDBObject;
-import com.mongodb.Cursor;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
-import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 
 public class ServicioComentarios {
@@ -20,7 +17,6 @@ public class ServicioComentarios {
 	public ServicioComentarios()throws UnknownHostException{}
 	
 	private Collection<Perfil> home = this.collection(Perfil.class);
-
 	
 
 	//-----------------------------------------
@@ -61,10 +57,11 @@ public class ServicioComentarios {
 		this.home.update(p);
 	}
 	
-	public Perfil verPerfil(Perfil yo, Perfil el){
-		return el.mostrarPerfil(yo);
+	public Perfil verPerfil(Integer usrID, Integer id){		
+		return null;
 	}
 	
+		
 	//-----------------------------------------
 	
 	
@@ -73,14 +70,6 @@ public class ServicioComentarios {
 		return new Collection<T>(JacksonDBCollection.wrap(dbCollection, entityType, String.class));
 	}
 	
-	//-----------------------------------------
-	
-	public static void main(String[] args) throws UnknownHostException{
-		ServicioComentarios sc = new ServicioComentarios();
-		
-		//
-		
-		sc.mongoClient.close();
-	}
+	//
 
 }

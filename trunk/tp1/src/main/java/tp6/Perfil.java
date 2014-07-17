@@ -3,11 +3,20 @@ package tp6;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.vz.mongodb.jackson.ObjectId;
+
+import org.codehaus.jackson.annotate.JsonProperty;
+
 import tp1.Usuario;
 
 public class Perfil {
 	
+	@ObjectId
+	@JsonProperty("_id")
 	protected Integer idUsuario;
+	
+	protected String usrName;
+	
 	//
 	protected List<Destino> destinos = new ArrayList<Destino>();
 		
@@ -55,6 +64,12 @@ public class Perfil {
 	}
 	public void setDestinos(List<Destino> destinos) {
 		this.destinos = destinos;
+	}
+	public String getUsrName() {
+		return usrName;
+	}
+	public void setUsrName(String usrName) {
+		this.usrName = usrName;
 	}
 	
 	//
