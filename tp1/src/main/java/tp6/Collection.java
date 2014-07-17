@@ -13,11 +13,15 @@ import net.vz.mongodb.jackson.WriteResult;
 
 public class Collection<T> {	
 	
-	private JacksonDBCollection<T, String> mongoCollection;
+	private JacksonDBCollection<T, Integer> mongoCollection;
 	
 	
 	
-	public WriteResult<T, String> insert(T object){
+	public Perfil ret(Integer id) {
+		return (Perfil) mongoCollection.findOne(new BasicDBObject("idUsuario", id));		
+	}
+	
+	public WriteResult<T, Integer> insert(T object){
 		return mongoCollection.insert(object);
     }
 	/*
@@ -25,25 +29,35 @@ public class Collection<T> {
 		return mongoCollection.update(new BasicDBObject("idUsuario", ((Perfil) object).getIdUsuario()), (DBObject) object);
     }*/
 	
-	public WriteResult<T, String> update(Perfil object){		
+	public WriteResult<T, Integer> update(Perfil object){		
 		return mongoCollection.update(new BasicDBObject("idUsuario", object.getIdUsuario()), (DBObject) object);
     }
 	
-	public WriteResult<T, String> insert(List<T> object){
+	public WriteResult<T, Integer> insert(List<T> object){
 		return mongoCollection.insert(object);
     }
 	
-	public void setMongoCollection(JacksonDBCollection<T, String> mongoCollection) {
+	public void setMongoCollection(JacksonDBCollection<T, Integer> mongoCollection) {
 		this.mongoCollection = mongoCollection;
 	}
 	
-	public JacksonDBCollection<T, String> getMongoCollection() {
+	public JacksonDBCollection<T, Integer> getMongoCollection() {
 		return mongoCollection;
 	}
 	
+	/*
 	public Collection(JacksonDBCollection<T, String> mongoCollection) {
 		this.mongoCollection = mongoCollection;
 	}
+	*/
+	
+	
+	public Collection(JacksonDBCollection<T, Integer> mongoCollection) {
+		this.mongoCollection = mongoCollection;
+	}
+
+	
+	
 	
 	/*
 	public <E, S> MapReduceOutput<E,S> mapReduce(String map, String reduce, Class<E> entrada, Class<S> salida){

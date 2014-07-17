@@ -1,7 +1,10 @@
 package tp6;
 
+import java.net.UnknownHostException;
+
 import org.junit.Test;
 
+import tp1.Usuario;
 import junit.framework.TestCase;
 
 public class ServicioComentariosTest extends TestCase{
@@ -10,7 +13,19 @@ public class ServicioComentariosTest extends TestCase{
 	
 	@Test
 	public void testAgregarDestino(){
-		//TODO
+		try{			
+			ServicioComentarios sc = new ServicioComentarios();
+			
+			Usuario usr = new Usuario(1, "hola");
+			
+			sc.agregarNuevoPerfil(usr);
+			
+			//Destino d = new Destino("a", "b");
+			
+			//sc.agregarDestino(d, sc.retPerfil(1));
+						
+			
+		}catch (UnknownHostException e) {e.printStackTrace();}
 	}
 	
 	@Test
