@@ -73,24 +73,9 @@ public class ServicioComentariosTest {
 	public void testEstablecerVisibilidadAlDestino(){
 		Publico nivel = new Publico();
 		sc.establecerVisibilidadAlDestino(sc.retPerfil(1), 1, nivel);
-		//assertEquals(sc.retPerfil(1).retDestino(1).getVisibilidad().toString(), "Publico");
-	}
-	/*
-	@Test
-	public void testEstablecerVisibilidadAlComentario(){
-		Comentario c = new Comentario();
-		c.setIdUsuario(1);
-		c.setTxt("Hola");
-		
-		sc.agregarComentario(c, sc.retPerfil(1), 1);
-		
-		//
-		
-		Publico nivel = new Publico();
-		sc.establecerVisibilidadAlComentario(sc.retPerfil(1), c, nivel);
 		assertEquals(sc.retPerfil(1).retDestino(1).getVisibilidad().toString(), "Publico");
 	}
-	*/
+	
 	@Test
 	public void testVerPerfil(){
 		Publico nivel = new Publico();
