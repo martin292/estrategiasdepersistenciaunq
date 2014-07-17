@@ -59,7 +59,7 @@ public class Perfil implements MongoEntity{
 	}
 	
 	
-	//-------------------------------------------String
+	//-------------------------------------------
 
 
 	public Integer getIdUsuario() {
