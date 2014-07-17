@@ -10,25 +10,26 @@ public class Destino {
 	private String pais;
 	private String ciudad;
 	private Visibilidad visibilidad;
-	private List<Comentario> comentarios = new ArrayList<Comentario>();
+	private List<Comentario> comentarios = new ArrayList<Comentario>();	
+	private int megusta;
+	private int nomegusta;
 	
-	private Integer megusta;
-	private Integer nomegusta;
-	
-
-
-	public Integer getNomegusta() {
-		return nomegusta;
-	}
-
-	public void setNomegusta(Integer nomegusta) {
-		this.nomegusta = nomegusta;
-	}
 
 	public Destino(String pais, String ciudad) {
 		super();
 		this.pais = pais;
 		this.ciudad = ciudad;
+	}
+	
+	public Destino() {
+	}
+	
+	public int getNomegusta() {
+		return nomegusta;
+	}
+
+	public void setNomegusta(int nomegusta) {
+		this.nomegusta = nomegusta;
 	}
 	
 	public void agregarComentario(Comentario comentario) {
@@ -78,10 +79,10 @@ public class Destino {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public Integer getMegusta() {
+	public int getMegusta() {
 		return megusta;
 	}
-	public void setMegusta(Integer like) {
+	public void setMegusta(int like) {
 		this.megusta = like;
 	}
 

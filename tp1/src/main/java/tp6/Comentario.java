@@ -11,7 +11,7 @@ public class Comentario {
 	private List<Integer> likes = new ArrayList<Integer>();
 	
 	
-	
+	public Comentario(){}
 	
 	
 	public Integer getIdUsuario() {
