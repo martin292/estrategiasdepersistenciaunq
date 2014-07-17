@@ -2,7 +2,7 @@ package tp6;
 
 import tp5.ServicioAmigos;
 
-public class SoloAmigos extends Visibilidad {
+public class SoloAmigos extends Visibilidad3 {
 
 	public SoloAmigos(){}
 	

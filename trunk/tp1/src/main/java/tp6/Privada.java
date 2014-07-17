@@ -1,6 +1,6 @@
 package tp6;
 
-public class Privada extends Visibilidad {
+public class Privada extends Visibilidad3 {
 
 	public Privada(){}
 	

@@ -33,7 +33,7 @@ public class ServicioComentariosTest {
 	
 	@After
 	public void cleanDB(){
-		//sc.getHome().getMongoCollection().drop();
+		sc.getHome().getMongoCollection().drop();
 	}
 	
 	@Test
@@ -70,16 +70,14 @@ public class ServicioComentariosTest {
 	}
 	
 	@Test
-	public void testEstablecerVisibilidadAlDestino(){
-		Publico nivel = new Publico();
-		sc.establecerVisibilidadAlDestino(sc.retPerfil(1), 1, nivel);
-		assertEquals(sc.retPerfil(1).retDestino(1).getVisibilidad().toString(), "Publico");
+	public void testEstablecerVisibilidad(){
+		sc.establecerVisibilidadAlDestino(sc.retPerfil(1), 1, Visibilidad.PUBLICO);
+		assertEquals(Visibilidad.PUBLICO, sc.retPerfil(1).retDestino(1).getVisibilidad());
 	}
 	
 	@Test
 	public void testVerPerfil(){
-		Publico nivel = new Publico();
-		sc.establecerVisibilidadAlDestino(sc.retPerfil(2), 1, nivel);
+		sc.establecerVisibilidadAlDestino(sc.retPerfil(2), 1, Visibilidad.PUBLICO);
 		
 		Perfil p = sc.verPerfil(2, 1);
 		
