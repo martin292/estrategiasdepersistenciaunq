@@ -23,6 +23,13 @@ public class Perfil {
 	protected List<Destino> destinos = new ArrayList<Destino>();
 		
 
+	public Perfil(Integer i) {
+		super();
+		this.idUsuario = i;
+	}
+
+	public Perfil() {}
+
 	public Perfil mostrarPerfil(Perfil yo) {	
 		return new Perfil().agregarDestinos(yo);
 	}

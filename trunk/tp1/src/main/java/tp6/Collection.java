@@ -18,7 +18,7 @@ public class Collection<T> {
 	
 	
 	public Perfil ret(Integer id) {
-		return (Perfil) mongoCollection.findOne(new BasicDBObject("idUsuario", id));		
+		return (Perfil) mongoCollection.findOne(new BasicDBObject("idUsuario", id));	
 	}
 	
 	public WriteResult<T, Integer> insert(T object){
