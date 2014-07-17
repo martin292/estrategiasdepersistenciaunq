@@ -78,7 +78,7 @@ public class ServicioComentarios {
 	}
 	
 	public Perfil verPerfil(Integer usrID, Integer id){		
-		return null;
+		return this.retPerfil(this.retPerfil(usrID), this.retPerfil(id));
 	}
 	
 	public Perfil retPerfil(Perfil yo, Perfil el){

@@ -16,12 +16,19 @@ public class ServicioComentariosTest {
 	
 	@Before
 	public void fillDB(){
+		sc.getHome().getMongoCollection().drop();
+		
 		Usuario usr = new Usuario(1, "x");		
 		sc.agregarNuevoPerfil(usr);
+		
+		Usuario usr2 = new Usuario(2, "y");		
+		sc.agregarNuevoPerfil(usr2);
 		
 		Destino d = new Destino("a", "b");
 		d.setId(1);
 		sc.agregarDestino(d, sc.retPerfil(1));
+		sc.agregarDestino(d, sc.retPerfil(2));
+
 	}
 	
 	@After
@@ -37,7 +44,7 @@ public class ServicioComentariosTest {
 			
 		sc.agregarDestino(d, sc.retPerfil(1));
 			
-		//assertTrue(sc.retPerfil(1).retDestino(1).getPais() == "a");
+		assertTrue(sc.retPerfil(1).retDestino(1).getPais() == "a");
 			
 		
 	}
@@ -50,35 +57,51 @@ public class ServicioComentariosTest {
 		
 		sc.agregarComentario(c, sc.retPerfil(1), 1);
 		
-		//assertTrue(sc.retPerfil(1).retDestino(1).getComentarios().get(0).getTxt() == "Hola");
+		assertTrue(sc.retPerfil(1).retDestino(1).getComentarios().get(0).getTxt() == "Hola");
 	}
 	
 	@Test
 	public void testMeGusta(){
 		sc.meGusta(sc.retPerfil(1), 1);
-		//assertTrue(sc.retPerfil(1).retDestino(1).getMegusta() == 1);
+		assertTrue(sc.retPerfil(1).retDestino(1).getMegusta() == 1);
 	}
 	
 	@Test
 	public void testNoMeGusta(){
-		//TODO
+		sc.noMeGusta(sc.retPerfil(1), 1);
+		assertTrue(sc.retPerfil(1).retDestino(1).getNomegusta() == 1);
 	}
 	
 	@Test
 	public void testEstablecerVisibilidadAlDestino(){
 		Publico nivel = new Publico();
 		sc.establecerVisibilidadAlDestino(sc.retPerfil(1), 1, nivel);
-		//assertTrue(sc.retPerfil(1).retDestino(1).getVisibilidad().toString() == "Publico");
+		assertTrue(sc.retPerfil(1).retDestino(1).getVisibilidad().toString() == "Publico");
 	}
 	
 	@Test
 	public void testEstablecerVisibilidadAlComentario(){
-		//TODO
+		Comentario c = new Comentario();
+		c.setIdUsuario(1);
+		c.setTxt("Hola");
+		
+		sc.agregarComentario(c, sc.retPerfil(1), 1);
+		
+		//
+		
+		Publico nivel = new Publico();
+		sc.establecerVisibilidadAlComentario(sc.retPerfil(1), c, nivel);
+		assertTrue(sc.retPerfil(1).retDestino(1).getVisibilidad().toString() == "Publico");
 	}
 	
 	@Test
 	public void testVerPerfil(){
-		//TODO
+		Publico nivel = new Publico();
+		sc.establecerVisibilidadAlDestino(sc.retPerfil(2), 1, nivel);
+		
+		Perfil p = sc.verPerfil(1, 2);
+		
+		assertTrue(p.getDestinos().get(0).getPais() == "a");
 	}
 	
 	//

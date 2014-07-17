@@ -17,6 +17,14 @@ public class Destino {
 	
 
 
+	public Integer getNomegusta() {
+		return nomegusta;
+	}
+
+	public void setNomegusta(Integer nomegusta) {
+		this.nomegusta = nomegusta;
+	}
+
 	public Destino(String pais, String ciudad) {
 		super();
 		this.pais = pais;
