@@ -1,32 +1,38 @@
 package tp6;
 
+import static org.junit.Assert.*;
+
 import java.net.UnknownHostException;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import tp1.Usuario;
-import junit.framework.TestCase;
 
-public class ServicioComentariosTest extends TestCase{
+public class ServicioComentariosTest {
 	
+	public ServicioComentarios sc = ServicioComentarios.instance();
 	
+	@Before
+	public void fillDB(){
+		sc.getHome().getMongoCollection().drop();
+	}
 	
 	@Test
 	public void testAgregarDestino(){
-		try{			
-			ServicioComentarios sc = new ServicioComentarios();
+		
+		
+		Usuario usr = new Usuario(2, "hola");
 			
-			//Usuario usr = new Usuario(1, "hola");
+		sc.agregarNuevoPerfil(usr);
 			
-			//sc.agregarNuevoPerfil(usr);
+		Destino d = new Destino("a", "b");
 			
-			Perfil p = new Perfil(1);
+		sc.agregarDestino(d, sc.retPerfil(2));
 			
-			Destino d = new Destino("a", "b");
+		//assertTrue(sc.retPerfil(2).getDestinos().get(0).getPais() == "a");
 			
-			sc.agregarDestino(d, p);						
-			
-		}catch (UnknownHostException e) {e.printStackTrace();}
+		
 	}
 	
 	@Test
@@ -60,5 +66,8 @@ public class ServicioComentariosTest extends TestCase{
 	}
 	
 	//
+	
+	public ServicioComentariosTest()throws UnknownHostException{}
+
 
 }

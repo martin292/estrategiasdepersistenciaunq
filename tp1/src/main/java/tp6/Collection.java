@@ -5,20 +5,23 @@ import java.util.List;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
 
+import net.vz.mongodb.jackson.DBQuery;
 import net.vz.mongodb.jackson.JacksonDBCollection;
 import net.vz.mongodb.jackson.MapReduce;
 import net.vz.mongodb.jackson.MapReduce.MapReduceCommand;
 import net.vz.mongodb.jackson.MapReduceOutput;
 import net.vz.mongodb.jackson.WriteResult;
 
-public class Collection<T> {	
+public class Collection<T extends MongoEntity> {	
 	
 	private JacksonDBCollection<T, Integer> mongoCollection;
 	
 	
 	
 	public Perfil ret(Integer id) {
-		return (Perfil) mongoCollection.findOne(new BasicDBObject("idUsuario", id));	
+		//return (Perfil) mongoCollection.findOne(DBQuery.is("idUsuario", id));
+		return (Perfil) mongoCollection.findOneById(id);
+		//return null;
 	}
 	
 	public WriteResult<T, Integer> insert(T object){
@@ -29,8 +32,10 @@ public class Collection<T> {
 		return mongoCollection.update(new BasicDBObject("idUsuario", ((Perfil) object).getIdUsuario()), (DBObject) object);
     }*/
 	
-	public WriteResult<T, Integer> update(Perfil object){		
-		return mongoCollection.update(new BasicDBObject("idUsuario", object.getIdUsuario()), (DBObject) object);
+	public WriteResult<T, Integer> update(T object){
+		return mongoCollection.updateById(object.dameId(), object);
+//		return mongoCollection.updateById(object.getIdUsuario(), (T) new BasicDBObject("idUsuario", object.getIdUsuario()));
+		//return mongoCollection.update(new BasicDBObject("idUsuario", object.getIdUsuario()), (DBObject) object);
     }
 	
 	public WriteResult<T, Integer> insert(List<T> object){
